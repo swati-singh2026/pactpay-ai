@@ -1,13 +1,89 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
+
+enum UserRole {
+  CLIENT
+  FREELANCER
+}
+
+enum ContractStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum MilestoneStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      UserRole
+  createdAt DateTime @default(now())
+
+  contractsAsClient     Contract[] @relation("ClientContracts")
+  contractsAsFreelancer Contract[] @relation("FreelancerContracts")
+}
+
+model Contract {
+  id            String         @id @default(cuid())
+  title         String
+  description   String
+  amount        Float
+  status        ContractStatus @default(DRAFT)
+  createdAt     DateTime       @default(now())
+
+  clientId      String
+  freelancerId  String
+
+  client        User @relation("ClientContracts", fields: [clientId], references: [id])
+  freelancer    User @relation("FreelancerContracts", fields: [freelancerId], references: [id])
+
+  milestones    Milestone[]
+}
+
+model Milestone {
+  id          String           @id @default(cuid())
+  title       String
+  amount      Float
+  status      MilestoneStatus  @default(PENDING)
+
+  contractId  String
+  contract    Contract @relation(fields: [contractId], references: [id])
+
+  payment     Payment?
+}
+
+model Payment {
+  id            String         @id @default(cuid())
+  paypalOrderId String?
+  amount        Float
+  status        PaymentStatus  @default(PENDING)
+
+  milestoneId   String @unique
+  milestone     Milestone @relation(fields: [milestoneId], references: [id])
+
+  createdAt     DateTime @default(now())
+}
+
+
+
