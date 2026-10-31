@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PactPay AI 🚀
 
-## Getting Started
+**AI-Powered Smart Contracts & Secure PayPal Milestone Payments**
 
-First, run the development server:
+PactPay AI is an intelligent contract and milestone payment platform built for freelancers, clients, and remote teams. The platform uses AI to generate professional contracts, manages project milestones, and enables secure PayPal payments with transparent progress tracking.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is being developed as a hackathon submission with a focus on solving trust and payment challenges in freelance collaborations.
+
+---
+
+## 🎯 Problem Statement
+
+Freelancers and clients often face problems such as:
+
+- Unclear project agreements
+- Payment disputes
+- Delayed milestone payments
+- Lack of contract automation
+- Poor project transparency
+
+PactPay AI aims to solve these challenges using AI-assisted contract generation, milestone-based workflows, and secure payment processing.
+
+---
+
+## 🚀 Planned Features
+
+- 🤖 AI Contract Generator
+- 📄 Smart Contract Management
+- 📌 Milestone Tracking
+- 💳 Secure PayPal Payment Integration
+- 🔐 JWT Authentication
+- 👥 Client & Freelancer Dashboard
+- 📊 Contract Analytics
+- 📈 Payment History
+- 📱 Responsive SaaS Interface
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- Express.js
+- TypeScript
+- Prisma ORM
+
+### Database
+
+- PostgreSQL (Supabase)
+
+### Authentication
+
+- JWT
+- bcrypt
+
+### Payments
+
+- PayPal REST API
+
+### AI
+
+- OpenAI API (Planned)
+
+---
+
+## 📁 Project Structure
+
+```text
+PactPay-AI
+│
+├── client/        # Next.js Frontend
+├── server/        # Express Backend
+├── README.md
+└── .gitignore
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📌 Development Status
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ✅ Completed
 
-## Learn More
+- Project initialization
+- GitHub repository setup
+- Next.js frontend setup
+- Express backend setup
+- TypeScript configuration
+- Project folder structure
+- Prisma setup
 
-To learn more about Next.js, take a look at the following resources:
+### 🚧 In Progress
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Database configuration
+- Authentication
+- Dashboard UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ⏳ Upcoming
 
-## Deploy on Vercel
+- AI Contract Generation
+- Milestone Management
+- PayPal Integration
+- Contract Analytics
+- Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🗓 Development Roadmap
+
+- ✅ Phase 1 — Project Foundation
+- ⏳ Phase 2 — Authentication
+- ⏳ Phase 3 — Database
+- ⏳ Phase 4 — Dashboard
+- ⏳ Phase 5 — AI Contracts
+- ⏳ Phase 6 — PayPal Integration
+- ⏳ Phase 7 — Testing & Deployment
+
+---
+
+## 👩‍💻 Developer
+
+**Swati Singh**
+
+GitHub: https://github.com/swati-singh2026
+
+LinkedIn: https://linkedin.com/in/swatisingh-bca-eco
+
+---
+
+⭐ This project is under active development as a hackathon submission. Features and documentation will be updated as development progresses.
