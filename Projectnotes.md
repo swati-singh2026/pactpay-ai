@@ -33,30 +33,30 @@ PactPay AI solves these issues using AI-powered contract generation, milestone-b
 
 # 🏗 System Architecture
 
-```
-                Next.js Frontend
-                       │
+```text
+                 Next.js Frontend
+                        │
                     Axios API
-                       │
-                       ▼
-              Express.js REST API
-                       │
-              JWT Authentication
-                       │
-                       ▼
+                        │
+                        ▼
+               Express.js REST API
+                        │
+               JWT Authentication
+                        │
+                        ▼
                   Prisma ORM
-                       │
-                       ▼
+                        │
+                        ▼
              Supabase PostgreSQL
-                       │
-          ┌────────────┴────────────┐
-          ▼                         ▼
-     OpenAI API              PayPal REST API
+                        │
+          ┌─────────────┴─────────────┐
+          ▼                           ▼
+      OpenAI API               PayPal REST API
 ```
 
 ---
 
-# 🛠 Final Tech Stack
+# 🛠 Tech Stack
 
 ## Frontend
 
@@ -71,31 +71,23 @@ PactPay AI solves these issues using AI-powered contract generation, milestone-b
 - Lucide React
 - Sonner
 
----
-
 ## Backend
 
 - Express.js
 - TypeScript
-- Prisma ORM (v6)
+- Prisma ORM v6
 - JWT
 - bcrypt
 - dotenv
 - CORS
 
----
-
 ## Database
 
 - PostgreSQL (Supabase)
 
----
-
 ## Payments
 
 - PayPal REST API
-
----
 
 ## AI
 
@@ -123,34 +115,34 @@ PactPay-AI
 │
 ├── server
 │   ├── prisma
-│   │    ├── schema.prisma
-│   │    └── migrations
+│   │   ├── schema.prisma
+│   │   └── migrations
 │   │
 │   ├── src
-│   │    ├── ai
-│   │    ├── config
-│   │    ├── controllers
-│   │    ├── middleware
-│   │    ├── paypal
-│   │    ├── routes
-│   │    ├── services
-│   │    ├── lib
-│   │    ├── utils
-│   │    ├── types
-│   │    └── app.ts
+│   │   ├── ai
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── middleware
+│   │   ├── paypal
+│   │   ├── routes
+│   │   ├── services
+│   │   ├── lib
+│   │   ├── types
+│   │   ├── utils
+│   │   └── app.ts
 │   │
 │   ├── .env
 │   ├── package.json
 │   └── tsconfig.json
 │
 ├── README.md
-├── PROJECT_NOTES.md
+├── ProjectNotes.md
 └── .gitignore
 ```
 
 ---
 
-# 🗄 Planned Database Tables
+# 🗄 Database Models
 
 - User
 - Contract
@@ -161,67 +153,48 @@ Relationships
 
 ```text
 User
- │
- ├──── Contracts
- │         │
- │         ├──── Milestones
- │         │         │
- │         │         └──── Payments
- │
- └──── Payment History
+│
+├──── Contracts
+│         │
+│         ├──── Milestones
+│         │         │
+│         │         └──── Payments
+│
+└──── Payment History
 ```
 
 ---
 
-# 📡 Planned REST APIs
+# 📡 REST APIs
 
 ## Authentication
 
-POST /api/auth/signup
-
-POST /api/auth/login
-
-POST /api/auth/logout
-
-GET /api/auth/me
-
----
+- POST /api/auth/signup
+- POST /api/auth/login
+- GET /api/auth/me
 
 ## Contracts
 
-GET /api/contracts
-
-POST /api/contracts
-
-PUT /api/contracts/:id
-
-DELETE /api/contracts/:id
-
----
+- GET /api/contracts
+- POST /api/contracts
+- PUT /api/contracts/:id
+- DELETE /api/contracts/:id
 
 ## Milestones
 
-GET /api/milestones
-
-POST /api/milestones
-
-PUT /api/milestones/:id
-
----
+- GET /api/milestones
+- POST /api/milestones
+- PUT /api/milestones/:id
 
 ## Payments
 
-POST /api/paypal/create-order
-
-POST /api/paypal/capture-order
-
-GET /api/payments/history
-
----
+- POST /api/paypal/create-order
+- POST /api/paypal/capture-order
+- GET /api/payments/history
 
 ## AI
 
-POST /api/ai/generate-contract
+- POST /api/ai/generate-contract
 
 ---
 
@@ -280,9 +253,8 @@ Completed
 
 - Tailwind CSS
 - shadcn/ui Initialized
-- Base UI Selected
-- Nova Preset Selected
-- Button Component Added
+- Nova Preset
+- Button Component
 - Axios Installed
 - React Hook Form Installed
 
@@ -312,51 +284,45 @@ Status
 
 ## ✅ Hour 3 — Database Foundation
 
-### Prisma
-
 Completed
+
+### Prisma
 
 - Prisma Installed
 - Prisma Initialized
-- schema.prisma Created
-- Prisma Schema Validated
 - Prisma Client Generated
+- Prisma Schema Validated
 
 ### Supabase
 
-Completed
-
 - Supabase Project Created
-- PostgreSQL Database Created
+- PostgreSQL Connected
 - SSL Enabled
 - DATABASE_URL Configured
 - DIRECT_URL Configured
-- Prisma Connected Successfully
 
 ### Database
 
 Completed
 
-- Initial Migration Created
-- Migration Applied Successfully
-- Database Synced with Supabase
-
-### Issues Resolved
-
-- Prisma 7 compatibility issue
-- Downgraded to Prisma 6
-- Fixed DATABASE_URL configuration
-- Fixed DIRECT_URL configuration
-- Fixed password encoding
-- Fixed PostgreSQL connectivity
-- Fixed migration execution
-
-Pending
-
 - User Model
 - Contract Model
 - Milestone Model
 - Payment Model
+- Relationships Defined
+- Initial Migration Created
+- Migration Applied Successfully
+- Database Synced
+
+### Issues Resolved
+
+- Prisma v7 compatibility issue
+- Downgraded to Prisma v6
+- Fixed DATABASE_URL
+- Fixed DIRECT_URL
+- Fixed password encoding
+- Fixed PostgreSQL connectivity
+- Fixed migration execution
 
 Status
 
@@ -364,59 +330,149 @@ Status
 
 ---
 
-## ⏳ Remaining Day 1
+## ✅ Hour 4 — Authentication Backend
 
-Hour 4
+Completed
 
-- Database Models
+### Authentication
 
-Hour 5
+- JWT Authentication
+- Password Hashing (bcrypt)
+- Password Verification
+- JWT Token Generation
+- Protected Route Middleware
+- Current User Authentication
 
-- Authentication Backend
+### APIs
 
-Hour 6
+- POST /api/auth/signup
+- POST /api/auth/login
+- GET /api/auth/me
 
-- Authentication Frontend
+### Backend Architecture
 
-Hour 7
+Completed
 
-- Protected Routes
+- auth.controller.ts
+- auth.service.ts
+- auth.routes.ts
+- auth.middleware.ts
+- prisma.ts
+- hash.ts
+- jwt.ts
+- auth.ts
 
-Hour 8
+### Security
+
+Completed
+
+- Password Hashing
+- JWT Verification
+- Authorization Middleware
+- Duplicate Email Validation
+- Invalid Credential Handling
+- Password Hidden from API Responses
+
+### Testing
+
+Completed
+
+- Signup API Tested
+- Login API Tested
+- Protected Route Tested
+- JWT Authentication Verified
+
+Status
+
+🟢 100% Complete
+
+---
+
+# ⏳ Remaining Day 1
+
+## Hour 5 - Authentication Frontend ✅
+
+Date: 02 Nov 2026
+Duration: 2:00 PM – 3:00 PM
+
+Completed:
+✔ Built Login page (Next.js + TypeScript)
+✔ Built Signup page (Next.js + TypeScript)
+✔ Connected Signup API to Express backend
+✔ Connected Login API to Express backend
+✔ Fixed Next.js routing issues
+✔ Fixed React component export errors
+✔ Fixed fetch API connection issues
+✔ Backend running on localhost:5000
+✔ Frontend running on localhost:3000
+✔ Prisma + Supabase PostgreSQL integration verified
+✔ User registration successfully stored in database
+
+Tech Stack:
+
+- Next.js 16
+- TypeScript
+- Express.js
+- Prisma ORM
+- Supabase PostgreSQL
+- JWT Authentication
+
+Current Status:
+✅ Authentication Frontend Complete (100%)
+
+Next Step:
+➡ Store JWT token after login
+➡ Create Dashboard
+➡ Protected Routes
+➡ Logout Functionality
+
+## Hour 6
+
+- Protected Frontend Routes
+- Auth Context
+- Token Storage
+
+## Hour 7
 
 - Landing Page
 
-Hour 9
+## Hour 8
 
-- Dashboard UI
+- Dashboard Layout
 
-Hour 10
+## Hour 9
+
+- Sidebar + Navbar
+
+## Hour 10
 
 - AI Contract Generator
 
-Hour 11
+## Hour 11
 
 - PayPal Integration
 
-Hour 12
+## Hour 12
 
-- Testing, Deployment & Final Demo
+- Testing
+- Deployment
+- Final Demo
 
 ---
 
 # 📌 Important Decisions
 
-✅ PostgreSQL instead of MongoDB
+## ✅ PostgreSQL instead of MongoDB
 
 Reason
 
 - Better relational support
-- Better payment consistency
-- ACID transactions
+- ACID Transactions
+- Ideal for payment systems
 
 ---
 
-✅ Prisma ORM
+## ✅ Prisma ORM
 
 Reason
 
@@ -426,17 +482,17 @@ Reason
 
 ---
 
-✅ Supabase PostgreSQL
+## ✅ Supabase PostgreSQL
 
 Reason
 
-- Free Hosted Database
+- Free Hosted PostgreSQL
 - Easy Dashboard
-- Perfect for Hackathons
+- Great for Hackathons
 
 ---
 
-✅ Next.js + Express
+## ✅ Next.js + Express
 
 Reason
 
@@ -446,7 +502,7 @@ Reason
 
 ---
 
-✅ PayPal
+## ✅ PayPal
 
 Reason
 
@@ -455,61 +511,53 @@ Reason
 
 ---
 
-✅ AI Contract Generator
+## ✅ AI Contract Generator
 
-Main USP of the project.
+Main USP of PactPay AI.
 
 ---
 
 # 🚀 Current Status
 
-## Completed
+## ✅ Completed
 
-✅ Planning
-
-✅ Git Setup
-
-✅ Frontend Setup
-
-✅ Backend Setup
-
-✅ TypeScript Configuration
-
-✅ Folder Structure
-
-✅ Dependency Installation
-
-✅ shadcn/ui Setup
-
-✅ Prisma Setup
-
-✅ Supabase Setup
-
-✅ Database Connection
-
-✅ Environment Variables
-
-✅ Prisma Validation
-
-✅ Prisma Client Generation
-
-✅ Initial Database Migration
-
----
-
-## In Progress
-
-🟡 Database Models
-
----
-
-## Upcoming
-
-- User Model
-- Contract Model
-- Milestone Model
-- Payment Model
+- Planning
+- Git Setup
+- Frontend Setup
+- Backend Setup
+- TypeScript Configuration
+- Folder Structure
+- Dependency Installation
+- shadcn/ui Setup
+- Prisma ORM Setup
+- Supabase Setup
+- Database Connection
+- Environment Variables
+- Prisma Validation
+- Prisma Client Generation
+- Database Models
+- Initial Migration
 - JWT Authentication
+- Password Hashing
+- Signup API
+- Login API
+- Protected Middleware
+- Current User API
+- API Testing with Postman
+
+---
+
+## 🟡 In Progress
+
+- Authentication Frontend
+
+---
+
+## 🔜 Upcoming
+
+- Login Page
+- Signup Page
+- Protected Frontend
 - Landing Page
 - Dashboard
 - AI Contract Generator
@@ -536,7 +584,7 @@ Hour 2 ✅
 
 Hour 3 ✅
 
-Hour 4 ⏳
+Hour 4 ✅
 
 Hour 5 ⏳
 
@@ -556,24 +604,24 @@ Hour 12 ⏳
 
 Overall Progress
 
-🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜
+🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜
 
-≈ **25% Complete**
+≈ **42% Complete**
 
 ---
 
 # 🎯 Next Immediate Goal
 
-## Hour 4 — Database Design
+## Hour 5 — Authentication Frontend
 
-- Create User Model
-- Create Contract Model
-- Create Milestone Model
-- Create Payment Model
-- Define Relationships
-- Generate Prisma Client
-- Run Second Migration
-- Verify Tables in Supabase
+- Create Login Page
+- Create Signup Page
+- Form Validation
+- Connect Backend APIs
+- Store JWT Token
+- Redirect After Login
+- Error Handling
+- Success Toasts
 
 ---
 
@@ -619,32 +667,45 @@ Configure Supabase PostgreSQL, connect Prisma, and apply initial database migrat
 
 ---
 
+## ✅ Commit 4
+
+```text
+Implement JWT authentication with signup, login, protected routes, and password hashing
+```
+
+---
+
 ## ⏳ Upcoming Commits
 
-- Design database models
-- Implement JWT authentication
-- Build Landing Page
-- Develop Dashboard
+- Build authentication frontend
+- Create landing page
+- Develop dashboard
 - Integrate AI Contract Generator
-- Integrate PayPal
-- Deploy Final MVP
+- Integrate PayPal milestone payments
+- Deploy production-ready MVP
 
 ---
 
 # 🎯 Current Milestone
 
-✅ Infrastructure Phase Completed
+## ✅ Backend Foundation Completed
 
-The project foundation is now fully ready with:
+The project now includes:
 
 - Git & GitHub
 - Next.js Frontend
 - Express Backend
 - TypeScript
-- shadcn/ui
 - Prisma ORM
 - Supabase PostgreSQL
-- Environment Configuration
-- Initial Database Migration
+- Complete Database Schema
+- Database Migration
+- JWT Authentication
+- Password Hashing
+- Signup API
+- Login API
+- Protected Routes
+- Current User Endpoint
+- Postman API Testing
 
-The next phase begins with designing the application's database models and implementing authentication.
+**Next Milestone:** Complete the Authentication Frontend (Login & Signup UI) and connect it with the backend APIs to achieve the first end-to-end user workflow.
