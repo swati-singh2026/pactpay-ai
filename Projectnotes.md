@@ -426,11 +426,36 @@ Next Step:
 ➡ Protected Routes
 ➡ Logout Functionality
 
-## Hour 6
+## Hour 6 (3:00–4:00) ✅ Completed
 
-- Protected Frontend Routes
-- Auth Context
-- Token Storage
+### Protected Routes
+
+Implemented secure authentication flow.
+
+Completed Features:
+
+- Protected Dashboard Route
+- JWT Token Verification
+- LocalStorage Authentication
+- Automatic Redirect to Login
+- Logout Functionality
+- Session Protection
+
+Flow:
+Signup
+↓
+Login
+↓
+JWT Stored
+↓
+Dashboard Access
+↓
+Logout
+↓
+Dashboard Blocked
+
+Status:
+✅ Hour 6 Completed
 
 ## Hour 7
 
@@ -611,19 +636,6 @@ Overall Progress
 ---
 
 # 🎯 Next Immediate Goal
-
-## Hour 5 — Authentication Frontend
-
-- Create Login Page
-- Create Signup Page
-- Form Validation
-- Connect Backend APIs
-- Store JWT Token
-- Redirect After Login
-- Error Handling
-- Success Toasts
-
----
 
 # 🏆 Hackathon Strategy
 

@@ -228,6 +228,29 @@ PactPay-AI
 
 ---
 
+## Authentication Flow
+
+Implemented complete frontend authentication.
+
+### Features
+
+- User Signup
+- User Login
+- JWT Authentication
+- Protected Dashboard
+- Session Management
+- Logout
+- Auto Redirect
+- Route Protection
+
+### Authentication Flow
+
+Signup
+→ Login
+→ JWT Token Stored
+→ Dashboard
+→ Logout
+
 # 🔐 Authentication
 
 ### Completed APIs

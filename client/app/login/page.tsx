@@ -18,9 +18,8 @@ export default function LoginPage() {
     });
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setLoading(true);
 
     try {
@@ -35,13 +34,16 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (response.ok) {
+        // Save JWT Token
+        localStorage.setItem("token", data.data.token);
+
+        // Save User
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+
         alert("Login Successful ✅");
 
-        // Save token
-        localStorage.setItem("token", data.token);
-
-        // Redirect later
-        // window.location.href = "/dashboard";
+        // Redirect to Dashboard
+        window.location.href = "/dashboard";
       } else {
         alert(data.message || "Invalid Email or Password");
       }
@@ -55,16 +57,16 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
-        <h1 className="text-3xl font-bold text-center text-blue-700">
+      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+        <h1 className="text-center text-3xl font-bold text-blue-700">
           PactPay AI
         </h1>
 
-        <p className="text-center text-gray-500 mt-2 mb-8">Welcome Back 👋</p>
+        <p className="mt-2 mb-8 text-center text-gray-500">Welcome Back 👋</p>
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block mb-2 font-medium">Email</label>
+            <label className="mb-2 block font-medium">Email</label>
 
             <input
               type="email"
@@ -73,12 +75,12 @@ export default function LoginPage() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div>
-            <label className="block mb-2 font-medium">Password</label>
+            <label className="mb-2 block font-medium">Password</label>
 
             <input
               type="password"
@@ -87,24 +89,24 @@ export default function LoginPage() {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition"
+            className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
           >
             {loading ? "Signing In..." : "Login"}
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-6">
+        <p className="mt-6 text-center text-gray-600">
           Don't have an account?{" "}
           <Link
             href="/signup"
-            className="text-blue-600 font-semibold hover:underline"
+            className="font-semibold text-blue-600 hover:underline"
           >
             Sign Up
           </Link>
