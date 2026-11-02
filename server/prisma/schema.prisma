@@ -39,6 +39,8 @@ model User {
   password  String
   role      UserRole
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
 
   contractsAsClient     Contract[] @relation("ClientContracts")
   contractsAsFreelancer Contract[] @relation("FreelancerContracts")
@@ -51,6 +53,8 @@ model Contract {
   amount        Float
   status        ContractStatus @default(DRAFT)
   createdAt     DateTime       @default(now())
+  updatedAt DateTime @updatedAt
+
 
   clientId      String
   freelancerId  String
@@ -66,6 +70,8 @@ model Milestone {
   title       String
   amount      Float
   status      MilestoneStatus  @default(PENDING)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   contractId  String
   contract    Contract @relation(fields: [contractId], references: [id])
@@ -83,7 +89,9 @@ model Payment {
   milestone     Milestone @relation(fields: [milestoneId], references: [id])
 
   createdAt     DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+
 
 
 
