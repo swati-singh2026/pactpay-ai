@@ -1,97 +1,103 @@
-# PactPay AI 🚀
+# 🚀 PactPay AI
 
 ## AI-Powered Smart Contracts & Secure PayPal Milestone Payments
 
-PactPay AI is an AI-powered contract and milestone payment platform built for freelancers, clients, and remote teams. The platform enables users to generate professional contracts using AI, manage project milestones, and securely process milestone-based PayPal payments through a modern SaaS dashboard.
+PactPay AI is a full-stack SaaS platform that helps freelancers and clients collaborate with confidence using AI-assisted contract generation, milestone-based project management, and secure PayPal payments.
 
-This project is being developed as a hackathon submission focused on solving trust, transparency, and payment challenges in freelance collaborations.
+Built for the PayPal AI Hackathon, the platform combines AI, automation, and digital payments to reduce disputes and improve trust in freelance projects.
 
 ---
 
-## 🎯 Problem Statement
+# 🎯 Problem Statement
 
-Freelancers and clients frequently face:
+Freelancers and clients often struggle with:
 
-- Unclear project agreements
+- Unclear agreements
 - Payment disputes
 - Delayed milestone payments
-- Manual contract creation
-- Lack of project transparency
+- Manual contract drafting
+- Lack of transparency
 
-PactPay AI solves these problems through AI-assisted contract generation, milestone-based project management, and secure PayPal payment workflows.
+PactPay AI solves these challenges through AI-powered contract creation, milestone tracking, secure PayPal payments, and a centralized dashboard.
 
 ---
 
 # ✨ Features
 
-## ✅ Completed
-
-- Next.js + Express Full Stack Project Setup
-- TypeScript Configuration
-- Tailwind CSS v4 Setup
-- shadcn/ui Setup
-- Prisma ORM Integration
-- Supabase PostgreSQL Integration
-- Database Schema Design
-- Initial Prisma Migration
-- JWT Authentication
-- Password Hashing with bcrypt
-- User Signup API
-- User Login API
-- Protected Authentication Middleware
-- Current User (`/api/auth/me`) API
-- Environment Variable Configuration
-- REST API Structure
-- GitHub Version Control
-
----
-
-## ✨ Features
+## ✅ Implemented
 
 ### Authentication
 
-- ✅ User Signup
-- ✅ User Login
-- ✅ Password Hashing (bcrypt)
-- ✅ JWT Authentication
-- ✅ Role Selection (Client / Freelancer)
-- ✅ Protected API (/me)
+- User Signup
+- User Login
+- JWT Authentication
+- Password Hashing (bcrypt)
+- Protected Routes
+- Session Management
+- Logout Functionality
 
-### Frontend
+### Landing Page
 
-- ✅ Next.js 16 App Router
-- ✅ Login Page
-- ✅ Signup Page
-- ✅ API Integration with Backend
-- ✅ Responsive Authentication UI
+- Responsive Navigation
+- Hero Section
+- Features Section
+- How It Works
+- Call-to-Action
+- Professional Footer
 
 ### Backend
 
-- ✅ Express.js REST API
-- ✅ Prisma ORM
-- ✅ Supabase PostgreSQL
+- Express REST API
+- Prisma ORM
+- PostgreSQL Database
+- Authentication Middleware
+- Current User Endpoint
 
-## 🚧 In Progress
+### ✅ Dashboard Module
 
-- Authentication Frontend
-- Landing Page
-- Dashboard Layout
-- Client & Freelancer Dashboard
+- Protected Dashboard
+- Professional SaaS Sidebar
+- Responsive Top Navbar
+- Dashboard Layout Component
+- Reusable Dashboard Cards
+- User Profile Section
+- Trust & Security Indicator
+- Recent Activity Timeline
+- Secure Logout
+- Backend Ready Structure
+
+Status: ✅ Completed
+
+## 🖥 Professional SaaS Dashboard
+
+The dashboard has been redesigned with a modern SaaS architecture focused on usability, scalability, and secure navigation.
+
+### Features
+
+- Protected dashboard with JWT authentication
+- Professional sidebar navigation
+- Responsive top navigation bar
+- AI trust indicator
+- Secure logout functionality
+- User profile overview
+- Dashboard statistics cards
+- Recent platform activity
+- Reusable layout components
+- Backend-ready architecture
 
 ---
 
-## ⏳ Upcoming
+# 🚧 Upcoming Features
 
-- 🤖 AI Contract Generator
-- 📄 Smart Contract Management
-- 📌 Milestone Management
-- 💳 PayPal Milestone Payments
-- 📊 Analytics Dashboard
-- 📜 Contract History
-- 📱 Responsive SaaS UI
-- 🔔 Notifications
-- 📂 Project Management
-- 🚀 Deployment
+- AI Contract Generator
+- AI Risk Analysis
+- Smart Contract Management
+- Milestone Management
+- PayPal Order Creation
+- PayPal Capture Payments
+- Analytics Dashboard
+- Notifications
+- Deployment
 
 ---
 
@@ -102,53 +108,54 @@ PactPay AI solves these problems through AI-assisted contract generation, milest
 - Next.js 16
 - React 19
 - TypeScript
-- Tailwind CSS v4
+- Tailwind CSS
 - shadcn/ui
 - Axios
-- React Hook Form
-- Zod
-- Sonner
-- Lucide React
-- AG Grid (Planned)
-
----
 
 ## Backend
 
 - Express.js
 - TypeScript
-- Prisma ORM v6
+- Prisma ORM
 - JWT
 - bcrypt
-- dotenv
 - CORS
-
----
 
 ## Database
 
 - PostgreSQL (Supabase)
 
----
-
-## Authentication
-
-- JWT Authentication
-- Password Hashing (bcrypt)
-- Protected Routes
-- Authentication Middleware
-
----
-
 ## Payments
 
-- PayPal REST API (Upcoming)
-
----
+- PayPal REST API
 
 ## AI
 
-- OpenAI API (Upcoming)
+- OpenAI API _(Planned)_
+
+---
+
+# 🏗 System Architecture
+
+```text
+Next.js Frontend
+        │
+     Axios API
+        │
+        ▼
+ Express REST API
+        │
+ JWT Authentication
+        │
+        ▼
+   Prisma ORM
+        │
+        ▼
+Supabase PostgreSQL
+      │        │
+      ▼        ▼
+ OpenAI API  PayPal API
+```
 
 ---
 
@@ -157,204 +164,96 @@ PactPay AI solves these problems through AI-assisted contract generation, milest
 ```text
 PactPay-AI
 │
-├── client/                     # Next.js Frontend
-│   ├── app/
-│   ├── components/
-│   ├── features/
-│   ├── hooks/
-│   ├── lib/
-│   ├── services/
-│   ├── styles/
-│   ├── types/
-│   ├── utils/
-│   ├── public/
-│   ├── components.json
-│   └── package.json
+├── client
+│   ├── app
+│   ├── components
+│   ├── services
+│   ├── lib
+│   ├── types
+│   └── ...
 │
-├── server/                     # Express Backend
-│   ├── prisma/
-│   │   ├── migrations/
-│   │   └── schema.prisma
-│   │
-│   ├── src/
-│   │   ├── ai/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── paypal/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── lib/
-│   │   ├── types/
-│   │   ├── utils/
-│   │   └── app.ts
-│   │
-│   ├── .env
-│   ├── package.json
-│   └── tsconfig.json
+├── server
+│   ├── prisma
+│   ├── src
+│   │   ├── controllers
+│   │   ├── middleware
+│   │   ├── routes
+│   │   ├── services
+│   │   └── ...
 │
 ├── README.md
-├── PROJECT_NOTES.md
-└── .gitignore
+└── PROJECT_NOTES.md
 ```
 
 ---
 
-# 🗄 Database
+# 🗄 Database Models
 
-### Database Provider
+- User
+- Contract
+- Milestone
+- Payment
 
-- Supabase PostgreSQL
+Relationships
 
-### ORM
-
-- Prisma ORM
-
-### Current Models
-
-- ✅ User
-- ✅ Contract
-- ✅ Milestone
-- ✅ Payment
-
-### Current Status
-
-- ✅ Prisma Initialized
-- ✅ Prisma Client Generated
-- ✅ Supabase Connected
-- ✅ Database Schema Created
-- ✅ Initial Migration Applied
-- ✅ Relationships Configured
+```text
+User
+ ├── Contracts
+ │      └── Milestones
+ │               └── Payments
+```
 
 ---
 
-## Authentication Flow
+# 📡 REST API
 
-Implemented complete frontend authentication.
+## Authentication
 
-### Features
+| Method | Endpoint         |
+| ------ | ---------------- |
+| POST   | /api/auth/signup |
+| POST   | /api/auth/login  |
+| GET    | /api/auth/me     |
 
-- User Signup
-- User Login
-- JWT Authentication
-- Protected Dashboard
-- Session Management
-- Logout
-- Auto Redirect
-- Route Protection
+## Contracts _(Upcoming)_
 
-### Authentication Flow
+- GET /api/contracts
+- POST /api/contracts
+- PUT /api/contracts/:id
 
-Signup
-→ Login
-→ JWT Token Stored
-→ Dashboard
-→ Logout
+## Milestones _(Upcoming)_
 
-# 🔐 Authentication
+- GET /api/milestones
+- POST /api/milestones
 
-### Completed APIs
+## Payments _(Upcoming)_
 
-| Method | Endpoint           |
-| ------ | ------------------ |
-| POST   | `/api/auth/signup` |
-| POST   | `/api/auth/login`  |
-| GET    | `/api/auth/me`     |
+- POST /api/paypal/create-order
+- POST /api/paypal/capture-order
 
-### Features
+## AI _(Upcoming)_
 
-- JWT Token Generation
-- Password Hashing
-- Login Authentication
-- Duplicate Email Validation
-- Protected Middleware
-- Current User API
+- POST /api/ai/generate-contract
 
 ---
 
-# 🚀 Development Status
+# 📈 Development Progress
 
-## ✅ Completed
+| Module                  | Status |
+| ----------------------- | ------ |
+| Project Setup           | ✅     |
+| Dependencies            | ✅     |
+| Database                | ✅     |
+| Prisma ORM              | ✅     |
+| Authentication Backend  | ✅     |
+| Authentication Frontend | ✅     |
+| Landing Page            | ✅     |
+| Dashboard UI            | ✅     |
+| AI Module               | 🚧     |
+| PayPal Integration      | 🚧     |
+| Deployment              | ⏳     |
 
-- GitHub Repository Setup
-- Next.js Frontend Setup
-- Express Backend Setup
-- TypeScript Configuration
-- Tailwind CSS Setup
-- shadcn/ui Setup
-- Project Folder Structure
-- Prisma ORM Setup
-- Supabase PostgreSQL Integration
-- Prisma Client Generation
-- Database Schema Design
-- Initial Database Migration
-- JWT Authentication
-- Signup API
-- Login API
-- Protected Routes
-- Authentication Middleware
-- `/api/auth/me` Endpoint
-- Postman API Testing
-
----
-
-## 🚀 Development Progress
-
-### ✅ Completed
-
-- Project Setup
-- Next.js Frontend
-- Express Backend
-- Prisma Configuration
-- Supabase Database
-- Authentication APIs
-- Login UI
-- Signup UI
-- Frontend ↔ Backend API Integration
-- JWT Authentication
-- Password Hashing
-
-### 🚧 In Progress
-
-- Dashboard
-- Protected Routes
-- Logout
-
-## 🚧 Currently Working On
-
-- Authentication Frontend
-- Landing Page
-- Dashboard UI
-
----
-
-## ⏳ Planned
-
-- AI Contract Generator
-- Smart Contracts
-- Milestone Management
-- PayPal Integration
-- Analytics Dashboard
-- Client Dashboard
-- Freelancer Dashboard
-- Deployment
-
----
-
-# 🗓 Roadmap
-
-- ✅ Phase 1 — Project Foundation
-- ✅ Phase 2 — Development Environment
-- ✅ Phase 3 — Database Infrastructure
-- ✅ Phase 4 — Database Models
-- ✅ Phase 5 — Authentication Backend
-- ⏳ Phase 6 — Authentication Frontend
-- ⏳ Phase 7 — Landing Page
-- ⏳ Phase 8 — Dashboard
-- ⏳ Phase 9 — AI Contract Generation
-- ⏳ Phase 10 — PayPal Integration
-- ⏳ Phase 11 — Testing
-- ⏳ Phase 12 — Deployment
+**Overall Progress:** **≈ 70%**
 
 ---
 
@@ -362,46 +261,18 @@ Signup
 
 - [x] Project Setup
 - [x] Database Design
-- [x] Prisma Setup
 - [x] Authentication Backend
-- [x] Login API
-- [x] Signup API
-- [x] Login Page
-- [x] Signup Page
-- [x] Connect Frontend with Backend
-- [ ] Dashboard
-- [ ] User Profile
-- [ ] Contract Management
-- [ ] Milestones
+- [x] Authentication Frontend
+- [x] Landing Page
+- [x] Professional Dashboard
+- [x] SaaS Sidebar
+- [x] Top Navigation
 - [ ] AI Contract Generator
+- [ ] Contract Management
+- [ ] Milestone Management
 - [ ] PayPal Integration
-- [ ] Escrow Payments
 - [ ] Notifications
 - [ ] Deployment
-
-# 📈 Current Progress
-
-| Phase                   | Status         |
-| ----------------------- | -------------- |
-| Planning                | ✅ Complete    |
-| Project Setup           | ✅ Complete    |
-| Dependencies            | ✅ Complete    |
-| Database Infrastructure | ✅ Complete    |
-| Database Models         | ✅ Complete    |
-| Authentication Backend  | ✅ Complete    |
-| Authentication Frontend | ⏳ In Progress |
-| Dashboard               | ⏳ Pending     |
-| AI Module               | ⏳ Pending     |
-| PayPal Integration      | ⏳ Pending     |
-| Deployment              | ⏳ Pending     |
-
-## Overall Progress
-
-🟩🟩🟩🟩🟩🟩🟨⬜⬜⬜⬜⬜
-
-**≈ 55% Complete**
-
----
 
 # 👩‍💻 Developer
 
@@ -413,55 +284,4 @@ LinkedIn: https://linkedin.com/in/swatisingh-bca-eco
 
 ---
 
-⭐ PactPay AI is under active development as a hackathon project. The backend foundation, database, and authentication system are now complete. The next phase focuses on building the frontend authentication, SaaS dashboard, AI-powered contract generation, and PayPal milestone payment workflow.
-
-## Landing Page
-
-A fully responsive modern landing page has been implemented for PactPay AI.
-
-### Sections
-
-- Responsive Navigation
-- Hero Banner
-- Features Overview
-- How It Works
-- Call To Action
-- Professional Footer
-
-### Features Highlighted
-
-- AI Contract Creation
-- Secure Escrow Payments
-- Milestone Tracking
-- AI Risk Analysis
-- PayPal Integration
-- Dashboard Access
-
-### UI Stack
-
-- Next.js 16
-- React
-- TypeScript
-- Tailwind CSS
-
-Status: ✅ Completed
-
-## Hour 8 — Dashboard Layout
-
-### Completed
-
-- Protected Dashboard
-- User Session Handling
-- Welcome Dashboard
-- User Profile Display
-- Logout Functionality
-- Dashboard Statistics Cards
-  - Revenue
-  - Contracts
-  - Payments
-  - Active Projects
-
-### Status
-
-Frontend dashboard completed.
-Backend statistics integration will be added in the next phase.
+⭐ PactPay AI is actively being developed for the **PayPal AI Hackathon**. The current MVP includes authentication, a responsive landing page, a protected dashboard, and a scalable backend architecture, with AI-powered contract generation and PayPal milestone payments planned in the next development phase.

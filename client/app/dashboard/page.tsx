@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 
 interface User {
@@ -57,32 +58,18 @@ export default function DashboardPage() {
       </div>
     );
   }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
 
   return (
-    <main className="min-h-screen bg-gray-100">
-      {/* Navbar */}
-
-      <div className="flex items-center justify-between bg-white px-8 py-5 shadow">
-        <div>
-          <h1 className="text-3xl font-bold text-blue-700">
-            PactPay AI Dashboard
-          </h1>
-
-          <p className="text-gray-500">Welcome back, {user.name}</p>
-        </div>
-
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-            window.location.href = "/login";
-          }}
-          className="rounded-lg bg-red-600 px-5 py-2 text-white hover:bg-red-700"
-        >
-          Logout
-        </button>
-      </div>
-
+    <DashboardLayout
+      userName={user.name}
+      onLogout={handleLogout}
+    >
+    
       {/* User Info */}
 
       <section className="mx-auto mt-8 max-w-7xl px-8">
@@ -162,6 +149,7 @@ export default function DashboardPage() {
           </ul>
         </div>
       </section>
-    </main>
+    </DashboardLayout>
+
   );
 }
