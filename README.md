@@ -285,3 +285,13 @@ LinkedIn: https://linkedin.com/in/swatisingh-bca-eco
 ---
 
 ⭐ PactPay AI is actively being developed for the **PayPal AI Hackathon**. The current MVP includes authentication, a responsive landing page, a protected dashboard, and a scalable backend architecture, with AI-powered contract generation and PayPal milestone payments planned in the next development phase.
+
+## Hour 10 — AG Grid Smart Contracts Dashboard ✅
+
+- Integrated AG Grid React
+- Created Recent Smart Contracts table
+- Added AI Risk, Payment and Status columns
+- Enabled sorting, filtering and pagination
+- Added color-coded badges
+- Responsive SaaS table layout
+- Integrated with dashboard

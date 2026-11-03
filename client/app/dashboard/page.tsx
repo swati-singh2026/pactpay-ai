@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardCard from "@/components/dashboard/DashboardCard";
+import RecentContractsTable from "@/components/dashboard/RecentContractsTable";
 
 interface User {
   name: string;
@@ -41,13 +43,12 @@ export default function DashboardPage() {
       setUser(JSON.parse(storedUser));
     }
 
-    // Temporary dummy data
-    // Later this will come from backend API
+    // Temporary Dashboard Data
     setStats({
-      revenue: 0,
-      contracts: 0,
-      payments: 0,
-      activeProjects: 0,
+      revenue: 14500,
+      contracts: 18,
+      payments: 12,
+      activeProjects: 6,
     });
   }, []);
 
@@ -58,6 +59,7 @@ export default function DashboardPage() {
       </div>
     );
   }
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -65,34 +67,35 @@ export default function DashboardPage() {
   };
 
   return (
-    <DashboardLayout
-      userName={user.name}
-      onLogout={handleLogout}
-    >
-    
-      {/* User Info */}
+    <DashboardLayout userName={user.name} onLogout={handleLogout}>
+      {/* User Information */}
 
-      <section className="mx-auto mt-8 max-w-7xl px-8">
-        <div className="rounded-xl bg-white p-6 shadow">
-          <h2 className="mb-3 text-xl font-semibold">Account Information</h2>
+      <section className="mx-auto max-w-7xl">
+        <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-200">
+          <h2 className="text-2xl font-bold">Account Information</h2>
 
-          <p>
-            <strong>Name:</strong> {user.name}
-          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div>
+              <p className="text-sm text-gray-500">Full Name</p>
+              <p className="font-semibold">{user.name}</p>
+            </div>
 
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
+            <div>
+              <p className="text-sm text-gray-500">Email</p>
+              <p className="font-semibold">{user.email}</p>
+            </div>
 
-          <p>
-            <strong>Role:</strong> {user.role}
-          </p>
+            <div>
+              <p className="text-sm text-gray-500">Role</p>
+              <p className="font-semibold">{user.role}</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Dashboard Cards */}
 
-      <section className="mx-auto mt-10 max-w-7xl px-8">
+      <section className="mx-auto mt-8 max-w-7xl">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <DashboardCard
             title="Escrow Balance"
@@ -104,52 +107,105 @@ export default function DashboardPage() {
           <DashboardCard
             title="Smart Contracts"
             value={stats.contracts}
-            subtitle="Contracts created between users"
+            subtitle="Contracts created"
             color="text-blue-600"
           />
 
           <DashboardCard
             title="AI Risk Checks"
             value={stats.payments}
-            subtitle="Contracts analyzed by AI"
+            subtitle="Contracts analyzed"
             color="text-purple-600"
           />
 
           <DashboardCard
             title="Active Deals"
             value={stats.activeProjects}
-            subtitle="Projects currently in progress"
+            subtitle="Running projects"
             color="text-orange-600"
           />
         </div>
       </section>
-
       {/* Recent Activity */}
 
-      <section className="mx-auto mt-10 max-w-7xl px-8 pb-10">
-        <div className="rounded-xl bg-white p-6 shadow">
-          <h2 className="mb-5 text-2xl font-semibold">PactPay AI Activity</h2>
+      <section className="mx-auto mt-8 max-w-7xl">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Recent Activity
+              </h2>
 
-          <ul className="space-y-4">
-            <li className="border-b pb-3">
-              🤝 Smart contract created between Client and Freelancer
-            </li>
+              <p className="text-sm text-gray-500">
+                Latest AI verification, escrow and milestone events.
+              </p>
+            </div>
+          </div>
 
-            <li className="border-b pb-3">
-              🤖 AI verified contract terms and detected low risk
-            </li>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between rounded-xl border p-4">
+              <div>
+                <p className="font-semibold">🤝 Smart Contract Created</p>
+                <p className="text-sm text-gray-500">
+                  TechNova Solutions ↔ Aarav Sharma
+                </p>
+              </div>
 
-            <li className="border-b pb-3">
-              💰 PayPal escrow payment securely locked
-            </li>
+              <span className="text-xs font-medium text-green-600">
+                Just Now
+              </span>
+            </div>
 
-            <li className="border-b pb-3">✅ Milestone approved by client</li>
+            <div className="flex items-center justify-between rounded-xl border p-4">
+              <div>
+                <p className="font-semibold">🤖 AI Risk Analysis Completed</p>
 
-            <li>🚀 Escrow ready for PayPal payout</li>
-          </ul>
+                <p className="text-sm text-gray-500">
+                  Contract verified with Low Risk score.
+                </p>
+              </div>
+
+              <span className="text-xs font-medium text-blue-600">
+                10 mins ago
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between rounded-xl border p-4">
+              <div>
+                <p className="font-semibold">🔒 PayPal Escrow Locked</p>
+
+                <p className="text-sm text-gray-500">
+                  Milestone payment securely reserved.
+                </p>
+              </div>
+
+              <span className="text-xs font-medium text-orange-600">
+                30 mins ago
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between rounded-xl border p-4">
+              <div>
+                <p className="font-semibold">✅ Milestone Approved</p>
+
+                <p className="text-sm text-gray-500">
+                  Client approved Phase 1 delivery.
+                </p>
+              </div>
+
+              <span className="text-xs font-medium text-purple-600">
+                1 hour ago
+              </span>
+            </div>
+          </div>
         </div>
       </section>
-    </DashboardLayout>
 
+      {/* Recent Smart Contracts */}
+
+      <section className="mx-auto mt-8 mb-10 max-w-7xl">
+        <RecentContractsTable />
+      </section>
+    </DashboardLayout>
   );
 }
