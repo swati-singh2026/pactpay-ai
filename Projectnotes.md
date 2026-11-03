@@ -785,3 +785,32 @@ The project now includes:
 - Postman API Testing
 
 **Next Milestone:** Complete the Authentication Frontend (Login & Signup UI) and connect it with the backend APIs to achieve the first end-to-end user workflow.
+
+# Hour 8 Progress (Dashboard Layout)
+
+Date: 03 Nov 2026
+
+Completed:
+
+- Dashboard page created
+- Route protection implemented
+- User information displayed after login
+- Logout functionality implemented
+- Statistics cards added:
+  - Revenue
+  - Contracts
+  - Payments
+  - Active Projects
+
+Testing:
+✔ Login redirects to dashboard
+✔ Dashboard inaccessible without login
+✔ Logout clears local storage
+✔ Protected routes working
+
+Next:
+
+- Fetch dashboard statistics from backend
+- Revenue analytics
+- Contract management
+- Payment history
