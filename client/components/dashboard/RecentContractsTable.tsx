@@ -3,9 +3,10 @@
 import { useMemo } from "react";
 import { AgGridReact } from "ag-grid-react";
 import {
-  ModuleRegistry,
   AllCommunityModule,
-  type ColDef,
+  ColDef,
+  ModuleRegistry,
+  enableDevValidations,
 } from "ag-grid-community";
 
 import "ag-grid-community/styles/ag-grid.css";
@@ -16,6 +17,10 @@ import type { Contract } from "@/types/contract";
 
 // ✅ Register modules AFTER all imports
 ModuleRegistry.registerModules([AllCommunityModule]);
+
+if (process.env.NODE_ENV !== "production") {
+  enableDevValidations();
+}
 
 export default function RecentContractsTable() {
   const columnDefs = useMemo<ColDef<Contract>[]>(
@@ -167,6 +172,7 @@ export default function RecentContractsTable() {
           animateRows={true}
           pagination={true}
           paginationPageSize={5}
+          paginationPageSizeSelector={[5, 10, 20, 50]}
           defaultColDef={{
             sortable: true,
             filter: true,
@@ -174,6 +180,7 @@ export default function RecentContractsTable() {
             resizable: true,
             flex: 1,
           }}
+          theme="legacy"
         />
       </div>
     </section>
