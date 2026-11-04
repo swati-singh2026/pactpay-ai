@@ -2,15 +2,19 @@
 
 import { useMemo } from "react";
 import { AgGridReact } from "ag-grid-react";
-import type { ColDef } from "ag-grid-community";
+import {
+  ModuleRegistry,
+  AllCommunityModule,
+  type ColDef,
+} from "ag-grid-community";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 
 import { contracts } from "@/data/contracts";
 import type { Contract } from "@/types/contract";
-import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
 
+// ✅ Register modules AFTER all imports
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export default function RecentContractsTable() {
@@ -133,7 +137,7 @@ export default function RecentContractsTable() {
   );
 
   return (
-    <section className="mt-10 rounded-3xl border border-gray-200 bg-white p-8 shadow-lg">
+    <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold text-gray-900">

@@ -1,10 +1,12 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import Sidebar from "./Sidebar";
 import TopNavbar from "./TopNavbar";
 
 interface DashboardLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   userName: string;
   onLogout: () => void;
 }
@@ -15,12 +17,16 @@ export default function DashboardLayout({
   onLogout,
 }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-100">
+      {/* Sidebar */}
       <Sidebar />
 
-      <div className="ml-64">
+      {/* Main Content */}
+      <div className="ml-64 min-h-screen">
+        {/* Top Navigation */}
         <TopNavbar userName={userName} onLogout={onLogout} />
 
+        {/* Page Content */}
         <main className="p-8">{children}</main>
       </div>
     </div>

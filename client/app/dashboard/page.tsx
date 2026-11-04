@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import RecentContractsTable from "@/components/dashboard/RecentContractsTable";
+import { Wallet, FileText, ShieldCheck, BriefcaseBusiness } from "lucide-react";
 
 interface User {
   name: string;
@@ -101,34 +102,42 @@ export default function DashboardPage() {
             title="Escrow Balance"
             value={`$${stats.revenue}`}
             subtitle="Funds secured in PayPal Escrow"
+            icon={Wallet}
             color="text-green-600"
+            bgColor="bg-green-100"
           />
 
           <DashboardCard
             title="Smart Contracts"
             value={stats.contracts}
-            subtitle="Contracts created"
+            subtitle="Contracts created between users"
+            icon={FileText}
             color="text-blue-600"
+            bgColor="bg-blue-100"
           />
 
           <DashboardCard
             title="AI Risk Checks"
             value={stats.payments}
-            subtitle="Contracts analyzed"
+            subtitle="Contracts analyzed by AI"
+            icon={ShieldCheck}
             color="text-purple-600"
+            bgColor="bg-purple-100"
           />
 
           <DashboardCard
             title="Active Deals"
             value={stats.activeProjects}
-            subtitle="Running projects"
+            subtitle="Projects currently in progress"
+            icon={BriefcaseBusiness}
             color="text-orange-600"
+            bgColor="bg-orange-100"
           />
         </div>
       </section>
       {/* Recent Activity */}
 
-      <section className="mx-auto mt-8 max-w-7xl">
+      <section className="mx-auto mt-10 max-w-7xl px-8">
         <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <div className="mb-6 flex items-center justify-between">
             <div>
@@ -137,65 +146,89 @@ export default function DashboardPage() {
               </h2>
 
               <p className="text-sm text-gray-500">
-                Latest AI verification, escrow and milestone events.
+                Latest actions across contracts, AI verification and escrow
+                payments.
               </p>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center justify-between rounded-xl border p-4">
-              <div>
-                <p className="font-semibold">🤝 Smart Contract Created</p>
-                <p className="text-sm text-gray-500">
-                  TechNova Solutions ↔ Aarav Sharma
-                </p>
+          <div className="space-y-5">
+            <div className="flex items-start gap-4 rounded-xl border border-blue-100 bg-blue-50 p-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white">
+                🤝
               </div>
 
-              <span className="text-xs font-medium text-green-600">
-                Just Now
-              </span>
+              <div>
+                <h3 className="font-semibold text-gray-900">
+                  Smart Contract Created
+                </h3>
+
+                <p className="text-sm text-gray-600">
+                  Client and Freelancer finalized a new AI-generated contract.
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-xl border p-4">
-              <div>
-                <p className="font-semibold">🤖 AI Risk Analysis Completed</p>
-
-                <p className="text-sm text-gray-500">
-                  Contract verified with Low Risk score.
-                </p>
+            <div className="flex items-start gap-4 rounded-xl border border-purple-100 bg-purple-50 p-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-purple-600 text-white">
+                🤖
               </div>
 
-              <span className="text-xs font-medium text-blue-600">
-                10 mins ago
-              </span>
+              <div>
+                <h3 className="font-semibold text-gray-900">
+                  AI Risk Analysis Completed
+                </h3>
+
+                <p className="text-sm text-gray-600">
+                  Contract successfully verified with Low Risk confidence.
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-xl border p-4">
-              <div>
-                <p className="font-semibold">🔒 PayPal Escrow Locked</p>
-
-                <p className="text-sm text-gray-500">
-                  Milestone payment securely reserved.
-                </p>
+            <div className="flex items-start gap-4 rounded-xl border border-green-100 bg-green-50 p-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-green-600 text-white">
+                💰
               </div>
 
-              <span className="text-xs font-medium text-orange-600">
-                30 mins ago
-              </span>
+              <div>
+                <h3 className="font-semibold text-gray-900">
+                  Escrow Payment Locked
+                </h3>
+
+                <p className="text-sm text-gray-600">
+                  Funds securely locked through PayPal milestone escrow.
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-xl border p-4">
-              <div>
-                <p className="font-semibold">✅ Milestone Approved</p>
-
-                <p className="text-sm text-gray-500">
-                  Client approved Phase 1 delivery.
-                </p>
+            <div className="flex items-start gap-4 rounded-xl border border-yellow-100 bg-yellow-50 p-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-500 text-white">
+                ✅
               </div>
 
-              <span className="text-xs font-medium text-purple-600">
-                1 hour ago
-              </span>
+              <div>
+                <h3 className="font-semibold text-gray-900">
+                  Milestone Approved
+                </h3>
+
+                <p className="text-sm text-gray-600">
+                  Client approved the completed milestone for release.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 rounded-xl border border-indigo-100 bg-indigo-50 p-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-indigo-600 text-white">
+                🚀
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900">Payment Ready</h3>
+
+                <p className="text-sm text-gray-600">
+                  Escrow is ready for secure PayPal payout.
+                </p>
+              </div>
             </div>
           </div>
         </div>
