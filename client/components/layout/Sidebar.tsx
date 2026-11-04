@@ -20,7 +20,7 @@ const menuItems = [
   },
   {
     title: "Contracts",
-    href: "#",
+    href: "/dashboard/contracts/create",
     icon: FileText,
   },
   {
