@@ -295,3 +295,78 @@ LinkedIn: https://linkedin.com/in/swatisingh-bca-eco
 - Added color-coded badges
 - Responsive SaaS table layout
 - Integrated with dashboard
+
+## 🚀 Project Progress
+
+### Day 1 – Foundation & Dashboard
+
+- Project setup using Next.js and Express.js.
+- User authentication (Signup, Login, JWT).
+- Dashboard UI and layout.
+- Sidebar navigation.
+- Dashboard components and AG Grid integration.
+
+### Day 2 – Contract Management
+
+#### Hour 1: Create Contract UI ✅
+
+- Created Create New Contract page.
+- Added contract details form.
+- Added client information fields.
+- Added contract timeline and payment terms.
+- Integrated form navigation through sidebar.
+
+#### Hour 2: Form Validation ✅
+
+- Added required field validation.
+- Added contract title length validation.
+- Added minimum contract value validation.
+- Added date validation.
+- Ensured End Date is after Start Date.
+
+#### Hour 3: Contract API ✅
+
+- Created `contract.routes.ts`.
+- Created `contract.controller.ts`.
+- Implemented protected contract creation endpoint.
+- Integrated JWT authentication middleware.
+- Added request validation and error handling.
+- Tested API using Postman.
+
+#### Hour 4: Save Contract in Database ✅
+
+- Connected frontend contract form with backend API.
+- Integrated JWT token authorization.
+- Added freelancer ID field.
+- Integrated contract description and payment terms.
+- Used Fetch API to send contract data.
+- Saved contracts using Prisma ORM.
+- Successfully tested contract creation from frontend.
+
+## 🔗 API Endpoints
+
+| Method | Endpoint           | Description            |
+| ------ | ------------------ | ---------------------- |
+| POST   | `/api/auth/signup` | User registration      |
+| POST   | `/api/auth/login`  | User login             |
+| GET    | `/api/auth/me`     | Get authenticated user |
+| GET    | `/api/dashboard`   | Dashboard data         |
+| POST   | `/api/contracts`   | Create a new contract  |
+
+**Contract Creation API:** Requires JWT Bearer Token.
+
+## 🛠️ Tech Stack
+
+- Frontend: Next.js, React, TypeScript, Tailwind CSS
+- Backend: Node.js, Express.js, TypeScript
+- Database: PostgreSQL (Supabase)
+- ORM: Prisma
+- Authentication: JWT
+- API Testing: Postman
+- Development Tools: VS Code, Git, GitHub
+
+## 📌 Current Development Status
+
+- Day 1: Foundation and Dashboard completed.
+- Day 2 Hour 1–4: Contract creation and database integration completed.
+- Next: Groq AI Integration.

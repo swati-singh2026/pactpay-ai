@@ -1158,3 +1158,183 @@ Complete the AI-powered contract generation engine and integrate secure PayPal e
 PactPay AI now includes a production-ready project foundation with secure authentication, database integration, responsive frontend, and a protected dashboard. The remaining work focuses on AI-powered contract generation, PayPal payment workflows, live dashboard data, testing, and deployment.
 
 **Status:** 🟢 Active Development
+
+# PactPay AI – Project Development Notes
+
+## Project Overview
+
+PactPay AI is an AI-powered smart contract management platform designed to simplify contract creation, management, milestone generation, and risk analysis.
+
+## Development Environment
+
+- OS: Windows
+- Code Editor: VS Code
+- Frontend: Next.js
+- Backend: Express.js + TypeScript
+- Database: PostgreSQL
+- ORM: Prisma
+- Authentication: JWT
+- API Testing: Postman
+
+## Project Structure
+
+```text
+PactPay-AI/
+│
+├── client/
+│   ├── app/
+│   │   └── dashboard/
+│   │       └── contracts/
+│   │           └── create/
+│   │               └── page.tsx
+│   └── components/
+│       └── layout/
+│           └── Sidebar.tsx
+│
+└── server/
+    ├── prisma/
+    │   └── schema.prisma
+    └── src/
+        ├── controllers/
+        │   └── contract.controller.ts
+        ├── routes/
+        │   └── contract.routes.ts
+        ├── middleware/
+        │   └── auth.middleware.ts
+        ├── lib/
+        │   └── prisma.ts
+        └── app.ts
+```
+
+## Day 1 – Completed
+
+- Initial project setup.
+- Authentication implementation.
+- Dashboard development.
+- Sidebar and layout integration.
+- Dashboard UI components.
+
+## Day 2 – Progress
+
+### Hour 1: Create Contract UI
+
+Created the contract creation page with:
+
+- Contract title
+- Contract type
+- Contract value
+- Client name and email
+- Start and end dates
+- Payment terms
+- Contract description
+- Additional requirements
+
+### Hour 2: Form Validation
+
+Implemented:
+
+- Required field validation.
+- Maximum title and client name length.
+- Minimum contract amount.
+- End date validation.
+
+### Hour 3: Contract API
+
+Files created:
+
+- `server/src/controllers/contract.controller.ts`
+- `server/src/routes/contract.routes.ts`
+
+Updated:
+
+- `server/src/app.ts`
+
+Implemented:
+
+- Protected POST `/api/contracts` endpoint.
+- JWT authentication.
+- Required field validation.
+- Contract amount validation.
+- Prisma contract creation.
+
+Tested successfully using Postman.
+
+### Hour 4: Database Integration
+
+Updated:
+
+- `client/app/dashboard/contracts/create/page.tsx`
+
+Implemented:
+
+- Frontend form submission using async handler.
+- FormData collection.
+- JWT token retrieval from Local Storage.
+- Authenticated POST request to backend.
+- API response handling.
+- Success and error messages.
+- Freelancer ID input field.
+
+Successfully created a contract through the frontend and received the database success notification.
+
+## Current Database Models
+
+### User
+
+- id
+- name
+- email
+- password
+- role
+
+### Contract
+
+- id
+- title
+- description
+- amount
+- status
+- clientId
+- freelancerId
+
+### Milestone
+
+- id
+- title
+- amount
+- status
+- contractId
+
+### Payment
+
+- id
+- paypalOrderId
+- amount
+- status
+- milestoneId
+
+## Important Implementation Notes
+
+1. Contract creation requires an authenticated user.
+2. Client ID is taken from the authenticated JWT token.
+3. Freelancer ID must belong to an existing User record.
+4. Contract status defaults to DRAFT.
+5. Current Contract model does not store contract type, client email, dates, or payment terms.
+6. These additional fields may require future Prisma schema updates.
+
+## Day 2 – Remaining Tasks
+
+- Hour 5: Groq Setup
+- Hour 6: AI Contract Generator API
+- Hour 7: Generate Milestones
+- Hour 8: Risk Analysis
+- Hour 9: Contract Summary
+- Hour 10: Editable Contract
+- Hour 11: Save AI Contract
+- Hour 12: Testing
+
+## Current Status
+
+Day 1: Completed
+Day 2: Hour 1–4 completed
+Next Task: Groq AI Setup
