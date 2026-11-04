@@ -46,7 +46,7 @@ export default function CreateContractPage() {
 
     window.location.href = "/login";
   };
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -59,19 +59,46 @@ export default function CreateContractPage() {
       return;
     }
 
-    alert("Form validation successful!");
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login again.");
+      window.location.href = "/login";
+      return;
+    }
+
+    const contractData = {
+      title: formData.get("contractTitle"),
+      description: formData.get("description"),
+      amount: Number(formData.get("contractValue")),
+      freelancerId: formData.get("freelancerId"),
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contracts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(contractData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Failed to create contract.");
+        return;
+      }
+
+      alert("Contract saved successfully!");
+    } catch (error) {
+      console.error("Create Contract Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
-
-  if (!user) {
-    return (
-      <div className="flex h-screen items-center justify-center text-xl font-semibold">
-        Loading...
-      </div>
-    );
-  }
-
   return (
-    <DashboardLayout userName={user.name} onLogout={handleLogout}>
+    <DashboardLayout userName={user?.name ?? ""} onLogout={handleLogout}>
       <div className="mx-auto max-w-5xl">
         {/* Header */}
 
@@ -222,6 +249,19 @@ export default function CreateContractPage() {
                     />
                   </div>
                 </div>
+                <div className="md:col-span-2">
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    Freelancer User ID
+                  </label>
+
+                  <input
+                    type="text"
+                    name="freelancerId"
+                    required
+                    placeholder="Enter existing freelancer user ID"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500"
+                  />
+                </div>
               </div>
             </section>
 
@@ -290,7 +330,11 @@ export default function CreateContractPage() {
                 Payment Structure
               </label>
 
-              <select className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500">
+              <select
+                name="paymentTerms"
+                required
+                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+              >
                 <option value="">Select Payment Terms</option>
                 <option>Milestone Based Payment</option>
                 <option>Full Payment Upfront</option>
@@ -315,7 +359,9 @@ export default function CreateContractPage() {
                   </label>
 
                   <textarea
+                    name="description"
                     rows={4}
+                    required
                     placeholder="Describe the project, services and responsibilities..."
                     className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500"
                   />
