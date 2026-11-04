@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+
 import Link from "next/link";
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -45,6 +46,21 @@ export default function CreateContractPage() {
 
     window.location.href = "/login";
   };
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const startDate = formData.get("startDate") as string;
+    const endDate = formData.get("endDate") as string;
+
+    if (new Date(endDate) <= new Date(startDate)) {
+      alert("End Date must be after Start Date.");
+      return;
+    }
+
+    alert("Form validation successful!");
+  };
 
   if (!user) {
     return (
@@ -88,7 +104,7 @@ export default function CreateContractPage() {
         {/* Contract Form */}
 
         <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSubmit}>
             {/* Basic Information */}
 
             <section>
@@ -105,6 +121,9 @@ export default function CreateContractPage() {
                   <input
                     type="text"
                     placeholder="e.g. Website Development Agreement"
+                    name="contractTitle"
+                    required
+                    maxLength={100}
                     className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   />
                 </div>
@@ -113,8 +132,11 @@ export default function CreateContractPage() {
                   <label className="mb-2 block text-sm font-semibold text-gray-700">
                     Contract Type
                   </label>
-
-                  <select className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500">
+                  <select
+                    name="contractType"
+                    required
+                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+                  >
                     <option value="">Select Contract Type</option>
                     <option>Freelance Agreement</option>
                     <option>Service Agreement</option>
@@ -138,6 +160,9 @@ export default function CreateContractPage() {
                     <input
                       type="number"
                       placeholder="5000"
+                      name="contractValue"
+                      required
+                      min="1"
                       className="w-full rounded-xl border border-gray-300 py-3 pl-11 pr-4 outline-none focus:border-blue-500"
                     />
                   </div>
@@ -169,6 +194,9 @@ export default function CreateContractPage() {
                     <input
                       type="text"
                       placeholder="Enter client name"
+                      name="clientName"
+                      required
+                      maxLength={100}
                       className="w-full rounded-xl border border-gray-300 py-3 pl-11 pr-4 outline-none focus:border-blue-500"
                     />
                   </div>
@@ -187,6 +215,8 @@ export default function CreateContractPage() {
 
                     <input
                       type="email"
+                      name="clientEmail"
+                      required
                       placeholder="client@example.com"
                       className="w-full rounded-xl border border-gray-300 py-3 pl-11 pr-4 outline-none focus:border-blue-500"
                     />
@@ -218,6 +248,8 @@ export default function CreateContractPage() {
 
                     <input
                       type="date"
+                      name="startDate"
+                      required
                       className="w-full rounded-xl border border-gray-300 py-3 pl-11 pr-4 outline-none focus:border-blue-500"
                     />
                   </div>
@@ -236,6 +268,8 @@ export default function CreateContractPage() {
 
                     <input
                       type="date"
+                      name="endDate"
+                      required
                       className="w-full rounded-xl border border-gray-300 py-3 pl-11 pr-4 outline-none focus:border-blue-500"
                     />
                   </div>
@@ -305,7 +339,7 @@ export default function CreateContractPage() {
 
             <div className="flex justify-end border-t pt-6">
               <button
-                type="button"
+                type="submit"
                 className="flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 font-semibold text-white shadow-md transition hover:bg-blue-700"
               >
                 <Sparkles size={19} />
