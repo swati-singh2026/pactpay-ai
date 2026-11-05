@@ -125,16 +125,33 @@ Our goal is to make freelance agreements easier to create, understand, manage, a
 - Verify contract ownership before performing risk analysis.
 - Return structured risk analysis results through the API.
 
+### AI-Powered Contract Summary
+
+PactPay AI uses Groq-powered AI to generate clear and concise summaries of existing contracts.
+
+**Key Capabilities:**
+
+- Generates an easy-to-understand contract overview.
+- Summarizes the scope of work.
+- Highlights financial details and contract status.
+- Identifies important contract points.
+- Highlights missing information and terms that require review.
+- Uses existing contract data from the database.
+- Verifies contract ownership before generating summaries.
+
 **API Endpoint:**
-`POST /api/contracts/analyze-risks`
+`POST /api/contracts/generate-summary`
 
-**Authentication:** JWT Bearer Token required.
+**Authentication:** JWT Bearer Token Required
 
-**AI Provider:** Groq
+**Request Body:**
 
-**AI Model:** `openai/gpt-oss-120b`
+````json
+{
+  "contractId": "existing_contract_id"
+}
 
-**Current Status:** Implemented and tested using Postman.
+
 
 ## 🚧 Upcoming Features
 
@@ -247,7 +264,7 @@ PactPay AI focuses on the complete freelance agreement lifecycle rather than tre
     │ Planned Payment  │
     │ Integration      │
     └──────────────────┘
-```
+````
 
 ---
 

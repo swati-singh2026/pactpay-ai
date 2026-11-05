@@ -676,6 +676,70 @@ The API returns the following information:
 
 **Note:** Risk analysis results are currently returned through the API response and are not stored in the database.
 
+## 10.10 AI-Powered Contract Summary
+
+PactPay AI provides an AI-powered contract summarization feature using the Groq API.
+
+### Features
+
+- Generates a concise and easy-to-understand contract overview.
+- Summarizes the scope of work.
+- Highlights financial details and contract status.
+- Extracts important contract points.
+- Identifies missing information and terms that require review.
+- Uses existing contract information stored in the database.
+- Verifies contract ownership before generating a summary.
+
+### Backend Implementation
+
+**Controller:** `server/src/controllers/summary.controller.ts`
+
+**Route:** `server/src/routes/contract.routes.ts`
+
+**API Endpoint:**
+`POST /api/contracts/generate-summary`
+
+**Authentication:** JWT Bearer Token Required
+
+### Request Body
+
+```json
+{
+  "contractId": "existing_contract_id"
+}
+```
+
+### AI Model
+
+`openai/gpt-oss-120b`
+
+### Summary Response Structure
+
+The API returns:
+
+- Contract title
+- Overview
+- Scope of work
+- Financial details
+- Contract status
+- Key points
+- Review notes
+
+### Workflow
+
+1. User submits an existing contract ID.
+2. Backend verifies the JWT authentication token.
+3. Backend retrieves the contract from the database.
+4. Contract ownership is verified using the client ID.
+5. Contract details are sent to Groq AI.
+6. AI generates a structured contract summary.
+7. Backend validates the AI response.
+8. Generated summary is returned to the frontend.
+
+**Current Status:** Implemented and successfully tested using Postman.
+
+**Note:** Generated summaries are returned through the API and are not currently stored separately in the database.
+
 ---
 
 # 11. Development Progress
@@ -718,6 +782,20 @@ The API returns the following information:
 - Hour 10: Editable Contract
 - Hour 11: Save AI Contract
 - Hour 12: Testing
+
+### Day 2 – AI Contract Intelligence
+
+| Hour   | Task                      | Status    |
+| ------ | ------------------------- | --------- |
+| Hour 1 | Create Contract UI        | Completed |
+| Hour 2 | Form Validation           | Completed |
+| Hour 3 | Contract API              | Completed |
+| Hour 4 | Save Contract in Database | Completed |
+| Hour 5 | Groq AI Setup             | Completed |
+| Hour 6 | AI Contract Generation    | Completed |
+| Hour 7 | AI Milestone Generation   | Completed |
+| Hour 8 | AI Contract Risk Analysis | Completed |
+| Hour 9 | AI Contract Summary       | Completed |
 
 ## 11.3 Current Development Milestone
 
