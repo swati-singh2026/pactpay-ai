@@ -1,107 +1,141 @@
 # 🚀 PactPay AI
 
-## AI-Powered Smart Contracts & Secure PayPal Milestone Payments
+### AI-Powered Contract Intelligence & Milestone-Based Payments for Freelancers
 
-PactPay AI is a full-stack SaaS platform that helps freelancers and clients collaborate with confidence using AI-assisted contract generation, milestone-based project management, and secure PayPal payments.
+**Build Trust. Reduce Disputes. Get Paid with Confidence.**
 
-Built for the PayPal AI Hackathon, the platform combines AI, automation, and digital payments to reduce disputes and improve trust in freelance projects.
+PactPay AI is an AI-powered freelance contract management platform designed to make collaboration between freelancers and clients more transparent, structured, and secure.
+
+The platform combines AI-assisted contract generation, milestone-based project management, contract risk analysis, and PayPal-powered payment workflows to improve trust and accountability in freelance projects.
+
+Built for the **PayPal AI Hackathon**, PactPay AI aims to solve one of the biggest challenges in the freelance economy: ensuring clear agreements, transparent project milestones, and reliable payments.
 
 ---
 
 # 🎯 Problem Statement
 
-Freelancers and clients often struggle with:
+Freelancers and clients frequently face challenges such as:
 
-- Unclear agreements
-- Payment disputes
-- Delayed milestone payments
-- Manual contract drafting
-- Lack of transparency
+- Unclear project agreements and expectations.
+- Payment disputes between clients and freelancers.
+- Delayed milestone-based payments.
+- Time-consuming manual contract drafting.
+- Lack of transparency in project progress.
+- Difficulty identifying potential contractual risks.
 
-PactPay AI solves these challenges through AI-powered contract creation, milestone tracking, secure PayPal payments, and a centralized dashboard.
+These challenges create uncertainty, reduce trust, and make freelance collaboration difficult.
 
----
+# 💡 Our Solution
 
-# ✨ Features
+PactPay AI introduces an intelligent contract management workflow that helps clients and freelancers manage agreements from creation to payment.
 
-## ✅ Implemented
+Our platform aims to:
 
-### Authentication
+1. Generate professional freelance contracts using AI.
+2. Identify potential contractual risks.
+3. Break projects into manageable milestones.
+4. Connect milestone completion with payment workflows.
+5. Provide a centralized dashboard for contract management.
 
-- User Signup
-- User Login
-- JWT Authentication
-- Password Hashing (bcrypt)
-- Protected Routes
-- Session Management
-- Logout Functionality
-
-### Landing Page
-
-- Responsive Navigation
-- Hero Section
-- Features Section
-- How It Works
-- Call-to-Action
-- Professional Footer
-
-### Backend
-
-- Express REST API
-- Prisma ORM
-- PostgreSQL Database
-- Authentication Middleware
-- Current User Endpoint
-
-### ✅ Dashboard Module
-
-- Protected Dashboard
-- Professional SaaS Sidebar
-- Responsive Top Navbar
-- Dashboard Layout Component
-- Reusable Dashboard Cards
-- User Profile Section
-- Trust & Security Indicator
-- Recent Activity Timeline
-- Secure Logout
-- Backend Ready Structure
-
-Status: ✅ Completed
-
-## 🖥 Professional SaaS Dashboard
-
-The dashboard has been redesigned with a modern SaaS architecture focused on usability, scalability, and secure navigation.
-
-### Features
-
-- Protected dashboard with JWT authentication
-- Professional sidebar navigation
-- Responsive top navigation bar
-- AI trust indicator
-- Secure logout functionality
-- User profile overview
-- Dashboard statistics cards
-- Recent platform activity
-- Reusable layout components
-- Backend-ready architecture
+Our goal is to make freelance agreements easier to create, understand, manage, and execute.
 
 ---
 
-# 🚧 Upcoming Features
+# ✨ Key Features
 
-- AI Contract Generator
-- AI Risk Analysis
-- Smart Contract Management
-- Milestone Management
-- PayPal Order Creation
-- PayPal Capture Payments
-- Analytics Dashboard
-- Notifications
-- Deployment
+## ✅ Implemented Features
+
+### 1. Authentication & Security
+
+- User registration and login.
+- JWT-based authentication.
+- Password hashing using bcrypt.
+- Protected backend routes.
+- Session management.
+- Secure logout functionality.
+
+### 2. Professional SaaS Dashboard
+
+- Responsive dashboard layout.
+- Professional sidebar navigation.
+- Reusable dashboard components.
+- User profile section.
+- Dashboard statistics cards.
+- Recent activity interface.
+- AG Grid integration.
+
+### 3. Contract Creation
+
+- Contract creation interface.
+- Contract title and type.
+- Contract amount.
+- Client information.
+- Freelancer identification.
+- Project timeline.
+- Payment terms.
+- Contract description.
+- Form validation.
+
+### 4. Contract Database Integration
+
+- Express REST API.
+- Prisma ORM integration.
+- PostgreSQL database.
+- JWT-protected contract creation.
+- Backend request validation.
+- Contract persistence.
+
+### 5. Groq AI Integration
+
+- Groq SDK integration.
+- Secure backend API key configuration.
+- Groq client initialization.
+- Successful API connectivity test.
+
+### 6. AI Contract Generator
+
+- AI-powered contract generation endpoint.
+- Structured contract generation prompts.
+- Input validation.
+- Professional contract drafting.
+- Generated contract response.
+- Error handling.
+- Successfully tested using Postman.
+
+## 🚧 Upcoming Features
+
+- AI Contract Risk Analysis.
+- AI Contract Summary.
+- AI Milestone Generation.
+- Editable AI-generated contracts.
+- AI-generated contract persistence.
+- PayPal order creation.
+- PayPal payment capture.
+- Milestone-based payment workflows.
+- Notifications.
+- Analytics and reporting.
+- Production deployment.
 
 ---
 
-# 🛠 Tech Stack
+# 🧠 What Makes PactPay AI Different?
+
+PactPay AI focuses on the complete freelance agreement lifecycle rather than treating contract creation and payments as separate activities.
+
+| Challenge                      | PactPay AI Approach                          |
+| ------------------------------ | -------------------------------------------- |
+| Manual contract drafting       | AI-assisted contract generation              |
+| Unclear project expectations   | Structured contract details                  |
+| Contractual risks              | AI-powered risk analysis (planned)           |
+| Unstructured project delivery  | AI milestone generation (planned)            |
+| Payment uncertainty            | PayPal milestone payment workflows (planned) |
+| Fragmented project information | Centralized dashboard                        |
+
+**Our Vision:** Turn freelance agreements into structured, transparent, and manageable project workflows.
+
+---
+
+# 🛠️ Technology Stack
 
 ## Frontend
 
@@ -114,47 +148,71 @@ The dashboard has been redesigned with a modern SaaS architecture focused on usa
 
 ## Backend
 
+- Node.js
 - Express.js
 - TypeScript
-- Prisma ORM
-- JWT
+- JWT Authentication
 - bcrypt
-- CORS
+- Groq SDK
 
-## Database
+## Database & ORM
 
-- PostgreSQL (Supabase)
+- PostgreSQL
+- Supabase
+- Prisma ORM
+
+## Artificial Intelligence
+
+- Groq AI API
+- Model: `openai/gpt-oss-120b`
 
 ## Payments
 
-- PayPal REST API
+- PayPal REST API (planned integration)
 
-## AI
+## Development & Testing
 
-- OpenAI API _(Planned)_
+- Visual Studio Code
+- Postman
+- Git
+- GitHub
 
 ---
 
-# 🏗 System Architecture
+# 🏗️ System Architecture
 
 ```text
-Next.js Frontend
-        │
-     Axios API
-        │
-        ▼
- Express REST API
-        │
- JWT Authentication
-        │
-        ▼
-   Prisma ORM
-        │
-        ▼
-Supabase PostgreSQL
-      │        │
-      ▼        ▼
- OpenAI API  PayPal API
+                 ┌──────────────────────┐
+                 │    Next.js Frontend  │
+                 │                      │
+                 │  Dashboard & Forms   │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │    Express REST API  │
+                 │                      │
+                 │  JWT Authentication  │
+                 │  Request Validation  │
+                 └───────┬──────────────┘
+                         │
+              ┌──────────┴───────────┐
+              │                      │
+              ▼                      ▼
+    ┌──────────────────┐   ┌──────────────────┐
+    │   Prisma ORM     │   │     Groq AI      │
+    │                  │   │                  │
+    │  PostgreSQL      │   │ Contract         │
+    │  Database        │   │ Generation       │
+    └──────────────────┘   └──────────────────┘
+              │
+              ▼
+    ┌──────────────────┐
+    │    PayPal API    │
+    │                  │
+    │ Planned Payment  │
+    │ Integration      │
+    └──────────────────┘
 ```
 
 ---
@@ -162,211 +220,273 @@ Supabase PostgreSQL
 # 📁 Project Structure
 
 ```text
-PactPay-AI
+PactPay-AI/
 │
-├── client
-│   ├── app
-│   ├── components
-│   ├── services
-│   ├── lib
-│   ├── types
+├── client/
+│   ├── app/
+│   │   ├── dashboard/
+│   │   └── ...
+│   ├── components/
+│   ├── services/
+│   ├── lib/
+│   ├── types/
 │   └── ...
 │
-├── server
-│   ├── prisma
-│   ├── src
-│   │   ├── controllers
-│   │   ├── middleware
-│   │   ├── routes
-│   │   ├── services
-│   │   └── ...
+├── server/
+│   ├── prisma/
+│   │   └── schema.prisma
+│   │
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── contract.controller.ts
+│   │   │   └── ai.controller.ts
+│   │   │
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   │   ├── auth.routes.ts
+│   │   │   ├── contract.routes.ts
+│   │   │   └── ...
+│   │   │
+│   │   ├── services/
+│   │   ├── lib/
+│   │   │   ├── prisma.ts
+│   │   │   └── groq.ts
+│   │   │
+│   │   └── app.ts
+│   │
+│   └── package.json
 │
 ├── README.md
-└── PROJECT_NOTES.md
+└── Projectnotes.md
 ```
 
 ---
 
-# 🗄 Database Models
+# 🗄️ Database Models
+
+Current Prisma database models include:
 
 - User
 - Contract
 - Milestone
 - Payment
 
-Relationships
+## Database Relationship
 
 ```text
 User
- ├── Contracts
- │      └── Milestones
- │               └── Payments
+ └── Contracts
+       └── Milestones
+              └── Payments
 ```
 
 ---
 
-# 📡 REST API
+# 📡 REST API Documentation
 
-## Authentication
+## Authentication APIs
 
-| Method | Endpoint         |
-| ------ | ---------------- |
-| POST   | /api/auth/signup |
-| POST   | /api/auth/login  |
-| GET    | /api/auth/me     |
+| Method | Endpoint           | Description            |
+| ------ | ------------------ | ---------------------- |
+| POST   | `/api/auth/signup` | Register a new user    |
+| POST   | `/api/auth/login`  | Authenticate user      |
+| GET    | `/api/auth/me`     | Get authenticated user |
 
-## Contracts _(Upcoming)_
+## Dashboard API
 
-- GET /api/contracts
-- POST /api/contracts
-- PUT /api/contracts/:id
+| Method | Endpoint         | Description             |
+| ------ | ---------------- | ----------------------- |
+| GET    | `/api/dashboard` | Retrieve dashboard data |
 
-## Milestones _(Upcoming)_
+## Contract APIs
 
-- GET /api/milestones
-- POST /api/milestones
+| Method | Endpoint                  | Description                     | Status      |
+| ------ | ------------------------- | ------------------------------- | ----------- |
+| POST   | `/api/contracts`          | Create and save a contract      | Implemented |
+| POST   | `/api/contracts/generate` | Generate contract using Groq AI | Implemented |
 
-## Payments _(Upcoming)_
+**Authentication:** Contract creation and AI generation endpoints require a valid JWT Bearer Token.
 
-- POST /api/paypal/create-order
-- POST /api/paypal/capture-order
+## AI Contract Generation Example
 
-## AI _(Upcoming)_
+### Request
 
-- POST /api/ai/generate-contract
+```http
+POST /api/contracts/generate
+```
+
+### Request Body
+
+```json
+{
+  "title": "Website Development Agreement",
+  "contractType": "Freelance Development",
+  "amount": 50000,
+  "clientName": "ABC Company",
+  "freelancerName": "John Developer",
+  "startDate": "2026-11-10",
+  "endDate": "2026-12-10",
+  "paymentTerms": "50% advance and 50% after completion",
+  "description": "Develop a responsive business website with five pages.",
+  "additionalRequirements": "Mobile responsive design and basic SEO."
+}
+```
+
+### Successful Response
+
+```json
+{
+  "success": true,
+  "message": "Contract generated successfully!",
+  "data": {
+    "generatedContract": "Generated contract content..."
+  }
+}
+```
+
+---
+
+# ⚙️ Getting Started
+
+## Prerequisites
+
+Make sure you have installed:
+
+- Node.js
+- npm
+- PostgreSQL / Supabase account
+- Git
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/swati-singh2026/pactpay-ai.git
+```
+
+```bash
+cd PactPay-AI
+```
+
+## 2. Setup Backend
+
+```bash
+cd server
+npm install
+```
+
+Configure your environment variables in `server/.env`.
+
+At minimum, AI integration requires:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Also configure the database and authentication environment variables required by the backend.
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+Backend runs at:
+
+```text
+http://localhost:5000
+```
+
+## 3. Setup Frontend
+
+Open a separate terminal:
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Open the frontend:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# 🔐 Security
+
+Security is an important part of PactPay AI.
+
+- Passwords are hashed using bcrypt.
+- Protected APIs use JWT authentication.
+- Backend endpoints validate incoming requests.
+- Groq API credentials are stored in backend environment variables.
+- Secret keys must never be exposed in frontend code.
+- Environment files must never be committed to GitHub.
+
+**Important:** AI-generated contracts are drafts and should be reviewed by qualified legal professionals before signing.
 
 ---
 
 # 📈 Development Progress
 
-| Module                  | Status |
-| ----------------------- | ------ |
-| Project Setup           | ✅     |
-| Dependencies            | ✅     |
-| Database                | ✅     |
-| Prisma ORM              | ✅     |
-| Authentication Backend  | ✅     |
-| Authentication Frontend | ✅     |
-| Landing Page            | ✅     |
-| Dashboard UI            | ✅     |
-| AI Module               | 🚧     |
-| PayPal Integration      | 🚧     |
-| Deployment              | ⏳     |
+## Day 1 – Foundation & Dashboard
 
-**Overall Progress:** **≈ 70%**
+- [x] Project setup
+- [x] Frontend and backend architecture
+- [x] Database setup
+- [x] Authentication backend
+- [x] Authentication frontend
+- [x] Landing page
+- [x] Professional dashboard
+- [x] Sidebar navigation
+- [x] Dashboard components
+- [x] AG Grid integration
+
+## Day 2 – Contract Management & AI
+
+- [x] Hour 1 – Create Contract UI
+- [x] Hour 2 – Form Validation
+- [x] Hour 3 – Contract Creation API
+- [x] Hour 4 – Database Integration
+- [x] Hour 5 – Groq AI Setup
+- [x] Hour 6 – AI Contract Generator API
+- [ ] Hour 7 – AI Milestone Generation
+- [ ] Hour 8 – AI Risk Analysis
+- [ ] Hour 9 – AI Contract Summary
+- [ ] Hour 10 – Editable AI Contract
+- [ ] Hour 11 – Save AI Contract
+- [ ] Hour 12 – Testing
+
+## Future Development
+
+- [ ] PayPal payment integration
+- [ ] Milestone-based payment automation
+- [ ] Notifications
+- [ ] Analytics
+- [ ] Production deployment
 
 ---
-
-## 📌 Roadmap
-
-- [x] Project Setup
-- [x] Database Design
-- [x] Authentication Backend
-- [x] Authentication Frontend
-- [x] Landing Page
-- [x] Professional Dashboard
-- [x] SaaS Sidebar
-- [x] Top Navigation
-- [ ] AI Contract Generator
-- [ ] Contract Management
-- [ ] Milestone Management
-- [ ] PayPal Integration
-- [ ] Notifications
-- [ ] Deployment
 
 # 👩‍💻 Developer
 
 **Swati Singh**
 
-GitHub: https://github.com/swati-singh2026
-
-LinkedIn: https://linkedin.com/in/swatisingh-bca-eco
+- GitHub: [swati-singh2026](https://github.com/swati-singh2026)
+- LinkedIn: [Swati Singh](https://linkedin.com/in/swatisingh-bca-eco)
 
 ---
 
-⭐ PactPay AI is actively being developed for the **PayPal AI Hackathon**. The current MVP includes authentication, a responsive landing page, a protected dashboard, and a scalable backend architecture, with AI-powered contract generation and PayPal milestone payments planned in the next development phase.
+# 🏆 Hackathon Project
 
-## Hour 10 — AG Grid Smart Contracts Dashboard ✅
+PactPay AI is being developed for the **PayPal AI Hackathon**.
 
-- Integrated AG Grid React
-- Created Recent Smart Contracts table
-- Added AI Risk, Payment and Status columns
-- Enabled sorting, filtering and pagination
-- Added color-coded badges
-- Responsive SaaS table layout
-- Integrated with dashboard
+We aim to create a smarter freelance ecosystem where contracts, project milestones, and payments work together to establish transparency, accountability, and trust.
 
-## 🚀 Project Progress
+**PactPay AI — Build Trust. Deliver Work. Get Paid.**
 
-### Day 1 – Foundation & Dashboard
+---
 
-- Project setup using Next.js and Express.js.
-- User authentication (Signup, Login, JWT).
-- Dashboard UI and layout.
-- Sidebar navigation.
-- Dashboard components and AG Grid integration.
-
-### Day 2 – Contract Management
-
-#### Hour 1: Create Contract UI ✅
-
-- Created Create New Contract page.
-- Added contract details form.
-- Added client information fields.
-- Added contract timeline and payment terms.
-- Integrated form navigation through sidebar.
-
-#### Hour 2: Form Validation ✅
-
-- Added required field validation.
-- Added contract title length validation.
-- Added minimum contract value validation.
-- Added date validation.
-- Ensured End Date is after Start Date.
-
-#### Hour 3: Contract API ✅
-
-- Created `contract.routes.ts`.
-- Created `contract.controller.ts`.
-- Implemented protected contract creation endpoint.
-- Integrated JWT authentication middleware.
-- Added request validation and error handling.
-- Tested API using Postman.
-
-#### Hour 4: Save Contract in Database ✅
-
-- Connected frontend contract form with backend API.
-- Integrated JWT token authorization.
-- Added freelancer ID field.
-- Integrated contract description and payment terms.
-- Used Fetch API to send contract data.
-- Saved contracts using Prisma ORM.
-- Successfully tested contract creation from frontend.
-
-## 🔗 API Endpoints
-
-| Method | Endpoint           | Description            |
-| ------ | ------------------ | ---------------------- |
-| POST   | `/api/auth/signup` | User registration      |
-| POST   | `/api/auth/login`  | User login             |
-| GET    | `/api/auth/me`     | Get authenticated user |
-| GET    | `/api/dashboard`   | Dashboard data         |
-| POST   | `/api/contracts`   | Create a new contract  |
-
-**Contract Creation API:** Requires JWT Bearer Token.
-
-## 🛠️ Tech Stack
-
-- Frontend: Next.js, React, TypeScript, Tailwind CSS
-- Backend: Node.js, Express.js, TypeScript
-- Database: PostgreSQL (Supabase)
-- ORM: Prisma
-- Authentication: JWT
-- API Testing: Postman
-- Development Tools: VS Code, Git, GitHub
-
-## 📌 Current Development Status
-
-- Day 1: Foundation and Dashboard completed.
-- Day 2 Hour 1–4: Contract creation and database integration completed.
-- Next: Groq AI Integration.
+⭐ If you find this project interesting, consider giving it a star!
