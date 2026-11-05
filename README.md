@@ -112,10 +112,29 @@ Our goal is to make freelance agreements easier to create, understand, manage, a
 - Associate each milestone with its respective contract.
 - Verify contract ownership before generating milestones.
 
+### 8.AI-Powered Contract Risk Analysis
+
+- Analyze existing contracts using Groq AI.
+- Identify potential contractual, financial, payment, and project-related risks.
+- Classify risks into three severity levels:
+  - LOW
+  - MEDIUM
+  - HIGH
+- Generate descriptions for identified risks.
+- Provide recommendations to reduce potential risks.
+- Verify contract ownership before performing risk analysis.
+- Return structured risk analysis results through the API.
+
 **API Endpoint:**
-`POST /api/contracts/generate-milestones`
+`POST /api/contracts/analyze-risks`
 
 **Authentication:** JWT Bearer Token required.
+
+**AI Provider:** Groq
+
+**AI Model:** `openai/gpt-oss-120b`
+
+**Current Status:** Implemented and tested using Postman.
 
 ## 🚧 Upcoming Features
 

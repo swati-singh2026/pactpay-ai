@@ -5,6 +5,7 @@ import { createContract } from "../controllers/contract.controller.js";
 import { protect } from "../middleware/auth.middleware.js";
 import { generateContract } from "../controllers/ai.controller.js";
 import { generateMilestones } from "../controllers/milestone.controller.js";
+import { analyzeContractRisks } from "../controllers/risk.controller.js";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.post("/", protect, createContract);
 router.post("/generate", protect, generateContract);
 
 router.post("/generate-milestones", protect, generateMilestones);
+router.post("/analyze-risks", protect, analyzeContractRisks);
 
 export default router;

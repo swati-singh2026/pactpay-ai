@@ -602,6 +602,80 @@ The application supports the following milestone statuses:
 
 **Status: Completed**
 
+## 10.9 AI-Powered Contract Risk Analysis
+
+PactPay AI includes an AI-powered contract risk analysis feature that examines existing contracts and identifies potential risks using Groq AI.
+
+### Risk Analysis Workflow
+
+1. The authenticated user submits an existing Contract ID.
+2. The backend verifies that the contract belongs to the logged-in client.
+3. Contract details are retrieved from the PostgreSQL database using Prisma.
+4. Groq AI analyzes the contract title, description, amount, and status.
+5. AI identifies potential contractual, financial, payment, and project-related risks.
+6. Each identified risk is classified according to its severity.
+7. AI provides descriptions and recommendations for the identified risks.
+8. The backend validates the AI-generated response.
+9. Structured risk analysis results are returned through the API.
+
+### Risk Severity Levels
+
+The application supports three risk severity levels:
+
+- `LOW` - Potential risks with relatively low impact.
+- `MEDIUM` - Risks that may require attention and review.
+- `HIGH` - Significant risks that require careful consideration.
+
+### Risk Analysis Response Structure
+
+The API returns the following information:
+
+- Overall risk level
+- Overall risk summary
+- Identified risk titles
+- Risk severity
+- Risk descriptions
+- Recommendations to reduce potential risks
+
+### API Endpoint
+
+**Method:** POST
+
+**Endpoint:** `/api/contracts/analyze-risks`
+
+**Authentication:** JWT Bearer Token required.
+
+**Request Body:**
+
+```json
+{
+  "contractId": "EXISTING_CONTRACT_ID"
+}
+```
+
+### AI Integration Details
+
+- AI Provider: Groq
+- SDK: Groq SDK
+- Model: `openai/gpt-oss-120b`
+- Backend: Express.js and TypeScript
+- Database: PostgreSQL
+- ORM: Prisma
+
+### Current Implementation Status
+
+- Risk analysis controller implemented.
+- Contract ownership verification implemented.
+- Groq AI integration completed.
+- Risk severity classification implemented.
+- Risk descriptions and recommendations generated.
+- AI response structure validation implemented.
+- API successfully tested using Postman.
+
+**Status: Completed**
+
+**Note:** Risk analysis results are currently returned through the API response and are not stored in the database.
+
 ---
 
 # 11. Development Progress
@@ -625,24 +699,25 @@ The application supports the following milestone statuses:
 | Top Navigation     | Dashboard header                     | Completed |
 | AG Grid            | Interactive data table setup         | Completed |
 
-## 11.2 Day 2 — Contract and AI Development
+### 11.2 Day 2 — Contract and AI Development
 
-**Current Progress: Hours 1–6 Completed**
+**Status: Hours 1–8 Completed**
 
-| Hour    | Task                      | Status    |
-| ------- | ------------------------- | --------- |
-| Hour 1  | Create Contract UI        | Completed |
-| Hour 2  | Form Validation           | Completed |
-| Hour 3  | Contract API              | Completed |
-| Hour 4  | Save Contract in Database | Completed |
-| Hour 5  | Groq SDK Setup            | Completed |
-| Hour 6  | AI Contract Generator API | Completed |
-| Hour 7  | Generate Milestones       | Upcoming  |
-| Hour 8  | Risk Analysis             | Upcoming  |
-| Hour 9  | Contract Summary          | Upcoming  |
-| Hour 10 | Editable Contract         | Upcoming  |
-| Hour 11 | Save AI Contract          | Upcoming  |
-| Hour 12 | Testing                   | Upcoming  |
+- Hour 1: Create Contract UI
+- Hour 2: Form Validation
+- Hour 3: Contract API
+- Hour 4: Save Contract in Database
+- Hour 5: Groq SDK Setup
+- Hour 6: AI Contract Generation API
+- Hour 7: AI Milestone Generation
+- Hour 8: AI Contract Risk Analysis
+
+**Upcoming Tasks:**
+
+- Hour 9: AI Contract Summary
+- Hour 10: Editable Contract
+- Hour 11: Save AI Contract
+- Hour 12: Testing
 
 ## 11.3 Current Development Milestone
 
