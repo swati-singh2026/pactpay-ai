@@ -125,7 +125,7 @@ Our goal is to make freelance agreements easier to create, understand, manage, a
 - Verify contract ownership before performing risk analysis.
 - Return structured risk analysis results through the API.
 
-### AI-Powered Contract Summary
+### 9.AI-Powered Contract Summary
 
 PactPay AI uses Groq-powered AI to generate clear and concise summaries of existing contracts.
 
@@ -150,6 +150,40 @@ PactPay AI uses Groq-powered AI to generate clear and concise summaries of exist
 {
   "contractId": "existing_contract_id"
 }
+
+### Editable AI-Generated Contract
+
+PactPay AI allows users to review, edit, save, and update AI-generated contracts before finalizing them.
+
+**Features:**
+- Generate professional contracts using Groq AI.
+- Display generated contract content in an editable text area.
+- Allow users to modify AI-generated contract clauses.
+- Save edited contracts to the database.
+- Update existing contracts without creating duplicate records during the same editing session.
+- Track saved contract IDs on the frontend.
+
+**Workflow:**
+1. User enters contract details.
+2. Groq AI generates the contract.
+3. User reviews and edits the generated content.
+4. First save creates the contract in the database.
+5. Further edits update the existing contract.
+
+**Backend API:**
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/contracts` | Create a new contract |
+| PUT | `/api/contracts/:id` | Update an existing contract |
+
+**Implementation:**
+- Frontend: Next.js, React state management, TypeScript.
+- Backend: Express.js, TypeScript.
+- Database: PostgreSQL with Prisma ORM.
+- AI Integration: Groq API.
+
+**Status:** Completed and tested successfully.
 
 
 

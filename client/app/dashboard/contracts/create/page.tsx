@@ -24,6 +24,9 @@ interface User {
 
 export default function CreateContractPage() {
   const [user, setUser] = useState<User | null>(null);
+  const [generatedContract, setGeneratedContract] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [savedContractId, setSavedContractId] = useState<string | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -97,6 +100,132 @@ export default function CreateContractPage() {
       alert("Something went wrong. Please try again.");
     }
   };
+
+  const handleGenerateContract = async () => {
+    const form = document.querySelector("form");
+
+    if (!form || !form.reportValidity()) {
+      return;
+    }
+
+    const formData = new FormData(form);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login again.");
+      window.location.href = "/login";
+      return;
+    }
+
+    const contractData = {
+      title: formData.get("contractTitle"),
+      contractType: formData.get("contractType"),
+      amount: Number(formData.get("contractValue")),
+      clientName: formData.get("clientName"),
+      freelancerName: formData.get("freelancerName"),
+      startDate: formData.get("startDate"),
+      endDate: formData.get("endDate"),
+      paymentTerms: formData.get("paymentTerms"),
+      description: formData.get("description"),
+      additionalRequirements: formData.get("additionalRequirements"),
+    };
+
+    try {
+      setIsGenerating(true);
+
+      const response = await fetch(
+        "http://localhost:5000/api/contracts/generate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(contractData),
+        },
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Contract generation failed.");
+        return;
+      }
+
+      setGeneratedContract(result.data.generatedContract);
+
+      alert("AI Contract generated successfully!");
+    } catch (error) {
+      console.error("AI Contract Generation Error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const handleSaveGeneratedContract = async () => {
+    if (!generatedContract.trim()) {
+      alert("Please generate a contract first.");
+      return;
+    }
+
+    const form = document.querySelector("form");
+
+    if (!form) return;
+
+    const formData = new FormData(form);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login again.");
+      window.location.href = "/login";
+      return;
+    }
+
+    const contractData = {
+      title: formData.get("contractTitle"),
+      description: generatedContract,
+      amount: Number(formData.get("contractValue")),
+    };
+
+    try {
+      const isUpdating = savedContractId !== null;
+
+      const url = isUpdating
+        ? `http://localhost:5000/api/contracts/${savedContractId}`
+        : "http://localhost:5000/api/contracts";
+
+      const response = await fetch(url, {
+        method: isUpdating ? "PUT" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(contractData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Failed to save contract.");
+        return;
+      }
+
+      if (!isUpdating) {
+        setSavedContractId(result.data.id);
+      }
+
+      alert(
+        isUpdating
+          ? "Contract updated successfully!"
+          : "Contract saved successfully!",
+      );
+    } catch (error) {
+      console.error("Save Contract Error:", error);
+      alert("Something went wrong while saving.");
+    }
+  };
+
   return (
     <DashboardLayout userName={user?.name ?? ""} onLogout={handleLogout}>
       <div className="mx-auto max-w-5xl">
@@ -261,6 +390,19 @@ export default function CreateContractPage() {
                     placeholder="Enter existing freelancer user ID"
                     className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500"
                   />
+                  <div className="md:col-span-2">
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">
+                      Freelancer Name
+                    </label>
+
+                    <input
+                      type="text"
+                      name="freelancerName"
+                      required
+                      placeholder="Enter freelancer name"
+                      className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500"
+                    />
+                  </div>
                 </div>
               </div>
             </section>
@@ -373,6 +515,7 @@ export default function CreateContractPage() {
                   </label>
 
                   <textarea
+                    name="additionalRequirements"
                     rows={3}
                     placeholder="Enter any additional conditions or requirements..."
                     className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-blue-500"
@@ -380,16 +523,48 @@ export default function CreateContractPage() {
                 </div>
               </div>
             </section>
+            {/* Editable AI Generated Contract */}
+            {generatedContract && (
+              <section className="mt-8 space-y-4 rounded-2xl border border-blue-200 bg-blue-50 p-6">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="text-blue-600" size={22} />
 
+                  <h2 className="text-xl font-bold text-gray-900">
+                    AI Generated Contract
+                  </h2>
+                </div>
+
+                <p className="text-sm text-gray-600">
+                  Review and edit your AI-generated contract before saving it.
+                </p>
+
+                <textarea
+                  value={generatedContract}
+                  onChange={(e) => setGeneratedContract(e.target.value)}
+                  rows={18}
+                  className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm leading-7 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                />
+
+                <button
+                  type="button"
+                  onClick={handleSaveGeneratedContract}
+                  className="w-full rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                >
+                  Save Edited Contract
+                </button>
+              </section>
+            )}
             {/* Generate Button */}
 
             <div className="flex justify-end border-t pt-6">
               <button
-                type="submit"
-                className="flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 font-semibold text-white shadow-md transition hover:bg-blue-700"
+                type="button"
+                onClick={handleGenerateContract}
+                disabled={isGenerating}
+                className="flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 font-semibold text-white shadow-md transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Sparkles size={19} />
-                Generate Contract
+                {isGenerating ? "Generating..." : "Generate Contract"}
               </button>
             </div>
           </form>

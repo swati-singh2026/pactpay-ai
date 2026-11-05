@@ -740,6 +740,51 @@ The API returns:
 
 **Note:** Generated summaries are returned through the API and are not currently stored separately in the database.
 
+### 10.11 Editable AI-Generated Contract
+
+**Objective:**  
+Allow users to review, edit, and save AI-generated contracts before finalizing them.
+
+**Frontend Implementation:**
+
+- Added an editable textarea for AI-generated contract content.
+- Users can modify the generated contract before saving.
+- Added a Save Edited Contract button.
+- Added state management to track the saved contract ID.
+
+**Backend Implementation:**
+
+- Added an `updateContract` controller in `contract.controller.ts`.
+- Added a protected PUT route: `/api/contracts/:id`.
+- Added validation for contract title, description, and amount.
+- Added ownership verification to ensure only the contract owner can update it.
+- Updated existing contract records using Prisma.
+
+**Save and Update Workflow:**
+
+1. User fills in the contract details.
+2. AI generates the contract using Groq.
+3. User reviews and edits the generated content.
+4. First save creates a contract record in the database.
+5. The returned contract ID is stored in frontend state.
+6. Subsequent saves update the same contract using the PUT API.
+
+**API Endpoint:**
+
+`PUT /api/contracts/:id`
+
+**Testing:**
+
+- AI contract generation tested successfully.
+- Editing generated contract tested successfully.
+- First save tested successfully.
+- Subsequent update tested successfully.
+- Verified that subsequent saves update the existing contract instead of creating duplicate records during the same editing session.
+
+**Current Status:** Completed.
+
+**Hour 10 Result:** Users can generate, edit, save, and update AI-generated contracts.
+
 ---
 
 # 11. Development Progress
