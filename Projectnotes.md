@@ -1458,3 +1458,84 @@ PactPay AI aims to improve transparency, reduce manual contract drafting effort,
 The final demonstration should clearly distinguish between features that are already implemented and features that are still planned.
 
 ---
+
+## Phase 3: PayPal Payment Integration
+
+### Day 3 – PayPal Sandbox Setup & Payment APIs
+
+#### 1. PayPal Sandbox Setup
+
+- Created a PayPal Developer account.
+- Accessed PayPal Developer Dashboard.
+- Configured Sandbox environment.
+- Created a dedicated application named PactPay AI.
+- Selected Merchant as the application type.
+- Configured Sandbox Business Account.
+- Added PayPal Sandbox credentials to `server/.env`.
+- Configured PayPal Sandbox Base URL.
+
+#### 2. PayPal SDK Configuration
+
+- Installed official PayPal TypeScript Server SDK.
+- Created `server/src/lib/paypal.ts`.
+- Configured PayPal Client using Sandbox environment.
+- Added environment variable validation.
+- Verified SDK configuration through TypeScript build.
+
+#### 3. PayPal Orders API
+
+- Created `server/src/services/paypal.service.ts`.
+- Implemented `createPayPalOrder()` function.
+- Configured payment intent as `CAPTURE`.
+- Added USD currency support.
+- Integrated PayPal Orders API through the official SDK.
+
+#### 4. Create Order API
+
+- Created `server/src/controllers/paypal.controller.ts`.
+- Implemented `createOrder()` controller.
+- Added payment amount validation.
+- Added error handling.
+- Created `server/src/routes/paypal.routes.ts`.
+- Integrated authentication middleware using `protect`.
+- Registered PayPal routes in `server/src/app.ts`.
+
+**API Endpoint:**
+`POST /api/paypal/create-order`
+
+#### 5. Capture Payment API
+
+- Implemented `capturePayPalPayment()` service function.
+- Integrated PayPal order capture functionality.
+- Implemented `capturePayment()` controller.
+- Added PayPal Order ID validation.
+- Added error handling.
+- Registered protected capture payment route.
+
+**API Endpoint:**
+`POST /api/paypal/capture-payment`
+
+#### 6. Build Verification
+
+- Successfully compiled backend TypeScript code.
+- Verified PayPal SDK, service, controller, and routes through `npm run build`.
+- No TypeScript compilation errors.
+
+### Day 3 Progress Status
+
+| Task                     | Status          |
+| ------------------------ | --------------- |
+| PayPal Sandbox Setup     | Completed       |
+| PayPal SDK Configuration | Completed       |
+| Orders API Integration   | Completed       |
+| Create Order API         | Code Integrated |
+| Capture Payment API      | Code Integrated |
+| PayPal Webhook           | Pending         |
+| Update Payment Status    | Pending         |
+| Update Milestone Status  | Pending         |
+| Transaction History      | Pending         |
+| Payment Success Page     | Pending         |
+| Error Handling           | Pending         |
+| Complete Testing         | Pending         |
+
+**Current Milestone:** PayPal Sandbox integration and backend payment order/capture APIs are implemented. End-to-end payment flow testing is still pending.

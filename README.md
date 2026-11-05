@@ -209,6 +209,79 @@ PactPay AI allows users to retrieve their previously saved AI-generated contract
 - Retrieved contract using Postman.
 - Verified automatic contract restoration after browser refresh.
 
+## 💳 PayPal Payment Integration
+
+PactPay AI integrates PayPal Sandbox to support secure payment processing between clients and freelancers.
+
+### Implemented Features
+
+- PayPal Sandbox account configuration.
+- Dedicated PactPay AI Merchant application.
+- Official PayPal TypeScript Server SDK integration.
+- Secure PayPal credentials management using environment variables.
+- PayPal order creation.
+- Payment amount validation.
+- PayPal payment capture.
+- Protected payment API routes using JWT authentication.
+- Error handling for payment operations.
+
+### Backend API Endpoints
+
+| Method | Endpoint | Description | Authentication |
+|---|---|---|---|
+| POST | `/api/paypal/create-order` | Creates a PayPal payment order | Required |
+| POST | `/api/paypal/capture-payment` | Captures an existing PayPal order | Required |
+
+### PayPal Environment Configuration
+
+Add the following environment variables to `server/.env`:
+
+```env
+PAYPAL_CLIENT_ID=your_sandbox_client_id
+PAYPAL_CLIENT_SECRET=your_sandbox_client_secret
+PAYPAL_BASE_URL=https://api-m.sandbox.paypal.com
+```
+
+**Security Notes:**
+- Never expose PayPal Client Secret in frontend code.
+- Never commit `.env` files to GitHub.
+- Use PayPal Sandbox credentials during development and testing.
+
+### Payment Integration Architecture
+
+```text
+Next.js Frontend
+       |
+       v
+Express Backend
+       |
+       v
+PayPal Controller
+       |
+       v
+PayPal Service
+       |
+       v
+PayPal TypeScript Server SDK
+       |
+       v
+PayPal Sandbox Orders API
+```
+
+### Payment Flow
+
+1. Authenticated user requests a payment order.
+2. Backend validates the payment amount.
+3. PayPal creates a Sandbox order.
+4. Frontend receives the PayPal order details.
+5. User approves the payment through PayPal Checkout.
+6. Backend captures the approved order.
+7. Payment status is verified and updated.
+
+**Development Status:** Backend order creation and capture APIs are implemented. Frontend Checkout integration, webhooks, database status updates, and end-to-end testing are pending.
+
+
+
 
 ## 🚧 Upcoming Features
 

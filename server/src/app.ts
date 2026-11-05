@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 import contractRoutes from "./routes/contract.routes.js";
+import paypalRoutes from "./routes/paypal.routes.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/contracts", contractRoutes);
+app.use("/api/paypal", paypalRoutes);
 
 app.get("/", (_req, res) => {
   res.json({
