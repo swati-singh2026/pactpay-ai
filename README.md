@@ -184,7 +184,30 @@ PactPay AI allows users to review, edit, save, and update AI-generated contracts
 - AI Integration: Groq API.
 
 **Status:** Completed and tested successfully.
+### Saved AI Contract Retrieval
 
+PactPay AI allows users to retrieve their previously saved AI-generated contracts.
+
+**Features:**
+- Saves the generated contract ID in browser localStorage.
+- Retrieves the saved contract using a protected GET API.
+- Automatically restores the saved contract after page refresh.
+- Verifies contract ownership before returning saved data.
+
+**API Endpoint:**
+- `GET /api/contracts/:id`
+
+**Workflow:**
+1. User saves an AI-generated contract.
+2. Contract ID is stored in localStorage.
+3. On page refresh, the application retrieves the stored contract ID.
+4. Frontend calls the protected GET API.
+5. Retrieved contract content is displayed in the editable textarea.
+
+**Testing:**
+- Saved contract successfully.
+- Retrieved contract using Postman.
+- Verified automatic contract restoration after browser refresh.
 
 
 ## 🚧 Upcoming Features

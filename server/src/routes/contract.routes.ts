@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   createContract,
   updateContract,
+  getContractById,
 } from "../controllers/contract.controller.js";
 
 import { protect } from "../middleware/auth.middleware.js";
@@ -16,7 +17,7 @@ const router = Router();
 // Protected Contract Creation Route
 router.post("/", protect, createContract);
 router.put("/:id", protect, updateContract);
-
+router.get("/:id", protect, getContractById);
 // AI Contract Generation Route
 router.post("/generate", protect, generateContract);
 

@@ -120,3 +120,44 @@ export const updateContract = async (req: AuthRequest, res: Response) => {
     });
   }
 };
+
+// GET SAVED CONTRACT BY ID
+export const getContractById = async (req: AuthRequest, res: Response) => {
+  try {
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "Contract ID is required",
+      });
+    }
+
+    const contract = await prisma.contract.findFirst({
+      where: {
+        id,
+        clientId: req.userId!,
+      },
+    });
+
+    if (!contract) {
+      return res.status(404).json({
+        success: false,
+        message: "Contract not found or access denied",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Contract retrieved successfully",
+      data: contract,
+    });
+  } catch (error) {
+    console.error("Get Contract Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to retrieve contract",
+    });
+  }
+};

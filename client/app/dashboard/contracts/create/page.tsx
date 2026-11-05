@@ -41,8 +41,40 @@ export default function CreateContractPage() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, []);
 
+    const savedId = localStorage.getItem("pactpay_saved_contract_id");
+
+    if (savedId) {
+      setSavedContractId(savedId);
+
+      const loadSavedContract = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/api/contracts/${savedId}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            console.error("Failed to load saved contract:", result.message);
+            return;
+          }
+
+          setGeneratedContract(result.data.description);
+        } catch (error) {
+          console.error("Load Saved Contract Error:", error);
+        }
+      };
+
+      loadSavedContract();
+    }
+  }, []);
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -213,8 +245,9 @@ export default function CreateContractPage() {
 
       if (!isUpdating) {
         setSavedContractId(result.data.id);
-      }
 
+        localStorage.setItem("pactpay_saved_contract_id", result.data.id);
+      }
       alert(
         isUpdating
           ? "Contract updated successfully!"

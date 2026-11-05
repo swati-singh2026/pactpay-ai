@@ -785,6 +785,42 @@ Allow users to review, edit, and save AI-generated contracts before finalizing t
 
 **Hour 10 Result:** Users can generate, edit, save, and update AI-generated contracts.
 
+## 10.12 Saved AI Contract Retrieval
+
+### Overview
+
+PactPay AI supports retrieving previously saved AI-generated contracts from the database.
+
+### Features
+
+- Stores the saved contract ID in browser localStorage.
+- Retrieves saved contracts through a protected GET API.
+- Automatically restores contract content after page refresh.
+- Checks contract ownership before providing access.
+
+### API Endpoint
+
+`GET /api/contracts/:id`
+
+### Workflow
+
+1. User saves an AI-generated contract.
+2. Contract ID is stored in localStorage.
+3. On page load, the application checks for a saved contract ID.
+4. Frontend sends an authenticated GET request.
+5. Backend verifies ownership and retrieves the contract.
+6. Retrieved contract description is displayed in the editable textarea.
+
+### Testing
+
+- Contract retrieval tested successfully using Postman.
+- Saved contract ID persistence verified.
+- Browser refresh restoration tested successfully.
+
+### Current Status
+
+## Completed and tested.
+
 ---
 
 # 11. Development Progress
