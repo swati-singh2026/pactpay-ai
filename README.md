@@ -102,6 +102,21 @@ Our goal is to make freelance agreements easier to create, understand, manage, a
 - Error handling.
 - Successfully tested using Postman.
 
+### 7. AI-Powered Milestone Generation
+
+- Generate project milestones using Groq AI.
+- Automatically create 3–6 milestones based on contract details.
+- Distribute milestone amounts according to the total contract value.
+- Validate generated milestone amounts.
+- Save generated milestones in the PostgreSQL database using Prisma.
+- Associate each milestone with its respective contract.
+- Verify contract ownership before generating milestones.
+
+**API Endpoint:**
+`POST /api/contracts/generate-milestones`
+
+**Authentication:** JWT Bearer Token required.
+
 ## 🚧 Upcoming Features
 
 - AI Contract Risk Analysis.

@@ -531,6 +531,77 @@ The AI prompt requests the following sections:
 - Frontend integration is pending.
 - Generated contract persistence in the database is pending.
 
+## 10.8 AI-Powered Milestone Generation
+
+PactPay AI includes an AI-powered milestone generation feature that automatically creates project milestones based on the details of an existing contract.
+
+### Milestone Generation Workflow
+
+1. The authenticated user submits an existing Contract ID.
+2. The backend verifies that the contract belongs to the logged-in client.
+3. Contract details are retrieved from the PostgreSQL database using Prisma.
+4. Groq AI analyzes the contract title, description, and total amount.
+5. AI generates 3 to 6 logical project milestones.
+6. Each milestone receives a title and allocated amount.
+7. The backend validates the generated milestone data.
+8. The total milestone amount is checked against the contract amount.
+9. Valid milestones are saved in the database.
+
+### Milestone Database Structure
+
+Each milestone contains:
+
+- Unique milestone ID
+- Milestone title
+- Allocated amount
+- Milestone status
+- Creation timestamp
+- Last updated timestamp
+- Associated Contract ID
+
+### Milestone Status
+
+The application supports the following milestone statuses:
+
+- `PENDING`
+- `IN_PROGRESS`
+- `COMPLETED`
+
+### API Endpoint
+
+**Method:** POST
+
+**Endpoint:** `/api/contracts/generate-milestones`
+
+**Authentication:** JWT Bearer Token required.
+
+**Request Body:**
+
+```json
+{
+  "contractId": "EXISTING_CONTRACT_ID"
+}
+```
+
+### AI Integration Details
+
+- AI Provider: Groq
+- SDK: Groq SDK
+- Model: `openai/gpt-oss-120b`
+- Backend: Express.js and TypeScript
+- Database: PostgreSQL
+- ORM: Prisma
+
+### Current Implementation Status
+
+- AI milestone generation controller implemented.
+- Contract ownership verification implemented.
+- Milestone amount validation implemented.
+- Generated milestones saved in the database.
+- API successfully tested using Postman.
+
+**Status: Completed**
+
 ---
 
 # 11. Development Progress
