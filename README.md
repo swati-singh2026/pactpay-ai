@@ -671,3 +671,63 @@ We aim to create a smarter freelance ecosystem where contracts, project mileston
 ---
 
 ⭐ If you find this project interesting, consider giving it a star!
+
+## 🗓 DAY 3 – PayPal Integration
+
+**Goal:** Integrate PayPal Sandbox payments into PactPay AI.
+
+### Progress Tracker
+
+| Hour    | Task                       | Status       |
+| ------- | -------------------------- | ------------ |
+| Hour 1  | PayPal Sandbox Setup       | ✅ Completed |
+| Hour 2  | Checkout SDK               | ✅ Completed |
+| Hour 3  | Orders API                 | ✅ Completed |
+| Hour 4  | Create Order API           | ✅ Completed |
+| Hour 5  | Capture Payment API        | ✅ Completed |
+| Hour 6  | PayPal Webhook Integration | ✅ Completed |
+| Hour 7  | Update Payment Status      | ⏳ Pending   |
+| Hour 8  | Update Milestone Status    | ⏳ Pending   |
+| Hour 9  | Transaction History        | ⏳ Pending   |
+| Hour 10 | Payment Success Page       | ⏳ Pending   |
+| Hour 11 | Error Handling             | ⏳ Pending   |
+| Hour 12 | Complete Testing           | ⏳ Pending   |
+
+### Hour 6 – PayPal Webhook Integration ✅
+
+- Created PayPal Sandbox Webhook for PactPay AI US.
+- Configured webhook endpoint using ngrok.
+- Registered four PayPal webhook events:
+  - `CHECKOUT.ORDER.APPROVED`
+  - `PAYMENT.CAPTURE.COMPLETED`
+  - `PAYMENT.CAPTURE.DENIED`
+  - `PAYMENT.CAPTURE.REFUNDED`
+
+- Implemented PayPal webhook signature verification.
+- Configured raw body parsing.
+- Updated the new webhook ID in backend environment variables.
+- Verified actual Sandbox webhook event delivery.
+
+### PayPal Sandbox Payment Test ✅
+
+Successfully completed a $10.00 USD Sandbox payment.
+
+| Detail            | Result              |
+| ----------------- | ------------------- |
+| Seller            | US Business Sandbox |
+| Buyer             | US Personal Sandbox |
+| Payment Amount    | $10.00              |
+| PayPal Fee        | $0.84               |
+| Seller Receivable | $9.16               |
+| Payment Status    | COMPLETED           |
+
+### Remaining Tasks
+
+- Hour 7: Update Payment Status in Database
+- Hour 8: Update Milestone Status
+- Hour 9: Transaction History
+- Hour 10: Payment Success Page
+- Hour 11: Error Handling
+- Hour 12: Complete Testing
+
+**Day 3 Final Goal:** End-to-End Payment Flow 🚀

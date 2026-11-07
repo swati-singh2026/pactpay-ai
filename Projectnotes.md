@@ -1539,3 +1539,42 @@ The final demonstration should clearly distinguish between features that are alr
 | Complete Testing         | Pending         |
 
 **Current Milestone:** PayPal Sandbox integration and backend payment order/capture APIs are implemented. End-to-end payment flow testing is still pending.
+
+## Hour 6: PayPal Webhook Integration ✅
+
+**Status: COMPLETED**
+
+### Tasks Completed
+
+1. Created PayPal Sandbox Webhook for PactPay AI US application.
+2. Configured the webhook endpoint using ngrok.
+3. Registered the following PayPal webhook events:
+   - `CHECKOUT.ORDER.APPROVED`
+   - `PAYMENT.CAPTURE.COMPLETED`
+   - `PAYMENT.CAPTURE.DENIED`
+   - `PAYMENT.CAPTURE.REFUNDED`
+
+4. Integrated PayPal Webhook Signature Verification.
+5. Configured raw body parsing for webhook requests.
+6. Updated the new PayPal Webhook ID in backend environment variables.
+7. Tested webhook event delivery using an actual Sandbox payment.
+
+### Testing Results
+
+Successfully received and verified these PayPal events in the backend terminal:
+
+- `CHECKOUT.ORDER.APPROVED` – Verified ✅
+- `PAYMENT.CAPTURE.COMPLETED` – Verified ✅
+
+### Files Involved
+
+- `server/src/controllers/paypal-webhook.controller.ts`
+- `server/src/routes/paypal-webhook.routes.ts`
+- `server/src/app.ts`
+- `server/.env` (Webhook configuration; excluded from Git)
+
+### Outcome
+
+PayPal Sandbox webhook integration is working successfully. The backend receives PayPal events and verifies their authenticity.
+
+**Next: Hour 7 – Update Payment Status in Database.**

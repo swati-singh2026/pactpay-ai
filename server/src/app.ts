@@ -5,11 +5,19 @@ import authRoutes from "./routes/auth.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 import contractRoutes from "./routes/contract.routes.js";
 import paypalRoutes from "./routes/paypal.routes.js";
+import paypalWebhookRoutes from "./routes/paypal-webhook.routes.js";
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
+
+// PayPal Webhook route must be before express.json()
+app.use(
+  "/api/paypal/webhook",
+  express.raw({ type: "application/json" }),
+  paypalWebhookRoutes,
+);
 
 app.use(express.json());
 
