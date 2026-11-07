@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import prisma from "../lib/prisma.js";
 
 export const handlePayPalWebhook = async (req: Request, res: Response) => {
   try {
@@ -104,6 +105,33 @@ export const handlePayPalWebhook = async (req: Request, res: Response) => {
     }
 
     console.log("Verified PayPal Webhook Event:", webhookEvent.event_type);
+    const eventType = webhookEvent.event_type;
+
+    const orderId =
+      webhookEvent.resource?.supplementary_data?.related_ids?.order_id;
+
+    if (
+      orderId &&
+      (eventType === "PAYMENT.CAPTURE.COMPLETED" ||
+        eventType === "PAYMENT.CAPTURE.DENIED")
+    ) {
+      const newStatus =
+        eventType === "PAYMENT.CAPTURE.COMPLETED" ? "PAID" : "FAILED";
+
+      const result = await prisma.payment.updateMany({
+        where: {
+          paypalOrderId: orderId,
+          status: "PENDING",
+        },
+        data: {
+          status: newStatus,
+        },
+      });
+
+      console.log(
+        `Payment status update: Order ${orderId}, Status ${newStatus}, Updated ${result.count} record(s)`,
+      );
+    }
 
     return res.status(200).json({
       success: true,

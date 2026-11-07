@@ -1578,3 +1578,23 @@ Successfully received and verified these PayPal events in the backend terminal:
 PayPal Sandbox webhook integration is working successfully. The backend receives PayPal events and verifies their authenticity.
 
 **Next: Hour 7 – Update Payment Status in Database.**
+
+### Hour 7: Update Payment Status — COMPLETED ✅
+
+**Implementation:**
+
+- Integrated Prisma Payment model with PayPal Webhooks.
+- Implemented automatic payment status updates.
+- PAYMENT.CAPTURE.COMPLETED updates Payment status to PAID.
+- PAYMENT.CAPTURE.DENIED updates Payment status to FAILED.
+- Added idempotent database updates using Prisma updateMany.
+
+**Testing Results:**
+
+- First Sandbox Payment: $1,200 — PAID ✅
+- Second Sandbox Payment: $1,800 — PAID ✅
+- PayPal Webhook Verification: Successful ✅
+- Supabase Database Update: Successful ✅
+
+**Result:** Payment status is automatically synchronized with PayPal webhook events.
+

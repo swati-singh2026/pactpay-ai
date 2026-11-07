@@ -8,6 +8,56 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model User {
+  id                    String     @id @default(cuid())
+  name                  String
+  email                 String     @unique
+  password              String
+  role                  UserRole
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+  contractsAsClient     Contract[] @relation("ClientContracts")
+  contractsAsFreelancer Contract[] @relation("FreelancerContracts")
+}
+
+model Contract {
+  id           String         @id @default(cuid())
+  title        String
+  description  String
+  amount       Float
+  status       ContractStatus @default(DRAFT)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  clientId     String
+  freelancerId String
+  client       User           @relation("ClientContracts", fields: [clientId], references: [id])
+  freelancer   User           @relation("FreelancerContracts", fields: [freelancerId], references: [id])
+  milestones   Milestone[]
+}
+
+model Milestone {
+  id         String          @id @default(cuid())
+  title      String
+  amount     Float
+  status     MilestoneStatus @default(PENDING)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  contractId String
+  contract   Contract        @relation(fields: [contractId], references: [id])
+  payment    Payment?
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  paypalOrderId String?
+  amount        Float
+  status        PaymentStatus @default(PENDING)
+  milestoneId   String        @unique
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  milestone     Milestone     @relation(fields: [milestoneId], references: [id])
+}
+
 enum UserRole {
   CLIENT
   FREELANCER
@@ -31,67 +81,3 @@ enum PaymentStatus {
   PAID
   FAILED
 }
-
-model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  role      UserRole
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-
-  contractsAsClient     Contract[] @relation("ClientContracts")
-  contractsAsFreelancer Contract[] @relation("FreelancerContracts")
-}
-
-model Contract {
-  id            String         @id @default(cuid())
-  title         String
-  description   String
-  amount        Float
-  status        ContractStatus @default(DRAFT)
-  createdAt     DateTime       @default(now())
-  updatedAt DateTime @updatedAt
-
-
-  clientId      String
-  freelancerId  String
-
-  client        User @relation("ClientContracts", fields: [clientId], references: [id])
-  freelancer    User @relation("FreelancerContracts", fields: [freelancerId], references: [id])
-
-  milestones    Milestone[]
-}
-
-model Milestone {
-  id          String           @id @default(cuid())
-  title       String
-  amount      Float
-  status      MilestoneStatus  @default(PENDING)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  contractId  String
-  contract    Contract @relation(fields: [contractId], references: [id])
-
-  payment     Payment?
-}
-
-model Payment {
-  id            String         @id @default(cuid())
-  paypalOrderId String?
-  amount        Float
-  status        PaymentStatus  @default(PENDING)
-
-  milestoneId   String @unique
-  milestone     Milestone @relation(fields: [milestoneId], references: [id])
-
-  createdAt     DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-
-
-

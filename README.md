@@ -731,3 +731,14 @@ Successfully completed a $10.00 USD Sandbox payment.
 - Hour 12: Complete Testing
 
 **Day 3 Final Goal:** End-to-End Payment Flow 🚀
+
+### Hour 7: Update Payment Status ✅
+
+- Integrated PayPal webhook with Prisma Payment model.
+- Verified PAYMENT.CAPTURE.COMPLETED event.
+- Automatically updated payment status from PENDING to PAID.
+- Verified payment status in Supabase database.
+- Successfully tested two Sandbox payments:
+  - Payment 1: $1,200 — PAID
+  - Payment 2: $1,800 — PAID
+- Confirmed webhook database updates successfully.
