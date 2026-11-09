@@ -128,6 +128,29 @@ export const handlePayPalWebhook = async (req: Request, res: Response) => {
         },
       });
 
+      if (eventType === "PAYMENT.CAPTURE.COMPLETED") {
+        const payment = await prisma.payment.findFirst({
+          where: {
+            paypalOrderId: orderId,
+          },
+        });
+
+        if (payment) {
+          await prisma.milestone.update({
+            where: {
+              id: payment.milestoneId,
+            },
+            data: {
+              status: "COMPLETED",
+            },
+          });
+
+          console.log(
+            `Milestone ${payment.milestoneId} status updated to COMPLETED`,
+          );
+        }
+      }
+
       console.log(
         `Payment status update: Order ${orderId}, Status ${newStatus}, Updated ${result.count} record(s)`,
       );
