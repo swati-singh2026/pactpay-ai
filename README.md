@@ -753,3 +753,93 @@ Successfully completed a $10.00 USD Sandbox payment.
 - Confirmed Payment status as `PAID` and Milestone status as `COMPLETED` in Supabase.
 
 **Result:** Milestone status is automatically synchronized with successful PayPal payments.
+
+### PayPal Payment Integration
+
+- Integrated PayPal Sandbox payment gateway.
+- Create PayPal checkout orders for project milestones.
+- Capture approved PayPal payments.
+- Handle PayPal payment webhooks.
+- Automatically update payment and milestone statuses after successful webhook processing.
+- Maintain transaction history for authenticated users.
+- Retrieve payment details along with associated milestones and contracts.
+- Secure payment APIs using JWT authentication.
+
+### Transaction History
+
+- REST API: `GET /api/transactions`
+- Displays authenticated user's payment transactions.
+- Includes payment amount, status, milestone details, and contract information.
+- Supports chronological transaction retrieval.
+
+### Payment Testing
+
+Successfully tested the PayPal Sandbox payment flow using Postman and Supabase.
+
+Verified a $200 USD payment with:
+
+- Payment Status: `PAID`
+- Milestone Status: `COMPLETED`
+
+# 💳 PayPal Payment Integration
+
+PactPay AI integrates PayPal Sandbox to support secure milestone-based payments.
+
+## Features
+
+- PayPal Sandbox Checkout Integration
+- PayPal Order Creation API
+- Automatic Payment Capture
+- Payment Success Page
+- Payment Cancellation Page
+- Transaction History
+- Payment Status Tracking
+- Milestone Status Automation
+- Payment Ownership Verification
+- Duplicate Capture Protection
+- Error Handling and JWT Authentication
+
+## Payment Workflow
+
+1. User selects a contract milestone.
+2. Backend creates a PayPal order.
+3. User approves the payment through PayPal Sandbox.
+4. User returns to the Payment Success page.
+5. Frontend automatically calls the payment capture API.
+6. Backend captures the PayPal payment.
+7. Payment status updates to `PAID`.
+8. Related milestone status updates to `COMPLETED`.
+9. Transaction details appear in Payment History.
+
+## Payment Statuses
+
+- `PENDING` – Payment is awaiting completion.
+- `PAID` – Payment has been successfully captured.
+- `FAILED` – Payment failed.
+
+## Milestone Statuses
+
+- `PENDING` – Milestone payment is not completed.
+- `IN_PROGRESS` – Milestone is in progress.
+- `COMPLETED` – Milestone payment is completed.
+
+## Payment Pages
+
+- `/dashboard/payments/success`
+- `/dashboard/payments/cancel`
+- `/dashboard/payments/history`
+
+## Testing
+
+- PayPal Sandbox payment flow tested.
+- Automatic payment capture verified.
+- Payment and milestone database updates verified.
+- Transaction History API tested.
+- Invalid JWT authentication tested (401 Unauthorized).
+- Frontend production build successful.
+- Backend TypeScript build successful.
+
+## Day 3 Progress
+
+- Hour 10 – Payment Success Page: COMPLETED
+- Hour 11 – Error Handling: COMPLETED

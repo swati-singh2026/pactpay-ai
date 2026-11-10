@@ -1617,3 +1617,126 @@ PayPal Sandbox webhook integration is working successfully. The backend receives
 - Supabase Database Verification: Successful ✅
 
 **Result:** Successful PayPal payments automatically mark their associated milestones as completed.
+
+## Day 3 – Hour 9: Transaction History
+
+**Status: COMPLETED**
+
+Implemented a transaction history API to retrieve authenticated users' payment records.
+
+Backend Files:
+
+- `server/src/controllers/transaction.controller.ts`
+- `server/src/routes/transaction.routes.ts`
+- `server/src/app.ts`
+
+API Endpoint:
+
+`GET /api/transactions`
+
+Features:
+
+- JWT authentication using `protect` middleware.
+- Retrieves payments associated with the logged-in user's contracts.
+- Includes milestone and contract information.
+- Transactions sorted by creation date (newest first).
+- Returns transaction count and transaction details.
+
+## PayPal Payment Testing
+
+Successfully tested PayPal Sandbox payment integration.
+
+Test Details:
+
+- Payment Provider: PayPal Sandbox
+- Currency: USD
+- Test Payment Amount: $200
+- PayPal Order Status: COMPLETED
+- Database Payment Status: PAID
+- Milestone Status: COMPLETED
+
+Verification:
+
+- PayPal order creation tested successfully.
+- Sandbox buyer successfully approved payment.
+- Payment capture tested through Postman.
+- Payment and milestone statuses verified in Supabase.
+- Transaction History API returned the successful payment record.
+
+Transaction History Test Result:
+
+- API Status: SUCCESS
+- Transaction Count: 1
+- Payment Amount: $200
+- Payment Status: PAID
+- Milestone Status: COMPLETED
+
+**Day 3 – Hour 9: COMPLETED**
+
+# Day 3 – Hour 10: Payment Success Page ✅ COMPLETED
+
+## Objective
+
+Create a Payment Success page that confirms successful PayPal transactions and displays payment details.
+
+## Completed Tasks
+
+1. Created Payment Success page at `/dashboard/payments/success`.
+2. Integrated PayPal return URL with the frontend success page.
+3. Retrieved PayPal Order ID from URL query parameters.
+4. Retrieved JWT authentication token from localStorage.
+5. Integrated automatic payment capture using the backend API.
+6. Added transaction history API integration.
+7. Verified payment status before displaying success.
+8. Displayed payment amount, transaction status, milestone details, contract title, and PayPal Order ID.
+9. Added loading and error states.
+10. Added navigation links to Dashboard and Transaction History.
+
+## Testing Results
+
+- Payment Success Page: PASSED
+- PayPal Sandbox Payment: PASSED
+- Automatic Payment Capture: PASSED
+- Payment Status Verification: PASSED
+- Payment Details Display: PASSED
+- Frontend Build: PASSED
+
+**Status: Hour 10 Successfully Completed.**
+
+---
+
+# Day 3 – Hour 11: Error Handling ✅ COMPLETED
+
+## Objective
+
+Implement reliable error handling and validation for the PayPal payment workflow.
+
+## Completed Tasks
+
+1. Created Payment Cancelled page at `/dashboard/payments/cancel`.
+2. Added Back to Dashboard navigation.
+3. Added View Contracts navigation.
+4. Created Transaction History page.
+5. Added transaction loading, error, and empty states.
+6. Implemented backend payment ownership verification.
+7. Added duplicate payment capture protection.
+8. Added PayPal capture error handling.
+9. Updated Payment status to `PAID` after successful capture.
+10. Updated Milestone status to `COMPLETED` after successful payment.
+11. Integrated automatic payment capture on the success page.
+12. Tested invalid JWT authentication using Postman.
+
+## Testing Results
+
+- Payment Cancelled Page: PASSED
+- Transaction History Page: PASSED
+- Automatic Payment Capture: PASSED
+- Payment Ownership Verification: PASSED
+- Duplicate Capture Protection: PASSED
+- Invalid Token Response (401 Unauthorized): PASSED
+- Payment Database Update: PASSED
+- Milestone Database Update: PASSED
+- Frontend Build: PASSED
+- Backend Build: PASSED
+
+**Status: Hour 11 Successfully Completed.**

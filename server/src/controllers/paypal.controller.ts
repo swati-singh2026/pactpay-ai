@@ -88,6 +88,14 @@ export const createOrder = async (req: Request, res: Response) => {
 export const capturePayment = async (req: Request, res: Response) => {
   try {
     const { orderId } = req.body;
+    const userId = (req as Request & { userId?: string }).userId;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized.",
+      });
+    }
 
     if (typeof orderId !== "string" || !orderId.trim()) {
       return res.status(400).json({
@@ -96,12 +104,71 @@ export const capturePayment = async (req: Request, res: Response) => {
       });
     }
 
-    const payment = await capturePayPalPayment(orderId);
+    // Find existing payment and verify ownership
+    const existingPayment = await prisma.payment.findFirst({
+      where: {
+        paypalOrderId: orderId,
+        milestone: {
+          contract: {
+            OR: [{ clientId: userId }, { freelancerId: userId }],
+          },
+        },
+      },
+    });
+
+    if (!existingPayment) {
+      return res.status(404).json({
+        success: false,
+        message: "Payment record not found or access denied.",
+      });
+    }
+
+    // Prevent duplicate capture
+    if (existingPayment.status === "PAID") {
+      return res.status(200).json({
+        success: true,
+        message: "Payment has already been captured.",
+        payment: existingPayment,
+      });
+    }
+
+    // Capture payment through PayPal
+    const capturedOrder = await capturePayPalPayment(orderId);
+
+    if (capturedOrder.status !== "COMPLETED") {
+      return res.status(400).json({
+        success: false,
+        message: "PayPal payment capture was not completed.",
+      });
+    }
+
+    // Update payment and milestone together
+    const updatedPayment = await prisma.$transaction(async (tx) => {
+      const payment = await tx.payment.update({
+        where: {
+          id: existingPayment.id,
+        },
+        data: {
+          status: "PAID",
+        },
+      });
+
+      await tx.milestone.update({
+        where: {
+          id: existingPayment.milestoneId,
+        },
+        data: {
+          status: "COMPLETED",
+        },
+      });
+
+      return payment;
+    });
 
     return res.status(200).json({
       success: true,
-      message: "Payment captured successfully.",
-      payment,
+      message: "Payment captured and database updated successfully.",
+      payment: updatedPayment,
     });
   } catch (error) {
     console.error("PayPal Capture Payment Error:", error);
