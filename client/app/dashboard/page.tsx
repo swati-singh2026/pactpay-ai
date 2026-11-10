@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import RecentContractsTable from "@/components/dashboard/RecentContractsTable";
+import PaymentChart from "@/components/dashboard/PaymentChart";
+
 import { Wallet, FileText, ShieldCheck, BriefcaseBusiness } from "lucide-react";
 
 interface User {
@@ -18,6 +20,9 @@ interface Stats {
   contracts: number;
   payments: number;
   activeProjects: number;
+  paidPayments: number;
+  pendingPayments: number;
+  failedPayments: number;
 }
 
 export default function DashboardPage() {
@@ -28,6 +33,9 @@ export default function DashboardPage() {
     contracts: 0,
     payments: 0,
     activeProjects: 0,
+    paidPayments: 0,
+    pendingPayments: 0,
+    failedPayments: 0,
   });
 
   useEffect(() => {
@@ -44,13 +52,36 @@ export default function DashboardPage() {
       setUser(JSON.parse(storedUser));
     }
 
-    // Temporary Dashboard Data
-    setStats({
-      revenue: 14500,
-      contracts: 18,
-      payments: 12,
-      activeProjects: 6,
-    });
+    const fetchDashboardStats = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/dashboard", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "Failed to fetch dashboard data");
+        }
+
+        setStats({
+          revenue: result.data.totalRevenue,
+          contracts: result.data.totalContracts,
+          payments: result.data.totalPayments,
+          activeProjects: result.data.activeProjects,
+          paidPayments: result.data.paidPayments,
+          pendingPayments: result.data.pendingPayments,
+          failedPayments: result.data.failedPayments,
+        });
+      } catch (error) {
+        console.error("Dashboard Analytics Error:", error);
+      }
+    };
+
+    fetchDashboardStats();
   }, []);
 
   if (!user) {
@@ -72,7 +103,7 @@ export default function DashboardPage() {
       {/* User Information */}
 
       <section className="mx-auto max-w-7xl">
-        <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-200">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-bold">Account Information</h2>
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -135,6 +166,17 @@ export default function DashboardPage() {
           />
         </div>
       </section>
+
+      {/* Payment Chart */}
+
+      <section className="mx-auto mt-8 max-w-7xl">
+        <PaymentChart
+          paid={stats.paidPayments}
+          pending={stats.pendingPayments}
+          failed={stats.failedPayments}
+        />
+      </section>
+
       {/* Recent Activity */}
 
       <section className="mx-auto mt-10 max-w-7xl px-8">

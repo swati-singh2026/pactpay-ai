@@ -843,3 +843,91 @@ PactPay AI integrates PayPal Sandbox to support secure milestone-based payments.
 
 - Hour 10 – Payment Success Page: COMPLETED
 - Hour 11 – Error Handling: COMPLETED
+
+## 🚀 Day 4 – AI Assistant, Dashboard & Analytics
+
+### ✅ Hour 1 – AI Chat Assistant Backend
+
+- Developed AI chat functionality using Groq SDK.
+- Integrated `openai/gpt-oss-120b` model.
+- Implemented AI responses for contracts, milestones, payments, and freelancing queries.
+- Added JWT authentication and input validation.
+- Created API endpoint: `POST /api/ai/chat`.
+
+### ✅ Hour 2 – AI Chat Assistant UI
+
+- Created interactive AI Assistant page.
+- Integrated frontend with AI backend API.
+- Implemented user and AI message bubbles.
+- Added loading indicators and error handling.
+- Integrated DashboardLayout and JWT authentication.
+- Added automatic message scrolling.
+
+### ✅ Hour 3 – Dashboard Analytics APIs
+
+- Developed dynamic dashboard analytics API.
+- Implemented Prisma queries for:
+  - Total Contracts
+  - Completed Contracts
+  - Active Projects
+  - Total Payments
+  - Pending Payments
+  - Failed Payments
+  - Total Revenue
+- Secured dashboard API using JWT authentication.
+- API endpoint: `GET /api/dashboard`.
+
+### ✅ Hour 4 – Dynamic Revenue Cards
+
+- Replaced hardcoded dashboard statistics with live API data.
+- Integrated dashboard analytics API using Fetch.
+- Implemented dynamic dashboard cards:
+  - Escrow Balance
+  - Smart Contracts
+  - AI Risk Checks
+  - Active Deals
+- Successfully tested live dashboard statistics.
+
+### ✅ Hour 5 – Payment Charts
+
+- Installed Recharts library.
+- Created reusable `PaymentChart` component.
+- Implemented interactive Payment Overview Pie Chart.
+- Integrated live payment statistics from backend.
+- Added payment status visualization:
+  - 🟢 Paid
+  - 🟡 Pending
+  - 🔴 Failed
+- Integrated chart into the main dashboard.
+
+### 🛠️ Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Express.js
+- Prisma ORM
+- PostgreSQL / Supabase
+- Groq AI SDK
+- Recharts
+- Tailwind CSS
+- JWT Authentication
+
+### 📊 Day 4 Progress
+
+| Task                      | Status       |
+| ------------------------- | ------------ |
+| AI Chat Assistant Backend | ✅ Completed |
+| AI Chat Assistant UI      | ✅ Completed |
+| Dashboard Analytics APIs  | ✅ Completed |
+| Dynamic Revenue Cards     | ✅ Completed |
+| Payment Charts            | ✅ Completed |
+| Contract Charts           | ⏳ Pending   |
+| Completion Statistics     | ⏳ Pending   |
+| Filters                   | ⏳ Pending   |
+| AG Grid Polish            | ⏳ Pending   |
+| Loading States            | ⏳ Pending   |
+| Error States              | ⏳ Pending   |
+| Testing / End Day Demo    | ⏳ Pending   |
+
+**Day 4 Progress: 5/12 Hours Completed**

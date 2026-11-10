@@ -3,34 +3,79 @@ import prisma from "../lib/prisma.js";
 
 export const getDashboard = async (_req: Request, res: Response) => {
   try {
-    const contracts = await prisma.contract.count();
-
-    const payments = await prisma.payment.count();
-
-    const activeProjects = await prisma.contract.count({
-      where: {
-        status: "ACTIVE",
-      },
-    });
-
-    const revenue = await prisma.payment.aggregate({
-      _sum: {
-        amount: true,
-      },
-      where: {
-        status: "PAID",
-      },
-    });
-
-    res.json({
-      revenue: revenue._sum.amount || 0,
-      contracts,
-      payments,
+    const [
+      totalContracts,
+      completedContracts,
       activeProjects,
+      totalPayments,
+      paidPayments,
+      pendingPayments,
+      failedPayments,
+      revenue,
+    ] = await Promise.all([
+      prisma.contract.count(),
+
+      prisma.contract.count({
+        where: {
+          status: "COMPLETED",
+        },
+      }),
+
+      prisma.contract.count({
+        where: {
+          status: "ACTIVE",
+        },
+      }),
+
+      prisma.payment.count(),
+
+      prisma.payment.count({
+        where: {
+          status: "PAID",
+        },
+      }),
+
+      prisma.payment.count({
+        where: {
+          status: "PENDING",
+        },
+      }),
+
+      prisma.payment.count({
+        where: {
+          status: "FAILED",
+        },
+      }),
+
+      prisma.payment.aggregate({
+        _sum: {
+          amount: true,
+        },
+        where: {
+          status: "PAID",
+        },
+      }),
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        totalRevenue: revenue._sum.amount ?? 0,
+        totalContracts,
+        completedContracts,
+        activeProjects,
+        totalPayments,
+        paidPayments,
+        pendingPayments,
+        failedPayments,
+      },
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Failed to load dashboard",
+    console.error("Dashboard Analytics Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to load dashboard analytics.",
     });
   }
 };

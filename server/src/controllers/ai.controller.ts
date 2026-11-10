@@ -116,3 +116,67 @@ Use professional and easy-to-understand language.
     });
   }
 };
+export const chatWithAI = async (req: Request, res: Response) => {
+  try {
+    const { message } = req.body;
+
+    if (!message || typeof message !== "string" || !message.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Please enter a message.",
+      });
+    }
+
+    const groq = getGroqClient();
+
+    const completion = await groq.chat.completions.create({
+      model: "openai/gpt-oss-120b",
+      messages: [
+        {
+          role: "system",
+          content: `You are PactPay AI Assistant, an intelligent assistant
+          for a freelance contract and payment management platform.
+
+          Help users with:
+          1. Contracts and agreements
+          2. Milestone management
+          3. PayPal payments
+          4. Freelancing guidance
+          5. Project management
+
+          Give clear, friendly and helpful answers.
+          Never claim to perform actions that you have not performed.`,
+        },
+        {
+          role: "user",
+          content: message.trim(),
+        },
+      ],
+      temperature: 0.5,
+    });
+
+    const reply = completion.choices[0]?.message?.content;
+
+    if (!reply) {
+      return res.status(500).json({
+        success: false,
+        message: "AI could not generate a response.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "AI response generated successfully.",
+      data: {
+        reply,
+      },
+    });
+  } catch (error) {
+    console.error("AI Chat Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to get AI response. Please try again.",
+    });
+  }
+};
