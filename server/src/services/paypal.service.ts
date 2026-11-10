@@ -7,6 +7,7 @@ import {
 
 import { paypalClient } from "../lib/paypal.js";
 
+// Create PayPal Sandbox Order
 export const createPayPalOrder = async (amount: string) => {
   const response = await new OrdersController(paypalClient).createOrder({
     body: {
@@ -25,8 +26,11 @@ export const createPayPalOrder = async (amount: string) => {
         paypal: {
           experienceContext: {
             returnUrl: "http://localhost:3000/dashboard/payments/success",
+
             cancelUrl: "http://localhost:3000/dashboard/payments/cancel",
+
             userAction: PaypalExperienceUserAction.PayNow,
+
             shippingPreference:
               PaypalWalletContextShippingPreference.NoShipping,
           },
@@ -37,13 +41,23 @@ export const createPayPalOrder = async (amount: string) => {
     prefer: "return=representation",
   });
 
+  console.log("PayPal Order Created:", response.result.id);
+
   return response.result;
 };
 
+// Capture PayPal Payment
 export const capturePayPalPayment = async (orderId: string) => {
-  const response = await new OrdersController(paypalClient).captureOrder({
-    id: orderId,
-  });
+  try {
+    const response = await new OrdersController(paypalClient).captureOrder({
+      id: orderId,
+    });
 
-  return response.result;
+    console.log("PayPal Capture Status:", response.result.status);
+
+    return response.result;
+  } catch (error) {
+    console.error("PayPal Capture Error:", error);
+    throw error;
+  }
 };

@@ -218,8 +218,8 @@ export default function CreateContractPage() {
       title: formData.get("contractTitle"),
       description: generatedContract,
       amount: Number(formData.get("contractValue")),
+      freelancerId: formData.get("freelancerId"),
     };
-
     try {
       const isUpdating = savedContractId !== null;
 

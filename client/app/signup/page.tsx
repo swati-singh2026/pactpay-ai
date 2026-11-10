@@ -10,6 +10,8 @@ export default function SignupPage() {
     role: "CLIENT",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -19,8 +21,12 @@ export default function SignupPage() {
     });
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (loading) return;
+
+    setLoading(true);
 
     try {
       const res = await fetch("http://localhost:5000/api/auth/signup", {
@@ -33,23 +39,23 @@ export default function SignupPage() {
 
       const data = await res.json();
 
-      console.log(data);
+      console.log("Signup response:", data);
 
-      if (res.ok) {
+      if (res.ok && data.success) {
+        localStorage.setItem("token", data.data.token);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+
         alert("Signup Successful!");
 
-        setFormData({
-          name: "",
-          email: "",
-          password: "",
-          role: "CLIENT",
-        });
+        window.location.replace("/dashboard");
       } else {
         alert(data.message || "Signup Failed");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Signup Error:", error);
       alert("Cannot connect to backend server.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,9 +109,10 @@ export default function SignupPage() {
 
         <button
           type="submit"
-          className="w-full rounded bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700"
+          disabled={loading}
+          className="w-full rounded bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Sign Up
+          {loading ? "Creating Account..." : "Sign Up"}
         </button>
       </form>
     </div>
