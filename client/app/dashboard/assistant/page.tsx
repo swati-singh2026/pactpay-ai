@@ -118,7 +118,7 @@ export default function AssistantPage() {
 
   return (
     <DashboardLayout userName={user?.name ?? ""} onLogout={handleLogout}>
-      <div className="mx-auto flex h-[calc(100vh-130px)] max-w-5xl flex-col">
+      <div className="mx-auto flex min-h-[calc(100dvh-150px)] w-full max-w-5xl flex-col px-2 sm:px-4">
         <div className="mb-6">
           <Link
             href="/dashboard"

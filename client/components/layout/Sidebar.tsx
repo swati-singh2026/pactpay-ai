@@ -54,7 +54,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r shadow-sm">
+    <aside className="hidden md:fixed md:left-0 md:top-0 md:block md:h-screen md:w-64 bg-white border-r shadow-sm">
       <div className="border-b p-6">
         <h1 className="text-2xl font-bold text-blue-600">PactPay AI</h1>
 

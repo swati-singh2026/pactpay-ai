@@ -172,12 +172,12 @@ export default function RecentContractsTable() {
   };
 
   return (
-    <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+    <section className="mt-6 w-full min-w-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-sm sm:mt-10 sm:p-6 lg:p-8">
       {/* Header */}
 
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
             📑 Recent Smart Contracts
           </h2>
 
@@ -254,11 +254,8 @@ export default function RecentContractsTable() {
       {/* AG Grid Table */}
 
       <div
-        className="ag-theme-quartz w-full overflow-x-auto rounded-xl"
-        style={{
-          height: 450,
-          width: "100%",
-        }}
+        className="ag-theme-quartz w-full min-w-0 overflow-x-auto rounded-xl"
+        style={{ height: 450, width: "100%", maxWidth: "100%" }}
       >
         <AgGridReact<Contract>
           rowData={filteredContracts}
@@ -274,7 +271,8 @@ export default function RecentContractsTable() {
             filter: true,
             floatingFilter: true,
             resizable: true,
-            flex: 1,
+            flex: 2,
+            minWidth: 180,
             wrapHeaderText: true,
             autoHeaderHeight: true,
           }}
