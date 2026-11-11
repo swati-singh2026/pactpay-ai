@@ -5,8 +5,10 @@ export const getDashboard = async (_req: Request, res: Response) => {
   try {
     const [
       totalContracts,
+      draftContracts,
       completedContracts,
       activeProjects,
+      cancelledContracts,
       totalPayments,
       paidPayments,
       pendingPayments,
@@ -17,6 +19,12 @@ export const getDashboard = async (_req: Request, res: Response) => {
 
       prisma.contract.count({
         where: {
+          status: "DRAFT",
+        },
+      }),
+
+      prisma.contract.count({
+        where: {
           status: "COMPLETED",
         },
       }),
@@ -24,6 +32,12 @@ export const getDashboard = async (_req: Request, res: Response) => {
       prisma.contract.count({
         where: {
           status: "ACTIVE",
+        },
+      }),
+
+      prisma.contract.count({
+        where: {
+          status: "CANCELLED",
         },
       }),
 
@@ -62,8 +76,10 @@ export const getDashboard = async (_req: Request, res: Response) => {
       data: {
         totalRevenue: revenue._sum.amount ?? 0,
         totalContracts,
+        draftContracts,
         completedContracts,
         activeProjects,
+        cancelledContracts,
         totalPayments,
         paidPayments,
         pendingPayments,

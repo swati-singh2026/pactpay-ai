@@ -194,8 +194,14 @@ export default function AssistantPage() {
                   <Bot size={18} className="text-blue-600" />
                 </div>
 
-                <div className="rounded-2xl bg-slate-100 px-4 py-3 text-sm text-gray-500">
-                  AI is thinking...
+                <div className="flex items-center gap-3 rounded-2xl bg-slate-100 px-4 py-3">
+                  <span className="text-sm text-gray-600">AI is thinking</span>
+
+                  <div className="flex gap-1">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-blue-600"></span>
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:150ms]"></span>
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:300ms]"></span>
+                  </div>
                 </div>
               </div>
             )}
@@ -204,8 +210,18 @@ export default function AssistantPage() {
           </div>
 
           {error && (
-            <div className="mx-6 mb-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
-              {error}
+            <div className="mx-6 mb-3 flex items-center justify-between gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+              <p className="text-sm text-red-600">{error}</p>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setError("");
+                }}
+                className="shrink-0 text-sm font-semibold text-red-700 hover:underline"
+              >
+                Dismiss
+              </button>
             </div>
           )}
 

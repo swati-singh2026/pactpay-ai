@@ -6,6 +6,8 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import RecentContractsTable from "@/components/dashboard/RecentContractsTable";
 import PaymentChart from "@/components/dashboard/PaymentChart";
+import ContractChart from "@/components/dashboard/ContractChart";
+import CompletionStats from "@/components/dashboard/CompletionStats";
 
 import { Wallet, FileText, ShieldCheck, BriefcaseBusiness } from "lucide-react";
 
@@ -23,10 +25,15 @@ interface Stats {
   paidPayments: number;
   pendingPayments: number;
   failedPayments: number;
+  draftContracts: number;
+  completedContracts: number;
+  cancelledContracts: number;
 }
 
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [dashboardError, setDashboardError] = useState("");
 
   const [stats, setStats] = useState<Stats>({
     revenue: 0,
@@ -36,6 +43,9 @@ export default function DashboardPage() {
     paidPayments: 0,
     pendingPayments: 0,
     failedPayments: 0,
+    draftContracts: 0,
+    completedContracts: 0,
+    cancelledContracts: 0,
   });
 
   useEffect(() => {
@@ -75,23 +85,37 @@ export default function DashboardPage() {
           paidPayments: result.data.paidPayments,
           pendingPayments: result.data.pendingPayments,
           failedPayments: result.data.failedPayments,
+          draftContracts: result.data.draftContracts,
+          completedContracts: result.data.completedContracts,
+          cancelledContracts: result.data.cancelledContracts,
         });
       } catch (error) {
         console.error("Dashboard Analytics Error:", error);
+
+        setDashboardError(
+          error instanceof Error
+            ? error.message
+            : "Unable to load dashboard data. Please try again.",
+        );
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchDashboardStats();
   }, []);
 
-  if (!user) {
+  if (!user || isLoading) {
     return (
-      <div className="flex h-screen items-center justify-center text-xl font-semibold">
-        Loading Dashboard...
+      <div className="flex h-screen flex-col items-center justify-center gap-4">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600"></div>
+
+        <p className="text-lg font-semibold text-gray-700">
+          Loading Dashboard...
+        </p>
       </div>
     );
   }
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -100,6 +124,23 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout userName={user.name} onLogout={handleLogout}>
+      {dashboardError && (
+        <div className="mx-auto mt-6 max-w-7xl rounded-xl border border-red-200 bg-red-50 p-5">
+          <h3 className="font-semibold text-red-700">
+            Dashboard Loading Failed
+          </h3>
+
+          <p className="mt-2 text-sm text-red-600">{dashboardError}</p>
+
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+          >
+            Retry
+          </button>
+        </div>
+      )}
       {/* User Information */}
 
       <section className="mx-auto max-w-7xl">
@@ -174,6 +215,27 @@ export default function DashboardPage() {
           paid={stats.paidPayments}
           pending={stats.pendingPayments}
           failed={stats.failedPayments}
+        />
+      </section>
+
+      {/* Contract Chart */}
+
+      <section className="mx-auto mt-8 max-w-7xl">
+        <ContractChart
+          draft={stats.draftContracts}
+          active={stats.activeProjects}
+          completed={stats.completedContracts}
+          cancelled={stats.cancelledContracts}
+        />
+      </section>
+
+      {/* Completion Statistics */}
+
+      <section className="mx-auto mt-8 max-w-7xl">
+        <CompletionStats
+          total={stats.contracts}
+          completed={stats.completedContracts}
+          active={stats.activeProjects}
         />
       </section>
 
