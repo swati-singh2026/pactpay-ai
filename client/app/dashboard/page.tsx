@@ -64,12 +64,15 @@ export default function DashboardPage() {
 
     const fetchDashboardStats = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/dashboard", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const response = await fetch(
+          "https://pactpay-ai.onrender.com/api/dashboard",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         const result = await response.json();
 

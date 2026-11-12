@@ -50,7 +50,7 @@ export default function CreateContractPage() {
       const loadSavedContract = async () => {
         try {
           const response = await fetch(
-            `http://localhost:5000/api/contracts/${savedId}`,
+            `https://pactpay-ai.onrender.com/api/contracts/${savedId}`,
             {
               method: "GET",
               headers: {
@@ -110,14 +110,17 @@ export default function CreateContractPage() {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/contracts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        "https://pactpay-ai.onrender.com/api/contracts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(contractData),
         },
-        body: JSON.stringify(contractData),
-      });
+      );
 
       const result = await response.json();
 
@@ -166,7 +169,7 @@ export default function CreateContractPage() {
       setIsGenerating(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/contracts/generate",
+        "https://pactpay-ai.onrender.com/api/contracts/generate",
         {
           method: "POST",
           headers: {
@@ -224,8 +227,8 @@ export default function CreateContractPage() {
       const isUpdating = savedContractId !== null;
 
       const url = isUpdating
-        ? `http://localhost:5000/api/contracts/${savedContractId}`
-        : "http://localhost:5000/api/contracts";
+        ? `https://pactpay-ai.onrender.com/api/contracts/${savedContractId}`
+        : "https://pactpay-ai.onrender.com/api/contracts";
 
       const response = await fetch(url, {
         method: isUpdating ? "PUT" : "POST",

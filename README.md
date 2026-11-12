@@ -4,540 +4,363 @@
 
 **Build Trust. Reduce Disputes. Get Paid with Confidence.**
 
-PactPay AI is an AI-powered freelance contract management platform designed to make collaboration between freelancers and clients more transparent, structured, and secure.
+PactPay AI is an AI-powered freelance contract management platform designed to simplify how freelancers and clients create agreements, manage project milestones, identify contractual risks, and track payments.
 
-The platform combines AI-assisted contract generation, milestone-based project management, contract risk analysis, and PayPal-powered payment workflows to improve trust and accountability in freelance projects.
+By combining AI-powered contract intelligence with PayPal payment integration, PactPay AI brings contract generation, project management, and payment tracking together in one centralized platform.
 
-Built for the **PayPal AI Hackathon**, PactPay AI aims to solve one of the biggest challenges in the freelance economy: ensuring clear agreements, transparent project milestones, and reliable payments.
+Built for the **PayPal AI Hackathon**, PactPay AI aims to make freelance collaboration more transparent, structured, and trustworthy.
+
+---
+
+---
+
+# 🌐 Live Deployment
+
+PactPay AI is deployed and accessible online.
+
+- **Live Application (Frontend):** [Open PactPay AI](PASTE_YOUR_VERCEL_URL_HERE)
+- **Backend API:** https://pactpay-ai.onrender.com
+
+**Deployment Platforms:**
+
+- Frontend: Vercel
+- Backend: Render
+- Database: Supabase PostgreSQL
+
+> **Note:** The backend may take a few seconds to respond after a period of inactivity because of Render's free-tier instance behavior.
+
+---
+
+# 📑 Table of Contents
+
+- [About PactPay AI](#-pactpay-ai)
+- [Problem Statement](#-problem-statement)
+- [Our Solution](#-our-solution)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Database Design](#-database-design)
+- [Security Architecture](#-security-architecture)
+- [Technology Stack](#-technology-stack)
+- [Installation & Setup Guide](#-installation--setup-guide)
+- [Environment Configuration](#-environment-configuration)
+- [API Documentation](#-api-documentation)
+- [Testing](#-testing)
+- [Application Screenshots](#-application-screenshots)
+- [Demo Video](#-demo-video)
+- [Hackathon Submission](#-hackathon-submission)
+- [Future Enhancements](#-future-enhancements)
+- [Project Status](#-project-status)
+- [Developer](#-developer)
 
 ---
 
 # 🎯 Problem Statement
 
-Freelancers and clients frequently face challenges such as:
+The freelance industry is growing rapidly, but managing agreements and payments remains challenging for both freelancers and clients.
 
-- Unclear project agreements and expectations.
-- Payment disputes between clients and freelancers.
-- Delayed milestone-based payments.
-- Time-consuming manual contract drafting.
-- Lack of transparency in project progress.
-- Difficulty identifying potential contractual risks.
+Some common problems include:
 
-These challenges create uncertainty, reduce trust, and make freelance collaboration difficult.
+- **Unclear Project Scope:** Misunderstandings about deliverables, responsibilities, and expectations.
+- **Time-Consuming Contracts:** Creating professional freelance agreements manually takes time and effort.
+- **Payment Uncertainty:** Freelancers may face delayed payments or unclear payment terms.
+- **Poor Milestone Tracking:** Managing project progress and deliverables can become difficult.
+- **Contractual Risks:** Important terms and potential risks may go unnoticed.
+- **Lack of Transparency:** Clients and freelancers may struggle to track project and payment progress.
+
+These challenges can lead to disputes, delayed payments, and a lack of trust between freelancers and clients.
+
+---
 
 # 💡 Our Solution
 
-PactPay AI introduces an intelligent contract management workflow that helps clients and freelancers manage agreements from creation to payment.
+PactPay AI provides an integrated platform to simplify freelance contract management and milestone-based payment tracking.
 
-Our platform aims to:
+Our solution combines AI-powered tools and payment integration to make freelance collaboration more organized and transparent.
 
-1. Generate professional freelance contracts using AI.
-2. Identify potential contractual risks.
-3. Break projects into manageable milestones.
-4. Connect milestone completion with payment workflows.
-5. Provide a centralized dashboard for contract management.
+### Key Solutions
 
-Our goal is to make freelance agreements easier to create, understand, manage, and execute.
+- **AI-Powered Contract Generation:** Generate structured freelance contract drafts using Groq AI.
+- **Contract Risk Analysis:** Identify potential risks and unclear terms in contracts.
+- **AI Contract Summaries:** Understand important contract details through AI-generated summaries.
+- **Milestone Management:** Generate and organize project milestones.
+- **PayPal Payment Integration:** Create, capture, and track payments using PayPal Sandbox.
+- **Analytics Dashboard:** Monitor contract statistics, payment activity, and project progress.
+- **AI Assistant:** Get AI-powered assistance for contract, milestone, payment, and freelancing-related questions.
+
+Our goal is to build a more transparent and trustworthy freelance ecosystem where agreements, milestones, and payments are easier to manage.
 
 ---
 
 # ✨ Key Features
 
-## ✅ Implemented Features
+## 1. AI-Powered Contract Management
 
-### 1. Authentication & Security
+- Generate structured freelance contract drafts using Groq AI.
+- Analyze contracts to identify potential risks and unclear terms.
+- Generate AI-powered contract summaries.
+- Edit and review AI-generated contract content.
+- Save and retrieve generated contracts.
+
+## 2. Milestone Management
+
+- Generate project milestones using AI.
+- Organize project deliverables into manageable stages.
+- Track milestone progress and completion status.
+- Connect milestone records with payment workflows.
+
+## 3. PayPal Payment Integration
+
+- Create PayPal Sandbox payment orders.
+- Capture payments through the backend.
+- Track payment statuses: Pending, Paid, and Failed.
+- Update payment and milestone records after successful capture.
+- Handle PayPal webhook events.
+- View transaction history.
+
+> **Note:** PayPal integration currently uses Sandbox mode for development and testing. It is not a production escrow service.
+
+## 4. AI Assistant
+
+- Interactive AI-powered chat interface.
+- Get assistance with freelance contracts and milestones.
+- Ask questions about payment workflows and project management.
+- Secure, authenticated API access.
+
+## 5. Analytics Dashboard
+
+- Contract statistics and status overview.
+- Payment analytics with visual charts.
+- Contract completion statistics.
+- Revenue and project activity summaries.
+- Recent contracts table with filtering options.
+
+## 6. Secure Authentication
 
 - User registration and login.
 - JWT-based authentication.
-- Password hashing using bcrypt.
-- Protected backend routes.
-- Session management.
-- Secure logout functionality.
-
-### 2. Professional SaaS Dashboard
-
-- Responsive dashboard layout.
-- Professional sidebar navigation.
-- Reusable dashboard components.
-- User profile section.
-- Dashboard statistics cards.
-- Recent activity interface.
-- AG Grid integration.
-
-### 3. Contract Creation
-
-- Contract creation interface.
-- Contract title and type.
-- Contract amount.
-- Client information.
-- Freelancer identification.
-- Project timeline.
-- Payment terms.
-- Contract description.
-- Form validation.
-
-### 4. Contract Database Integration
-
-- Express REST API.
-- Prisma ORM integration.
-- PostgreSQL database.
-- JWT-protected contract creation.
-- Backend request validation.
-- Contract persistence.
-
-### 5. Groq AI Integration
-
-- Groq SDK integration.
-- Secure backend API key configuration.
-- Groq client initialization.
-- Successful API connectivity test.
-
-### 6. AI Contract Generator
-
-- AI-powered contract generation endpoint.
-- Structured contract generation prompts.
-- Input validation.
-- Professional contract drafting.
-- Generated contract response.
-- Error handling.
-- Successfully tested using Postman.
-
-### 7. AI-Powered Milestone Generation
-
-- Generate project milestones using Groq AI.
-- Automatically create 3–6 milestones based on contract details.
-- Distribute milestone amounts according to the total contract value.
-- Validate generated milestone amounts.
-- Save generated milestones in the PostgreSQL database using Prisma.
-- Associate each milestone with its respective contract.
-- Verify contract ownership before generating milestones.
-
-### 8.AI-Powered Contract Risk Analysis
-
-- Analyze existing contracts using Groq AI.
-- Identify potential contractual, financial, payment, and project-related risks.
-- Classify risks into three severity levels:
-  - LOW
-  - MEDIUM
-  - HIGH
-- Generate descriptions for identified risks.
-- Provide recommendations to reduce potential risks.
-- Verify contract ownership before performing risk analysis.
-- Return structured risk analysis results through the API.
-
-### 9.AI-Powered Contract Summary
-
-PactPay AI uses Groq-powered AI to generate clear and concise summaries of existing contracts.
-
-**Key Capabilities:**
-
-- Generates an easy-to-understand contract overview.
-- Summarizes the scope of work.
-- Highlights financial details and contract status.
-- Identifies important contract points.
-- Highlights missing information and terms that require review.
-- Uses existing contract data from the database.
-- Verifies contract ownership before generating summaries.
-
-**API Endpoint:**
-`POST /api/contracts/generate-summary`
-
-**Authentication:** JWT Bearer Token Required
-
-**Request Body:**
-
-````json
-{
-  "contractId": "existing_contract_id"
-}
-
-### Editable AI-Generated Contract
-
-PactPay AI allows users to review, edit, save, and update AI-generated contracts before finalizing them.
-
-**Features:**
-- Generate professional contracts using Groq AI.
-- Display generated contract content in an editable text area.
-- Allow users to modify AI-generated contract clauses.
-- Save edited contracts to the database.
-- Update existing contracts without creating duplicate records during the same editing session.
-- Track saved contract IDs on the frontend.
-
-**Workflow:**
-1. User enters contract details.
-2. Groq AI generates the contract.
-3. User reviews and edits the generated content.
-4. First save creates the contract in the database.
-5. Further edits update the existing contract.
-
-**Backend API:**
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/contracts` | Create a new contract |
-| PUT | `/api/contracts/:id` | Update an existing contract |
-
-**Implementation:**
-- Frontend: Next.js, React state management, TypeScript.
-- Backend: Express.js, TypeScript.
-- Database: PostgreSQL with Prisma ORM.
-- AI Integration: Groq API.
-
-**Status:** Completed and tested successfully.
-### Saved AI Contract Retrieval
-
-PactPay AI allows users to retrieve their previously saved AI-generated contracts.
-
-**Features:**
-- Saves the generated contract ID in browser localStorage.
-- Retrieves the saved contract using a protected GET API.
-- Automatically restores the saved contract after page refresh.
-- Verifies contract ownership before returning saved data.
-
-**API Endpoint:**
-- `GET /api/contracts/:id`
-
-**Workflow:**
-1. User saves an AI-generated contract.
-2. Contract ID is stored in localStorage.
-3. On page refresh, the application retrieves the stored contract ID.
-4. Frontend calls the protected GET API.
-5. Retrieved contract content is displayed in the editable textarea.
-
-**Testing:**
-- Saved contract successfully.
-- Retrieved contract using Postman.
-- Verified automatic contract restoration after browser refresh.
-
-## 💳 PayPal Payment Integration
-
-PactPay AI integrates PayPal Sandbox to support secure payment processing between clients and freelancers.
-
-### Implemented Features
-
-- PayPal Sandbox account configuration.
-- Dedicated PactPay AI Merchant application.
-- Official PayPal TypeScript Server SDK integration.
-- Secure PayPal credentials management using environment variables.
-- PayPal order creation.
-- Payment amount validation.
-- PayPal payment capture.
-- Protected payment API routes using JWT authentication.
-- Error handling for payment operations.
-
-### Backend API Endpoints
-
-| Method | Endpoint | Description | Authentication |
-|---|---|---|---|
-| POST | `/api/paypal/create-order` | Creates a PayPal payment order | Required |
-| POST | `/api/paypal/capture-payment` | Captures an existing PayPal order | Required |
-
-### PayPal Environment Configuration
-
-Add the following environment variables to `server/.env`:
-
-```env
-PAYPAL_CLIENT_ID=your_sandbox_client_id
-PAYPAL_CLIENT_SECRET=your_sandbox_client_secret
-PAYPAL_BASE_URL=https://api-m.sandbox.paypal.com
-```
-
-**Security Notes:**
-- Never expose PayPal Client Secret in frontend code.
-- Never commit `.env` files to GitHub.
-- Use PayPal Sandbox credentials during development and testing.
-
-### Payment Integration Architecture
-
-```text
-Next.js Frontend
-       |
-       v
-Express Backend
-       |
-       v
-PayPal Controller
-       |
-       v
-PayPal Service
-       |
-       v
-PayPal TypeScript Server SDK
-       |
-       v
-PayPal Sandbox Orders API
-```
-
-### Payment Flow
-
-1. Authenticated user requests a payment order.
-2. Backend validates the payment amount.
-3. PayPal creates a Sandbox order.
-4. Frontend receives the PayPal order details.
-5. User approves the payment through PayPal Checkout.
-6. Backend captures the approved order.
-7. Payment status is verified and updated.
-
-**Development Status:** Backend order creation and capture APIs are implemented. Frontend Checkout integration, webhooks, database status updates, and end-to-end testing are pending.
-
-
-
-
-## 🚧 Upcoming Features
-
-- AI Contract Risk Analysis.
-- AI Contract Summary.
-- AI Milestone Generation.
-- Editable AI-generated contracts.
-- AI-generated contract persistence.
-- PayPal order creation.
-- PayPal payment capture.
-- Milestone-based payment workflows.
-- Notifications.
-- Analytics and reporting.
-- Production deployment.
-
----
-
-# 🧠 What Makes PactPay AI Different?
-
-PactPay AI focuses on the complete freelance agreement lifecycle rather than treating contract creation and payments as separate activities.
-
-| Challenge                      | PactPay AI Approach                          |
-| ------------------------------ | -------------------------------------------- |
-| Manual contract drafting       | AI-assisted contract generation              |
-| Unclear project expectations   | Structured contract details                  |
-| Contractual risks              | AI-powered risk analysis (planned)           |
-| Unstructured project delivery  | AI milestone generation (planned)            |
-| Payment uncertainty            | PayPal milestone payment workflows (planned) |
-| Fragmented project information | Centralized dashboard                        |
-
-**Our Vision:** Turn freelance agreements into structured, transparent, and manageable project workflows.
-
----
-
-# 🛠️ Technology Stack
-
-## Frontend
-
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Axios
-
-## Backend
-
-- Node.js
-- Express.js
-- TypeScript
-- JWT Authentication
-- bcrypt
-- Groq SDK
-
-## Database & ORM
-
-- PostgreSQL
-- Supabase
-- Prisma ORM
-
-## Artificial Intelligence
-
-- Groq AI API
-- Model: `openai/gpt-oss-120b`
-
-## Payments
-
-- PayPal REST API (planned integration)
-
-## Development & Testing
-
-- Visual Studio Code
-- Postman
-- Git
-- GitHub
+- Protected backend API routes.
+- Authenticated access to dashboard features.
 
 ---
 
 # 🏗️ System Architecture
 
-```text
-                 ┌──────────────────────┐
-                 │    Next.js Frontend  │
-                 │                      │
-                 │  Dashboard & Forms   │
-                 └──────────┬───────────┘
-                            │
-                            ▼
-                 ┌──────────────────────┐
-                 │    Express REST API  │
-                 │                      │
-                 │  JWT Authentication  │
-                 │  Request Validation  │
-                 └───────┬──────────────┘
-                         │
-              ┌──────────┴───────────┐
-              │                      │
-              ▼                      ▼
-    ┌──────────────────┐   ┌──────────────────┐
-    │   Prisma ORM     │   │     Groq AI      │
-    │                  │   │                  │
-    │  PostgreSQL      │   │ Contract         │
-    │  Database        │   │ Generation       │
-    └──────────────────┘   └──────────────────┘
-              │
-              ▼
-    ┌──────────────────┐
-    │    PayPal API    │
-    │                  │
-    │ Planned Payment  │
-    │ Integration      │
-    └──────────────────┘
-````
+PactPay AI follows a client-server architecture that separates the frontend, backend, database, and external AI/payment services.
 
----
+## Architecture Overview
 
-# 📁 Project Structure
+The platform consists of four major components:
+
+1. **Frontend:** Provides the user interface for contract management, AI assistance, payments, and analytics.
+2. **Backend:** Handles business logic, authentication, contract operations, AI requests, and payment processing.
+3. **Database:** Stores user, contract, milestone, and payment information.
+4. **External Services:** Integrates Groq AI for intelligent contract assistance and PayPal Sandbox for payment processing.
+
+## Architecture Diagram
 
 ```text
-PactPay-AI/
-│
-├── client/
-│   ├── app/
-│   │   ├── dashboard/
-│   │   └── ...
-│   ├── components/
-│   ├── services/
-│   ├── lib/
-│   ├── types/
-│   └── ...
-│
-├── server/
-│   ├── prisma/
-│   │   └── schema.prisma
-│   │
-│   ├── src/
-│   │   ├── controllers/
-│   │   │   ├── auth.controller.ts
-│   │   │   ├── contract.controller.ts
-│   │   │   └── ai.controller.ts
-│   │   │
-│   │   ├── middleware/
-│   │   ├── routes/
-│   │   │   ├── auth.routes.ts
-│   │   │   ├── contract.routes.ts
-│   │   │   └── ...
-│   │   │
-│   │   ├── services/
-│   │   ├── lib/
-│   │   │   ├── prisma.ts
-│   │   │   └── groq.ts
-│   │   │
-│   │   └── app.ts
-│   │
-│   └── package.json
-│
-├── README.md
-└── Projectnotes.md
+                 ┌──────────────────────────┐
+                 │          USER            │
+                 │    Freelancer / Client   │
+                 └────────────┬─────────────┘
+                              │
+                              ▼
+                 ┌──────────────────────────┐
+                 │       FRONTEND           │
+                 │                          │
+                 │       Next.js            │
+                 │       React               │
+                 │       TypeScript          │
+                 │       Tailwind CSS        │
+                 │                          │
+                 └────────────┬─────────────┘
+                              │
+                         REST APIs
+                              │
+                              ▼
+                 ┌──────────────────────────┐
+                 │        BACKEND           │
+                 │                          │
+                 │       Express.js         │
+                 │       TypeScript         │
+                 │                          │
+                 │   JWT Authentication     │
+                 │   Contract Management    │
+                 │   Milestone Management   │
+                 │   AI Services            │
+                 │   Payment Services       │
+                 └───────┬─────────┬────────┘
+                         │         │
+               ┌─────────▼───┐ ┌───▼────────────┐
+               │  DATABASE   │ │ EXTERNAL APIs  │
+               │             │ │                │
+               │ PostgreSQL  │ │ Groq AI        │
+               │ Supabase    │ │ PayPal Sandbox │
+               │ Prisma ORM  │ │                │
+               └─────────────┘ └────────────────┘
 ```
+
+## 🔄 Application Workflow
+
+PactPay AI follows a structured workflow that connects users, AI-powered services, contract management, and payment processing.
+
+1. **User Authentication:** Users register or log in to access the platform.
+2. **Frontend Communication:** The Next.js frontend communicates with the Express.js backend through REST APIs.
+3. **Secure Access:** JWT authentication protects authorized application routes and API endpoints.
+4. **Contract Management:** Users can create, generate, edit, and manage freelance contracts.
+5. **AI Processing:** Groq AI powers contract generation, risk analysis, contract summaries, and AI chat assistance.
+6. **Data Storage:** Contract and milestone information is stored in PostgreSQL.
+7. **Payment Processing:** The backend communicates with PayPal Sandbox to create and capture payment orders.
+8. **Payment Updates:** Payment and milestone statuses are updated in the database following successful payment processing.
+9. **Analytics & Monitoring:** The dashboard displays contract statistics, payment analytics, and project progress.
 
 ---
 
-# 🗄️ Database Models
+# 🗄️ Database Design
 
-Current Prisma database models include:
+PactPay AI uses **PostgreSQL** as its relational database, **Supabase** for database hosting, and **Prisma ORM** for database access and schema management.
 
-- User
-- Contract
-- Milestone
-- Payment
+## Core Database Models
 
-## Database Relationship
+### 1. User Model
 
-```text
-User
- └── Contracts
-       └── Milestones
-              └── Payments
-```
+Stores user account and authentication information.
 
----
+- User ID
+- Name
+- Email
+- Password (securely hashed)
+- Account timestamps
 
-# 📡 REST API Documentation
+### 2. Contract Model
 
-## Authentication APIs
+Stores freelance contract information and associated user relationships.
 
-| Method | Endpoint           | Description            |
-| ------ | ------------------ | ---------------------- |
-| POST   | `/api/auth/signup` | Register a new user    |
-| POST   | `/api/auth/login`  | Authenticate user      |
-| GET    | `/api/auth/me`     | Get authenticated user |
+- Contract ID
+- Contract title
+- Contract description
+- Contract amount
+- Contract status
+- Client relationship
+- Freelancer relationship
+- Created and updated timestamps
 
-## Dashboard API
+### 3. Milestone Model
 
-| Method | Endpoint         | Description             |
-| ------ | ---------------- | ----------------------- |
-| GET    | `/api/dashboard` | Retrieve dashboard data |
+Stores project milestone information and progress details.
 
-## Contract APIs
+- Milestone ID
+- Milestone title and description
+- Milestone amount
+- Milestone status
+- Associated contract
 
-| Method | Endpoint                  | Description                     | Status      |
-| ------ | ------------------------- | ------------------------------- | ----------- |
-| POST   | `/api/contracts`          | Create and save a contract      | Implemented |
-| POST   | `/api/contracts/generate` | Generate contract using Groq AI | Implemented |
+### 4. Payment Model
 
-**Authentication:** Contract creation and AI generation endpoints require a valid JWT Bearer Token.
+Stores payment transaction information and PayPal references.
 
-## AI Contract Generation Example
+- Payment ID
+- Payment amount
+- Payment status
+- PayPal order reference
+- Associated contract and milestone
+- Transaction timestamps
 
-### Request
+## Database Relationships
 
-```http
-POST /api/contracts/generate
-```
+The database uses relational connections to maintain consistency between users, contracts, milestones, and payments.
 
-### Request Body
+- A user can be associated with multiple contracts.
+- Each contract is associated with its client and freelancer.
+- A contract can contain multiple milestones.
+- Milestones are associated with payment records.
+- Payment records maintain transaction statuses and PayPal references.
 
-```json
-{
-  "title": "Website Development Agreement",
-  "contractType": "Freelance Development",
-  "amount": 50000,
-  "clientName": "ABC Company",
-  "freelancerName": "John Developer",
-  "startDate": "2026-11-10",
-  "endDate": "2026-12-10",
-  "paymentTerms": "50% advance and 50% after completion",
-  "description": "Develop a responsive business website with five pages.",
-  "additionalRequirements": "Mobile responsive design and basic SEO."
-}
-```
+## Database Technologies
 
-### Successful Response
-
-```json
-{
-  "success": true,
-  "message": "Contract generated successfully!",
-  "data": {
-    "generatedContract": "Generated contract content..."
-  }
-}
-```
+| Technology | Purpose                               |
+| ---------- | ------------------------------------- |
+| PostgreSQL | Relational database                   |
+| Supabase   | Hosted PostgreSQL database            |
+| Prisma ORM | Database access and schema management |
 
 ---
 
-# ⚙️ Getting Started
+# 🔐 Security Architecture
+
+Security is an important part of PactPay AI's application architecture. The platform incorporates the following security practices:
+
+- **JWT Authentication:** Protects authenticated API endpoints.
+- **Password Hashing:** Protects stored user passwords.
+- **Protected Routes:** Restricts access to authorized users.
+- **Environment Variables:** Keeps API credentials and sensitive configuration outside the source code.
+- **Backend Payment Processing:** Handles PayPal order creation and capture through the server.
+- **Webhook Handling:** Processes supported PayPal payment events and updates transaction records.
+
+---
+
+# 🛠️ Technology Stack
+
+PactPay AI is built using modern frontend, backend, database, and AI technologies to provide an interactive freelance contract management experience.
+
+## Frontend
+
+| Technology   | Purpose                                    |
+| ------------ | ------------------------------------------ |
+| Next.js      | Frontend framework                         |
+| React.js     | User interface development                 |
+| TypeScript   | Type-safe frontend development             |
+| Tailwind CSS | Styling and responsive design              |
+| AG Grid      | Interactive contract data tables           |
+| Recharts     | Dashboard analytics and data visualization |
+| Lucide React | UI icons                                   |
+
+## Backend
+
+| Technology        | Purpose                                       |
+| ----------------- | --------------------------------------------- |
+| Node.js           | JavaScript runtime                            |
+| Express.js        | Backend framework and REST APIs               |
+| TypeScript        | Type-safe backend development                 |
+| Prisma ORM        | Database queries and management               |
+| JWT               | User authentication                           |
+| Groq SDK          | AI-powered contract generation and assistance |
+| PayPal Server SDK | PayPal payment order creation and capture     |
+
+## Database & External Services
+
+| Technology     | Purpose                          |
+| -------------- | -------------------------------- |
+| PostgreSQL     | Relational database              |
+| Supabase       | PostgreSQL database hosting      |
+| Groq AI        | AI-powered contract intelligence |
+| PayPal Sandbox | Payment integration and testing  |
+
+## Development Tools
+
+| Tool               | Purpose             |
+| ------------------ | ------------------- |
+| Visual Studio Code | Code editor         |
+| Git                | Version control     |
+| GitHub             | Source code hosting |
+| Postman            | API testing         |
+| npm                | Package management  |
+
+---
+
+# 🚀 Installation & Setup Guide
+
+Follow these steps to run PactPay AI locally.
 
 ## Prerequisites
 
-Make sure you have installed:
+Make sure the following tools are installed:
 
 - Node.js
 - npm
-- PostgreSQL / Supabase account
 - Git
+- Visual Studio Code
+- PostgreSQL / Supabase account
 
 ## 1. Clone the Repository
 
@@ -545,457 +368,359 @@ Make sure you have installed:
 git clone https://github.com/swati-singh2026/pactpay-ai.git
 ```
 
+## 2. Navigate to the Project
+
 ```bash
-cd PactPay-AI
+cd pactpay-ai
 ```
 
-## 2. Setup Backend
+## 3. Backend Setup
+
+Open a terminal and navigate to the server directory:
 
 ```bash
 cd server
+```
+
+Install dependencies:
+
+```bash
 npm install
 ```
 
-Configure your environment variables in `server/.env`.
+Configure the backend environment variables using your project's environment configuration.
 
-At minimum, AI integration requires:
+Set up the required database connection, JWT configuration, Groq API credentials, and PayPal Sandbox credentials.
 
-```env
-GROQ_API_KEY=your_groq_api_key
+Run Prisma migrations if required:
+
+```bash
+npx prisma migrate dev
 ```
 
-Also configure the database and authentication environment variables required by the backend.
-
-Start the backend:
+Start the backend development server:
 
 ```bash
 npm run dev
 ```
 
-Backend runs at:
+## 4. Frontend Setup
 
-```text
-http://localhost:5000
-```
-
-## 3. Setup Frontend
-
-Open a separate terminal:
+Open another terminal and navigate to the client directory:
 
 ```bash
 cd client
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Configure the frontend environment variables according to your project configuration.
+
+Start the frontend development server:
+
+```bash
 npm run dev
 ```
 
-Open the frontend:
+## 5. Access the Application
+
+Once both development servers are running, open:
+
+**Frontend:**
+
+http://localhost:3000
+
+**Backend:**
+
+http://localhost:5000
+
+---
+
+# ⚙️ Environment Configuration
+
+PactPay AI requires environment variables for database connectivity, authentication, AI services, and payment integration.
+
+Configure the following values in the appropriate backend and frontend environment files:
+
+- Database connection string
+- JWT secret
+- Groq API key
+- PayPal Client ID
+- PayPal Client Secret
+- Frontend API base URL, if required by the frontend configuration
+
+> **Security Note:** Never commit `.env` files, API keys, database credentials, or authentication secrets to GitHub. Use environment variables to protect sensitive configuration.
+
+---
+
+# 📡 API Documentation
+
+PactPay AI uses RESTful APIs to connect the frontend with the backend and manage authentication, contracts, AI services, payments, and dashboard analytics.
+
+## Base URL
 
 ```text
-http://localhost:3000
+http://localhost:5000/api
 ```
 
+## Authentication
+
+Protected API endpoints require JWT authentication.
+
+Include the access token in the request header:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+## API Endpoints
+
+### 1. Authentication APIs
+
+| Method | Endpoint             | Description             | Authentication |
+| ------ | -------------------- | ----------------------- | -------------- |
+| POST   | `/api/auth/register` | Register a new user     | No             |
+| POST   | `/api/auth/login`    | Log in an existing user | No             |
+
+### 2. AI APIs
+
+| Method | Endpoint           | Description                     | Authentication               |
+| ------ | ------------------ | ------------------------------- | ---------------------------- |
+| POST   | `/api/ai/chat`     | Interact with the AI assistant  | Yes                          |
+| POST   | `/api/ai/generate` | Generate an AI-powered contract | As configured in the project |
+
+### 3. Dashboard APIs
+
+| Method | Endpoint         | Description                  | Authentication |
+| ------ | ---------------- | ---------------------------- | -------------- |
+| GET    | `/api/dashboard` | Retrieve dashboard analytics | Yes            |
+
+### 4. Payment & Transaction APIs
+
+| Method | Endpoint                      | Description                    | Authentication |
+| ------ | ----------------------------- | ------------------------------ | -------------- |
+| POST   | `/api/payments/create-order`  | Create a PayPal payment order  | Yes            |
+| POST   | `/api/payments/capture-order` | Capture a PayPal payment order | Yes            |
+| GET    | `/api/transactions`           | Retrieve transaction history   | Yes            |
+
+> **Note:** Verify the exact route paths and HTTP methods against the current backend route files before publishing this endpoint table.
+
 ---
 
-# 🔐 Security
+# 🧪 Testing
 
-Security is an important part of PactPay AI.
+PactPay AI was tested locally to verify its main application workflows and integrations.
 
-- Passwords are hashed using bcrypt.
-- Protected APIs use JWT authentication.
-- Backend endpoints validate incoming requests.
-- Groq API credentials are stored in backend environment variables.
-- Secret keys must never be exposed in frontend code.
-- Environment files must never be committed to GitHub.
+## Testing Tools
 
-**Important:** AI-generated contracts are drafts and should be reviewed by qualified legal professionals before signing.
+- **Postman:** Used for backend API testing.
+- **Browser Testing:** Used to verify frontend pages and user interactions.
+- **PayPal Sandbox:** Used to test payment order creation and capture.
+- **Build Verification:** Used to check frontend and backend compilation.
+
+## Tested Functionalities
+
+### Authentication Testing
+
+- User registration and login.
+- JWT-based authentication.
+- Access to protected API endpoints.
+- Unauthorized request handling.
+
+### AI Functionality Testing
+
+- AI-powered contract generation.
+- Contract risk analysis.
+- AI-generated contract summaries.
+- AI assistant chat responses.
+
+### Payment Testing
+
+- PayPal Sandbox order creation.
+- Payment capture.
+- Payment status updates.
+- Milestone status updates after successful payment.
+- Transaction history retrieval.
+- Payment cancellation page.
+
+### Dashboard Testing
+
+- Dashboard analytics.
+- Payment charts.
+- Contract charts.
+- Completion statistics.
+- Contract table filters.
+- Loading and error states.
+
+### Responsive Design Testing
+
+- Desktop layout.
+- Mobile dashboard layout.
+- AI Assistant mobile interface.
+- Responsive contract table.
+
+## Payment Testing Environment
+
+Payments were tested using PayPal Sandbox accounts and test transactions.
+
+> **Important:** Sandbox transactions are simulated test payments. They do not represent real financial transactions or production escrow operations.
 
 ---
 
-# 📈 Development Progress
+# 📸 Application Screenshots
 
-## Day 1 – Foundation & Dashboard
+This section highlights the key interfaces and features of PactPay AI.
 
-- [x] Project setup
-- [x] Frontend and backend architecture
-- [x] Database setup
-- [x] Authentication backend
-- [x] Authentication frontend
-- [x] Landing page
-- [x] Professional dashboard
-- [x] Sidebar navigation
-- [x] Dashboard components
-- [x] AG Grid integration
+## 1. Dashboard
 
-## Day 2 – Contract Management & AI
+The dashboard provides an overview of contracts, payments, project activity, and analytics.
 
-- [x] Hour 1 – Create Contract UI
-- [x] Hour 2 – Form Validation
-- [x] Hour 3 – Contract Creation API
-- [x] Hour 4 – Database Integration
-- [x] Hour 5 – Groq AI Setup
-- [x] Hour 6 – AI Contract Generator API
-- [ ] Hour 7 – AI Milestone Generation
-- [ ] Hour 8 – AI Risk Analysis
-- [ ] Hour 9 – AI Contract Summary
-- [ ] Hour 10 – Editable AI Contract
-- [ ] Hour 11 – Save AI Contract
-- [ ] Hour 12 – Testing
+<!-- Add your dashboard screenshot here -->
 
-## Future Development
+### Dashboard Overview
 
-- [ ] PayPal payment integration
-- [ ] Milestone-based payment automation
-- [ ] Notifications
-- [ ] Analytics
-- [ ] Production deployment
+![PactPay AI Dashboard](docs/screenshots/dashboard1.png)
+
+### Dashboard Analytics
+
+![PactPay AI Analytics](docs/screenshots/dashboard2.png)
+
+### Recent Smart Contracts
+
+![PactPay AI Smart Contracts](docs/screenshots/dashboard3.png)
+
+## 2. AI Contract Generation
+
+Generate structured freelance contract drafts using AI.
+
+<!-- Add your AI contract generation screenshot here -->
+
+![AI Contract Generation](docs/screenshots/contract-generation1.png)
+
+![AI Generated Contract](docs/screenshots/contract-generation2.png)
+
+## 3. AI Assistant
+
+Interact with the AI assistant to get help with contracts, milestones, payments, and freelancing-related questions.
+
+<!-- Add your AI assistant screenshot here -->
+
+![AI Assistant](docs/screenshots/ai-assistant.png)
+
+## 4. Payment Management
+
+Manage PayPal Sandbox payment workflows and view transaction history.
+
+<!-- Add your payment screenshot here -->
+
+![Payment Management](docs/screenshots/payment-management.png)
+
+---
+
+# 🎥 Demo Video
+
+Watch the PactPay AI demonstration to explore its main features and workflows.
+
+<!-- Replace the placeholder below with your actual demo video link -->
+
+**Demo Video:** Coming Soon
+
+---
+
+# 🏆 Hackathon Submission
+
+## Hackathon
+
+**PayPal AI Hackathon**
+
+## Project Name
+
+**PactPay AI**
+
+## Project Description
+
+PactPay AI is an AI-powered freelance contract management platform that combines intelligent contract generation, contract risk analysis, milestone management, and PayPal payment integration.
+
+The platform aims to simplify freelance collaboration by making agreements more structured, project progress easier to track, and payment workflows more transparent.
+
+## Built With
+
+- Next.js
+- React.js
+- TypeScript
+- Tailwind CSS
+- Node.js
+- Express.js
+- PostgreSQL
+- Supabase
+- Prisma ORM
+- Groq AI
+- PayPal Server SDK
+- Recharts
+- AG Grid
+
+## Project Repository
+
+**GitHub:** [PactPay AI Repository](https://github.com/swati-singh2026/pactpay-ai)
+
+---
+
+# 🔮 Future Enhancements
+
+PactPay AI aims to evolve into a more comprehensive freelance contract and payment management platform.
+
+Potential future improvements include:
+
+- **Production Payment Integration:** Move from PayPal Sandbox to a production payment environment after completing the required configuration and compliance checks.
+- **Advanced AI Intelligence:** Improve contract analysis and risk detection with more detailed AI-powered insights.
+- **Enhanced Milestone Tracking:** Introduce more advanced milestone progress tracking and project management capabilities.
+- **Real-Time Notifications:** Notify users about payment updates, milestone progress, and important contract activities.
+- **Advanced Analytics:** Provide deeper insights into contract performance, payment trends, and project activity.
+- **Digital Contract Signing:** Explore secure digital signature integration.
+
+---
+
+# 📊 Project Status
+
+PactPay AI has completed its core development and local testing workflows.
+
+| Module                     | Status    |
+| -------------------------- | --------- |
+| User Authentication        | Completed |
+| AI Contract Generation     | Completed |
+| Contract Risk Analysis     | Completed |
+| AI Contract Summaries      | Completed |
+| Milestone Management       | Completed |
+| PayPal Sandbox Integration | Completed |
+| Transaction History        | Completed |
+| AI Chat Assistant          | Completed |
+| Analytics Dashboard        | Completed |
+| Responsive UI              | Completed |
+| Local Functional Testing   | Completed |
+| Production Deployment      | completed |
+
+---
+
+# 🌟 Project Vision
+
+Our vision is to make freelance collaboration more transparent, structured, and reliable.
+
+By combining AI-powered contract intelligence with milestone-based payment workflows, PactPay AI aims to help freelancers and clients manage agreements and project payments with greater confidence.
+
+**PactPay AI — Build Trust. Reduce Disputes. Get Paid with Confidence.**
 
 ---
 
 # 👩‍💻 Developer
 
-**Swati Singh**
+Developed as a project for the PayPal AI Hackathon.
 
-- GitHub: [swati-singh2026](https://github.com/swati-singh2026)
-- LinkedIn: [Swati Singh](https://linkedin.com/in/swatisingh-bca-eco)
+**Project:** PactPay AI
 
----
-
-# 🏆 Hackathon Project
-
-PactPay AI is being developed for the **PayPal AI Hackathon**.
-
-We aim to create a smarter freelance ecosystem where contracts, project milestones, and payments work together to establish transparency, accountability, and trust.
-
-**PactPay AI — Build Trust. Deliver Work. Get Paid.**
+**Source Code:** [GitHub Repository](https://github.com/swati-singh2026/pactpay-ai)
 
 ---
-
-⭐ If you find this project interesting, consider giving it a star!
-
-## 🗓 DAY 3 – PayPal Integration
-
-**Goal:** Integrate PayPal Sandbox payments into PactPay AI.
-
-### Progress Tracker
-
-| Hour    | Task                       | Status       |
-| ------- | -------------------------- | ------------ |
-| Hour 1  | PayPal Sandbox Setup       | ✅ Completed |
-| Hour 2  | Checkout SDK               | ✅ Completed |
-| Hour 3  | Orders API                 | ✅ Completed |
-| Hour 4  | Create Order API           | ✅ Completed |
-| Hour 5  | Capture Payment API        | ✅ Completed |
-| Hour 6  | PayPal Webhook Integration | ✅ Completed |
-| Hour 7  | Update Payment Status      | ⏳ Pending   |
-| Hour 8  | Update Milestone Status    | ⏳ Pending   |
-| Hour 9  | Transaction History        | ⏳ Pending   |
-| Hour 10 | Payment Success Page       | ⏳ Pending   |
-| Hour 11 | Error Handling             | ⏳ Pending   |
-| Hour 12 | Complete Testing           | ⏳ Pending   |
-
-### Hour 6 – PayPal Webhook Integration ✅
-
-- Created PayPal Sandbox Webhook for PactPay AI US.
-- Configured webhook endpoint using ngrok.
-- Registered four PayPal webhook events:
-  - `CHECKOUT.ORDER.APPROVED`
-  - `PAYMENT.CAPTURE.COMPLETED`
-  - `PAYMENT.CAPTURE.DENIED`
-  - `PAYMENT.CAPTURE.REFUNDED`
-
-- Implemented PayPal webhook signature verification.
-- Configured raw body parsing.
-- Updated the new webhook ID in backend environment variables.
-- Verified actual Sandbox webhook event delivery.
-
-### PayPal Sandbox Payment Test ✅
-
-Successfully completed a $10.00 USD Sandbox payment.
-
-| Detail            | Result              |
-| ----------------- | ------------------- |
-| Seller            | US Business Sandbox |
-| Buyer             | US Personal Sandbox |
-| Payment Amount    | $10.00              |
-| PayPal Fee        | $0.84               |
-| Seller Receivable | $9.16               |
-| Payment Status    | COMPLETED           |
-
-### Remaining Tasks
-
-- Hour 7: Update Payment Status in Database
-- Hour 8: Update Milestone Status
-- Hour 9: Transaction History
-- Hour 10: Payment Success Page
-- Hour 11: Error Handling
-- Hour 12: Complete Testing
-
-**Day 3 Final Goal:** End-to-End Payment Flow 🚀
-
-### Hour 7: Update Payment Status ✅
-
-- Integrated PayPal webhook with Prisma Payment model.
-- Verified PAYMENT.CAPTURE.COMPLETED event.
-- Automatically updated payment status from PENDING to PAID.
-- Verified payment status in Supabase database.
-- Successfully tested two Sandbox payments:
-  - Payment 1: $1,200 — PAID
-  - Payment 2: $1,800 — PAID
-- Confirmed webhook database updates successfully.
-
-### Hour 8: Update Milestone Status ✅
-
-- Integrated PayPal webhook with the Prisma Milestone model.
-- Automatically updates milestone status when PayPal payment is completed.
-- `PAYMENT.CAPTURE.COMPLETED` event updates the linked milestone to `COMPLETED`.
-- Verified webhook event processing and database updates.
-- Successfully tested Deployment milestone payment.
-- Confirmed Payment status as `PAID` and Milestone status as `COMPLETED` in Supabase.
-
-**Result:** Milestone status is automatically synchronized with successful PayPal payments.
-
-### PayPal Payment Integration
-
-- Integrated PayPal Sandbox payment gateway.
-- Create PayPal checkout orders for project milestones.
-- Capture approved PayPal payments.
-- Handle PayPal payment webhooks.
-- Automatically update payment and milestone statuses after successful webhook processing.
-- Maintain transaction history for authenticated users.
-- Retrieve payment details along with associated milestones and contracts.
-- Secure payment APIs using JWT authentication.
-
-### Transaction History
-
-- REST API: `GET /api/transactions`
-- Displays authenticated user's payment transactions.
-- Includes payment amount, status, milestone details, and contract information.
-- Supports chronological transaction retrieval.
-
-### Payment Testing
-
-Successfully tested the PayPal Sandbox payment flow using Postman and Supabase.
-
-Verified a $200 USD payment with:
-
-- Payment Status: `PAID`
-- Milestone Status: `COMPLETED`
-
-# 💳 PayPal Payment Integration
-
-PactPay AI integrates PayPal Sandbox to support secure milestone-based payments.
-
-## Features
-
-- PayPal Sandbox Checkout Integration
-- PayPal Order Creation API
-- Automatic Payment Capture
-- Payment Success Page
-- Payment Cancellation Page
-- Transaction History
-- Payment Status Tracking
-- Milestone Status Automation
-- Payment Ownership Verification
-- Duplicate Capture Protection
-- Error Handling and JWT Authentication
-
-## Payment Workflow
-
-1. User selects a contract milestone.
-2. Backend creates a PayPal order.
-3. User approves the payment through PayPal Sandbox.
-4. User returns to the Payment Success page.
-5. Frontend automatically calls the payment capture API.
-6. Backend captures the PayPal payment.
-7. Payment status updates to `PAID`.
-8. Related milestone status updates to `COMPLETED`.
-9. Transaction details appear in Payment History.
-
-## Payment Statuses
-
-- `PENDING` – Payment is awaiting completion.
-- `PAID` – Payment has been successfully captured.
-- `FAILED` – Payment failed.
-
-## Milestone Statuses
-
-- `PENDING` – Milestone payment is not completed.
-- `IN_PROGRESS` – Milestone is in progress.
-- `COMPLETED` – Milestone payment is completed.
-
-## Payment Pages
-
-- `/dashboard/payments/success`
-- `/dashboard/payments/cancel`
-- `/dashboard/payments/history`
-
-## Testing
-
-- PayPal Sandbox payment flow tested.
-- Automatic payment capture verified.
-- Payment and milestone database updates verified.
-- Transaction History API tested.
-- Invalid JWT authentication tested (401 Unauthorized).
-- Frontend production build successful.
-- Backend TypeScript build successful.
-
-## Day 3 Progress
-
-- Hour 10 – Payment Success Page: COMPLETED
-- Hour 11 – Error Handling: COMPLETED
-
-## 🚀 Day 4 – AI Assistant, Dashboard & Analytics
-
-### ✅ Hour 1 – AI Chat Assistant Backend
-
-- Developed AI chat functionality using Groq SDK.
-- Integrated `openai/gpt-oss-120b` model.
-- Implemented AI responses for contracts, milestones, payments, and freelancing queries.
-- Added JWT authentication and input validation.
-- Created API endpoint: `POST /api/ai/chat`.
-
-### ✅ Hour 2 – AI Chat Assistant UI
-
-- Created interactive AI Assistant page.
-- Integrated frontend with AI backend API.
-- Implemented user and AI message bubbles.
-- Added loading indicators and error handling.
-- Integrated DashboardLayout and JWT authentication.
-- Added automatic message scrolling.
-
-### ✅ Hour 3 – Dashboard Analytics APIs
-
-- Developed dynamic dashboard analytics API.
-- Implemented Prisma queries for:
-  - Total Contracts
-  - Completed Contracts
-  - Active Projects
-  - Total Payments
-  - Pending Payments
-  - Failed Payments
-  - Total Revenue
-- Secured dashboard API using JWT authentication.
-- API endpoint: `GET /api/dashboard`.
-
-### ✅ Hour 4 – Dynamic Revenue Cards
-
-- Replaced hardcoded dashboard statistics with live API data.
-- Integrated dashboard analytics API using Fetch.
-- Implemented dynamic dashboard cards:
-  - Escrow Balance
-  - Smart Contracts
-  - AI Risk Checks
-  - Active Deals
-- Successfully tested live dashboard statistics.
-
-### ✅ Hour 5 – Payment Charts
-
-- Installed Recharts library.
-- Created reusable `PaymentChart` component.
-- Implemented interactive Payment Overview Pie Chart.
-- Integrated live payment statistics from backend.
-- Added payment status visualization:
-  - 🟢 Paid
-  - 🟡 Pending
-  - 🔴 Failed
-- Integrated chart into the main dashboard.
-
-### 🛠️ Technologies Used
-
-- Next.js
-- React
-- TypeScript
-- Express.js
-- Prisma ORM
-- PostgreSQL / Supabase
-- Groq AI SDK
-- Recharts
-- Tailwind CSS
-- JWT Authentication
-
-### 📊 Day 4 Progress
-
-| Task                      | Status       |
-| ------------------------- | ------------ |
-| AI Chat Assistant Backend | ✅ Completed |
-| AI Chat Assistant UI      | ✅ Completed |
-| Dashboard Analytics APIs  | ✅ Completed |
-| Dynamic Revenue Cards     | ✅ Completed |
-| Payment Charts            | ✅ Completed |
-| Contract Charts           | ⏳ Pending   |
-| Completion Statistics     | ⏳ Pending   |
-| Filters                   | ⏳ Pending   |
-| AG Grid Polish            | ⏳ Pending   |
-| Loading States            | ⏳ Pending   |
-| Error States              | ⏳ Pending   |
-| Testing / End Day Demo    | ⏳ Pending   |
-
-**Day 4 Progress: 5/12 Hours Completed**
-
-### ✅ Hour 6 – Contract Charts
-
-- Created reusable ContractChart component using Recharts.
-- Implemented Contract Status Pie Chart.
-- Added Draft, Active, Completed, and Cancelled contract statistics.
-- Integrated live contract analytics from backend API.
-- Displayed contract status distribution on the dashboard.
-
-### ✅ Hour 7 – Completion Statistics
-
-- Created reusable CompletionStats component.
-- Displayed total contracts, completed contracts, and active projects.
-- Implemented dynamic project completion rate calculation.
-- Added visual progress bar for completion statistics.
-- Integrated completion statistics into the dashboard.
-
-### ✅ Hour 8 – Dashboard Filters
-
-- Implemented Contract Status filter.
-- Implemented Payment Status filter.
-- Added dynamic client-side filtering using React useMemo.
-- Implemented Clear Filters functionality.
-- Added filtered contract count.
-
-### ✅ Hour 9 – AG Grid Polish
-
-- Improved Recent Contracts table layout.
-- Added horizontal scrolling for better responsiveness.
-- Customized row height and header height.
-- Enabled automatic header height and text wrapping.
-- Improved table readability and presentation.
-
-### ✅ Hour 10 – Loading States
-
-- Implemented dashboard loading state.
-- Added animated loading spinner.
-- Improved AI Assistant loading indicator.
-- Added animated dots while AI generates responses.
-- Disabled chat input and button during AI processing.
-
-### ✅ Hour 11 – Error States
-
-- Implemented dashboard API error handling.
-- Added dashboard error message with Retry button.
-- Improved AI Assistant error display.
-- Added Dismiss functionality for AI errors.
-- Tested dashboard and AI Assistant error states by temporarily stopping the backend.
-- Verified successful recovery after restarting the backend.
-
-### 📊 Day 4 Progress
-
-| Task                         | Status       |
-| ---------------------------- | ------------ |
-| AI Chat Assistant Backend    | ✅ Completed |
-| AI Chat Assistant UI         | ✅ Completed |
-| Dashboard Analytics APIs     | ✅ Completed |
-| Dynamic Revenue Cards        | ✅ Completed |
-| Payment Charts               | ✅ Completed |
-| Contract Charts              | ✅ Completed |
-| Completion Statistics        | ✅ Completed |
-| Dashboard Filters            | ✅ Completed |
-| AG Grid Polish               | ✅ Completed |
-| Loading States               | ✅ Completed |
-| Error States                 | ✅ Completed |
-| Final Testing / End Day Demo | ⏳ Pending   |
-
-**Day 4 Progress: 11/12 Hours Completed (91.7%)**

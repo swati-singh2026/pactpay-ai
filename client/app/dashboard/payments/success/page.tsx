@@ -48,7 +48,7 @@ export default function PaymentSuccessPage() {
 
         // Step 1: Capture PayPal payment
         const captureResponse = await fetch(
-          "http://localhost:5000/api/paypal/capture-payment",
+          "https://pactpay-ai.onrender.com/api/paypal/capture-payment",
           {
             method: "POST",
             headers: {
@@ -66,12 +66,15 @@ export default function PaymentSuccessPage() {
         }
 
         // Step 2: Fetch updated transaction history
-        const response = await fetch("http://localhost:5000/api/transactions", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${authToken}`,
+        const response = await fetch(
+          "https://pactpay-ai.onrender.com/api/transactions",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
           },
-        });
+        );
 
         const data = await response.json();
 
